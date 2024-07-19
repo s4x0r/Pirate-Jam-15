@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://hr468huuuv33"]
+[gd_scene load_steps=6 format=3 uid="uid://hr468huuuv33"]
 
 [ext_resource type="Texture2D" uid="uid://nfu6kdm7s36m" path="res://assets/GUI.png" id="1_hm38i"]
+[ext_resource type="Script" path="res://s4xstuff/uitest.gd" id="2_ctot1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8l1wi"]
 atlas = ExtResource("1_hm38i")
@@ -16,19 +17,43 @@ texture_margin_bottom = 4.0
 [sub_resource type="Theme" id="Theme_1p4yy"]
 Panel/styles/panel = SubResource("StyleBoxTexture_3is6b")
 
-[node name="Control" type="Control"]
+[node name="ui" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -377.0
+offset_bottom = -233.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_1p4yy")
+script = ExtResource("2_ctot1")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 284.0
+offset_top = 127.0
+offset_right = 125.0
+offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -97.0
+offset_top = -39.5
+offset_right = 97.0
+offset_bottom = 39.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "press me"
+
+[connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]

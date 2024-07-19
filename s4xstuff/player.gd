@@ -13,6 +13,9 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
+	if Input.is_action_just_pressed("player_inventory"):
+		$ui.visible = !$ui.visible
+
 	#interact
 	if Input.is_action_just_pressed("player_interact") and is_on_floor():
 		print($Area3D.get_overlapping_bodies())
@@ -41,3 +44,8 @@ func _physics_process(delta):
 	move_and_slide()
 	
 
+
+
+func _on_button_pressed():
+	print("satisfaction")
+	pass # Replace with function body.

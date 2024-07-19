@@ -1,5 +1,5 @@
-extends StaticBody3D
-var count = 0
+extends Control
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,10 +11,6 @@ func _process(delta):
 	pass
 
 
-func interact(user):
-	print(user)
-	$ui.visible = !$ui.visible
-
-	count+=1
-	print(count)
-	pass
+func _on_button_pressed():
+	print("pressed")
+	pass # Replace with function body.
