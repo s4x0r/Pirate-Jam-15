@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://hr468huuuv33"]
+
+[ext_resource type="Texture2D" uid="uid://nfu6kdm7s36m" path="res://assets/GUI.png" id="1_hm38i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8l1wi"]
+atlas = ExtResource("1_hm38i")
+region = Rect2(81, 97, 30, 30)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3is6b"]
+texture = SubResource("AtlasTexture_8l1wi")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="Theme" id="Theme_1p4yy"]
+Panel/styles/panel = SubResource("StyleBoxTexture_3is6b")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_1p4yy")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
