@@ -1,0 +1,57 @@
+[gd_scene load_steps=10 format=3 uid="uid://d1xok4qy88lku"]
+
+[ext_resource type="PackedScene" uid="uid://b66g3xlcgnh6k" path="res://s4xstuff/player.tscn" id="1_glqkl"]
+[ext_resource type="Texture2D" uid="uid://sofj3mnm6u3i" path="res://assets/kenny grid/Green/texture_04.png" id="1_pgscs"]
+[ext_resource type="PackedScene" uid="uid://dud7iseqfu4kd" path="res://assets/Spawnables/Spinner.tscn" id="4_m36px"]
+
+[sub_resource type="Environment" id="Environment_dvgcb"]
+background_energy_multiplier = 0.0
+ambient_light_energy = 0.0
+reflected_light_source = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5b178"]
+size = Vector3(500, 1, 500)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bb4yi"]
+albedo_texture = ExtResource("1_pgscs")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_yg2sk"]
+size = Vector2(500, 500)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xpkx1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_01r4x"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="player" parent="." instance=ExtResource("1_glqkl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05703, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dvgcb")
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_5b178")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+material_override = SubResource("StandardMaterial3D_bb4yi")
+mesh = SubResource("PlaneMesh_yg2sk")
+skeleton = NodePath("../..")
+
+[node name="Box" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box"]
+transform = Transform3D(2.78312, 0, 0, 0, 2.78312, 0, 0, 0, 2.78312, -4.39357, 1.29851, -1.14507)
+shape = SubResource("BoxShape3D_xpkx1")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Box"]
+transform = Transform3D(2.78312, 0, 0, 0, 2.78312, 0, 0, 0, 2.78312, -4.39357, 1.29851, -1.14507)
+mesh = SubResource("BoxMesh_01r4x")
+skeleton = NodePath("../..")
+
+[node name="Spinner" parent="." instance=ExtResource("4_m36px")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.6587)
+
+[node name="Towers" type="Node3D" parent="."]

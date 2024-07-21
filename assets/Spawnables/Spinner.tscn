@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://dud7iseqfu4kd"]
+
+[ext_resource type="Script" path="res://assets/Spawnables/Spinner.gd" id="1_5held"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_hr74c"]
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aicgt"]
+albedo_color = Color(0, 1, 0.0352941, 1)
+emission_enabled = true
+emission = Color(0, 1, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_2qsri"]
+material = SubResource("StandardMaterial3D_aicgt")
+top_radius = 0.0
+height = 1.0
+
+[node name="Spinner" type="Node3D"]
+script = ExtResource("1_5held")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("CylinderShape3D_hr74c")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("CylinderMesh_2qsri")
+
+[node name="Timer" type="Timer" parent="StaticBody3D"]
+wait_time = 0.1
+autostart = true
+
+[node name="SpotLight3D" type="SpotLight3D" parent="StaticBody3D"]
+spot_attenuation = 0.277392
+spot_angle = 20.0
+
+[connection signal="timeout" from="StaticBody3D/Timer" to="." method="_on_timer_timeout"]
