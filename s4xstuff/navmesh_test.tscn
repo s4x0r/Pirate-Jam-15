@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://0msqn2wm5b6y"]
+[gd_scene load_steps=11 format=3 uid="uid://0msqn2wm5b6y"]
 
 [ext_resource type="Script" path="res://s4xstuff/navmesh_test.gd" id="1_lw087"]
+[ext_resource type="PackedScene" uid="uid://hhjy4437tynv" path="res://s4xstuff/mob.tscn" id="2_2x3k1"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_kmhs1"]
 vertices = PackedVector3Array(-49.5, -0.25, -13.75, -15.5, -0.25, -13.75, -15.25, -0.25, -15, -13.25, -0.25, -49.5, -49.5, -0.25, -49.5, -15.25, -0.25, -15, -13.25, -0.25, -15, -13.25, -0.25, -49.5, -13.25, -0.25, -15, 13.5, -0.25, -15, 13.5, -0.25, -49.5, -13.25, -0.25, -49.5, 15.5, -0.25, -15, 15.75, -0.25, -13.75, 49.5, -0.25, -13.75, 49.5, -0.25, -49.5, 13.5, -0.25, -49.5, 13.5, -0.25, -49.5, 13.5, -0.25, -15, 15.5, -0.25, -15, -15.25, -0.25, -12.75, -15.5, -0.25, -13.75, -49.5, -0.25, -13.75, -49.5, -0.25, 49.5, -14, -0.25, 49.5, -14, -0.25, 49.5, -13.75, -0.25, -12.75, -15.25, -0.25, -12.75, 49.5, -0.25, -13.75, 15.75, -0.25, -13.75, 15.5, -0.25, -12.75, 14.25, -0.25, 49.5, 49.5, -0.25, 49.5, 15.5, -0.25, -12.75, 14, -0.25, -12.75, 14.25, -0.25, 49.5, -14, -0.25, 49.5, 14.25, -0.25, 49.5, 14, -0.25, -12.75, -13.75, -0.25, -12.75)
@@ -69,5 +70,8 @@ material = SubResource("StandardMaterial3D_okpqs")
 
 [node name="Camera3D" type="Camera3D" parent="PlayerBase"]
 transform = Transform3D(1, 0, 0, 0, 0.702998, 0.711192, 0, -0.711192, 0.702998, 0, 14, 10)
+
+[node name="mob" parent="." instance=ExtResource("2_2x3k1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, -7)
 
 [connection signal="input_event" from="NavigationRegion3D/ClickArea" to="." method="_on_click_area_input_event"]

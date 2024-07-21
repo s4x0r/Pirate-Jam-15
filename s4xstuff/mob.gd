@@ -3,35 +3,62 @@ extends CharacterBody3D
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
-var target
+var mode = "search"
+var minD = .23
 var hp = 10
+var rDist=5
+
+var move_path: PackedVector3Array
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-
+func _ready():
+	pass
 
 func _physics_process(delta):
+
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	#THE MISSILE KNOWS WHERE IT IS
+	if !move_path.is_empty():
+		#IT ALSO KNOWS WHERE IT ISN'T
+		var destination := move_path[0]
+		#BY SUBTRACTING WHERE IT ISN't FROM WHERE IT IS, IT OBTAINS A DIFFERENCE
+		#var direction =  global_position -destination
+		var direction = -destination
+		#print(global_position, position, destination, direction, direction.normalized())
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		if direction.length() < minD:
+			print('r')
+			#ARRIVING AT IT'S LOCATION
+			move_path.remove_at(0)
+			direction = false
+			pass
+
+		#THAT DRIVE THE MISSILE FROM THE POSITION IT WAS
+		if direction:
+			velocity.x = direction.normalized().x * SPEED
+			velocity.z = direction.normalized().z * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.z = move_toward(velocity.z, 0, SPEED)
+
+		#TO THE POSITION IT SHOULD BE
+		
+		pass
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
-
+		if mode == "search":
+			$AnimationPlayer.play("search")
+		#enter search mode or attack
+		pass
 	move_and_slide()
+	# Handle jump.
+	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		#velocity.y = JUMP_VELOCITY
 
+	
 func damage(dmg):
 	hp -= dmg
 	pass 
@@ -39,3 +66,32 @@ func damage(dmg):
 func attack():
 	pass
 
+#THE MISSILE GUIDANCE SUBSYSTEM GENERATES CORRECTIVE COMMANDS
+func get_nav_path(tPos):
+	var map := get_world_3d().navigation_map # get navigation map
+	var target_point := NavigationServer3D.map_get_closest_point(map, tPos) # get the target point
+
+	move_path = NavigationServer3D.map_get_path(map, global_position, target_point, true) # get the movement path
+	print([tPos, target_point, move_path])
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "damaged":
+		pass
+	
+	#IN THE EVENT THAT NO TARGET WAS FOUND
+	elif anim_name == "search":
+		#THE MISSILE DRIVES ITSELF TO A POSITION IT WASN'T 
+		mode = "search"
+		#get_nav_path(global_position+Vector3(randf_range(-rDist, rDist),0,randf_range(-rDist, rDist)))
+		get_nav_path($"../PlayerBase".position)
+		pass
+	pass # Replace with function body.
+
+
+func _on_search_space_body_entered(body:Node3D):
+	if body.name == "player":
+		mode = "attack"
+		get_nav_path(body.global_position)
+		pass
+
+	pass # Replace with function body.
