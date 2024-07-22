@@ -1,6 +1,6 @@
 extends Node3D
 
-const move_speed := 4.0 # Movement speed of the player
+const move_speed := 7.0 # Movement speed of the player
 
 var move_path: PackedVector3Array
 

@@ -4,7 +4,7 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 var mode = "search"
-var minD = .23
+var minD = 1.5
 var hp = 10
 var rDist=5
 
@@ -16,6 +16,43 @@ func _ready():
 	pass
 
 func _physics_process(delta):
+	# Add the gravity.
+	if not is_on_floor():
+		velocity.y -= gravity * delta
+
+	var to = position
+	if !move_path.is_empty():
+		to = move_path[0]
+
+		var input_dir =  to - position
+		#var direction = (transform.basis * Vector3(input_dir.x, 0, -input_dir.y)).normalized()
+		var direction = input_dir.normalized()
+		if direction:
+			velocity.x = direction.x * SPEED
+			velocity.z = direction.z * SPEED 
+
+			$model.look_at(to_global(Vector3(-velocity.x, 0, -velocity.z)))
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.z = move_toward(velocity.z, 0, SPEED)
+
+		if input_dir.length()<minD:
+			print("reached: ", move_path[0])
+			move_path.remove_at(0)
+		
+
+		print(position, $"../PlayerBase/model".global_position, input_dir, velocity, input_dir.length())
+		move_and_slide()
+
+		
+	elif mode == "search":
+		$AnimationPlayer.play("search")
+		pass
+
+
+	
+
+func broke_physics_process(delta):
 
 	# Add the gravity.
 	if not is_on_floor():
@@ -89,7 +126,7 @@ func _on_animation_player_animation_finished(anim_name):
 
 
 func _on_search_space_body_entered(body:Node3D):
-	if body.name == "player":
+	if body.name == "PlayerBase":
 		mode = "attack"
 		get_nav_path(body.global_position)
 		pass
