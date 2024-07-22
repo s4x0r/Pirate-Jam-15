@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://b66g3xlcgnh6k"]
+[gd_scene load_steps=14 format=3 uid="uid://b66g3xlcgnh6k"]
 
 [ext_resource type="Script" path="res://bang/player.gd" id="1_j87ak"]
-[ext_resource type="Script" path="res://bang/Spawner.gd" id="2_q0kqu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7lsdg"]
 emission_enabled = true
@@ -10,6 +9,24 @@ emission_energy_multiplier = 0.47
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_47k7j"]
 material = SubResource("StandardMaterial3D_7lsdg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ll021"]
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_r0lhj"]
+material = SubResource("StandardMaterial3D_ll021")
+top_radius = 0.1
+bottom_radius = 0.1
+height = 15.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hi1s8"]
+radius = 5.0
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3ogcv"]
+points = PackedVector3Array(3.07325, -6.38158, 1.01412, -2.89678, -6.58794, -1.4549, 0.396864, 6.58794, -0.631493, -1.0432, -6.38158, 3.07325, 1.42583, -6.58794, -2.89678, -0.425943, 6.58794, 0.602415, 1.01412, -6.58794, 3.07325, -0.837648, -6.17522, -3.10294, -2.89678, -6.17522, 1.42583, 3.07325, -6.58794, -1.0432, 0.80857, 5.97016, 0.396864, -0.631493, 6.58794, -0.425943, 2.24924, -5.7638, 2.24924, -3.10294, -5.7638, 0.190709, -2.27892, -5.97016, -2.27892, 2.45539, -5.97016, -2.07277, 0.396864, 5.97016, 0.80857, -1.86722, -6.58794, 2.66094, 0.602415, -5.97016, -3.10294, -0.425943, 5.7638, -0.837648, -0.837648, 5.35238, 0.602415, 3.07325, -5.97016, -0.837648, 0.80857, 5.35238, -0.631493, -0.425943, -5.7638, 3.07325, -2.89678, -5.35238, -1.0432, -1.86722, -6.58794, -2.69063, 1.83753, -6.17522, -2.69063, -2.07277, -5.97016, 2.45539, 1.01412, -5.14602, 2.8671, 3.07325, -5.7638, 0.602415, -0.837648, 5.97016, -0.219788, 2.66094, -6.17522, 1.83753)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bxmmh"]
 albedo_color = Color(0, 0, 0, 1)
@@ -34,18 +51,57 @@ height = 0.4
 font_size = 37
 
 [node name="player" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 rotation_edit_mode = 2
 script = ExtResource("1_j87ak")
 
 [node name="model" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_47k7j")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="model"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.58808e-08, -0.813163, 0.432047)
+[node name="Laser" type="RayCast3D" parent="model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.654518)
+visible = false
+target_position = Vector3(0, 0, 15)
+collision_mask = 3
+hit_from_inside = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="model/Laser"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -1.19209e-07, 7.29542)
+mesh = SubResource("CylinderMesh_r0lhj")
+skeleton = NodePath("../../..")
+
+[node name="Laser_end" type="OmniLight3D" parent="model/Laser"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.0742)
+light_color = Color(1, 0, 0, 1)
+light_energy = 10.0
+omni_range = 2.0
+
+[node name="Lamp" type="OmniLight3D" parent="model"]
+transform = Transform3D(1, -8.88178e-16, 7.10543e-15, 8.88178e-16, 1, 0, -7.10543e-15, 6.31089e-30, 1, -7.10543e-15, -1.19209e-07, -5.96046e-08)
+visible = false
+
+[node name="Area3D" type="Area3D" parent="model/Lamp"]
+transform = Transform3D(1, -4.48416e-44, 0, -4.48416e-44, 1, 0, 0, 0, 1, 0, 0, 0)
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="model/Lamp/Area3D"]
+transform = Transform3D(1, -4.48416e-44, 0, -4.48416e-44, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("SphereShape3D_hi1s8")
+
+[node name="FlashLight" type="SpotLight3D" parent="model"]
+transform = Transform3D(-1, 2.66454e-15, -8.74228e-08, -1.33956e-08, 0.988191, 0.153227, 8.63904e-08, 0.153227, -0.988191, 7.58808e-08, -0.512472, 0.432047)
+visible = false
 shadow_enabled = true
-spot_range = 150.0
+spot_range = 15.0
 spot_angle = 20.0
+
+[node name="Area3D" type="Area3D" parent="model/FlashLight"]
+collision_layer = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="model/FlashLight/Area3D"]
+transform = Transform3D(1, 2.13163e-14, -3.08087e-15, 0, -0.154435, -0.988003, 0, 0.988003, -0.154435, -2.20268e-13, 1.15594, -7.39519)
+shape = SubResource("ConvexPolygonShape3D_3ogcv")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="model"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.220586, 0.495756, 0.547603)
@@ -61,14 +117,15 @@ material = SubResource("StandardMaterial3D_bxmmh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 collision_layer = 2
 collision_mask = 2
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="model/interactSpace"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 shape = SubResource("CylinderShape3D_f1tbw")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="model"]
-omni_range = 4.0
-omni_attenuation = 6.06286
+[node name="Passive light" type="OmniLight3D" parent="model"]
+light_energy = 0.03
+omni_attenuation = 0.0436332
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConcavePolygonShape3D_xbh31")
@@ -80,18 +137,17 @@ size = 16.0
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
 transform = Transform3D(-1, 0, -5.96046e-08, -2.98023e-08, 1, -1.49012e-08, 8.9407e-08, 1.78814e-07, -1, 0, 0, 0)
+visible = false
 target_position = Vector3(0, 0, 100)
 
-[node name="ray_col" type="MeshInstance3D" parent="Camera3D/RayCast3D"]
+[node name="ray_pos" type="MeshInstance3D" parent="Camera3D/RayCast3D"]
 transform = Transform3D(1, -2.98023e-08, -2.98023e-08, -5.96046e-08, 1, 0, 2.98023e-08, 5.96046e-08, 1, 1.90735e-06, 0, 2.22201)
 material_override = SubResource("StandardMaterial3D_xgnll")
 cast_shadow = 0
 gi_mode = 0
 mesh = SubResource("SphereMesh_wks1i")
-script = ExtResource("2_q0kqu")
 
 [node name="ui" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -99,6 +155,7 @@ offset_right = 378.0
 grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="ui"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.077
@@ -131,4 +188,65 @@ offset_right = 220.0
 offset_bottom = 186.104
 text = "touch me"
 
+[node name="HSplitContainer" type="HSplitContainer" parent="ui"]
+layout_mode = 0
+offset_top = 576.0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="VSeparator" type="VSeparator" parent="ui/HSplitContainer"]
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="ui/HSplitContainer/VSeparator"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 120.0
+offset_bottom = 62.0
+value = 100.0
+
+[node name="Flashlight" type="Panel" parent="ui/HSplitContainer/VSeparator"]
+layout_mode = 2
+offset_left = 136.0
+offset_top = 8.0
+offset_right = 184.0
+offset_bottom = 56.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ui/HSplitContainer/VSeparator/Flashlight"]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
+text = "Flash
+light"
+
+[node name="Lamp" type="Panel" parent="ui/HSplitContainer/VSeparator"]
+layout_mode = 2
+offset_left = 200.0
+offset_top = 8.0
+offset_right = 248.0
+offset_bottom = 56.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ui/HSplitContainer/VSeparator/Lamp"]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
+text = "Lamp"
+
+[node name="Laser" type="Panel" parent="ui/HSplitContainer/VSeparator"]
+layout_mode = 2
+offset_left = 264.0
+offset_top = 8.0
+offset_right = 312.0
+offset_bottom = 56.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ui/HSplitContainer/VSeparator/Laser"]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
+text = "Laser"
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="pressed" from="ui/Panel/Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

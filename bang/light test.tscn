@@ -2,12 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://b66g3xlcgnh6k" path="res://s4xstuff/player.tscn" id="1_glqkl"]
 [ext_resource type="Texture2D" uid="uid://sofj3mnm6u3i" path="res://assets/kenny grid/Green/texture_04.png" id="1_pgscs"]
-[ext_resource type="PackedScene" uid="uid://dud7iseqfu4kd" path="res://assets/Spawnables/Spinner.tscn" id="4_m36px"]
+[ext_resource type="PackedScene" uid="uid://blo6scgkpyas2" path="res://bang/charge_area.tscn" id="3_cdp7l"]
 
 [sub_resource type="Environment" id="Environment_dvgcb"]
 background_energy_multiplier = 0.0
 ambient_light_energy = 0.0
 reflected_light_source = 1
+glow_hdr_threshold = 1.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5b178"]
 size = Vector3(500, 1, 500)
@@ -51,7 +52,6 @@ transform = Transform3D(2.78312, 0, 0, 0, 2.78312, 0, 0, 0, 2.78312, -4.39357, 1
 mesh = SubResource("BoxMesh_01r4x")
 skeleton = NodePath("../..")
 
-[node name="Spinner" parent="." instance=ExtResource("4_m36px")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.6587)
-
 [node name="Towers" type="Node3D" parent="."]
+
+[node name="Charge_area" parent="." instance=ExtResource("3_cdp7l")]

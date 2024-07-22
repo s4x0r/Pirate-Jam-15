@@ -1,5 +1,11 @@
 extends CharacterBody3D
 
+var lamp
+var flashlight
+var battery
+var laser
+var laser_end
+var charging = false
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 8
@@ -7,9 +13,17 @@ const JUMP_VELOCITY = 8
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-
+func _ready():
+	lamp = $model/Lamp
+	flashlight = $model/FlashLight
+	battery = $ui/HSplitContainer/VSeparator/ProgressBar
+	laser = $model/Laser
+	laser_end = $model/Laser/Laser_end
+	
 func _physics_process(delta):
 	
+	print(laser.get_collision_point())
+	laser_end.set_global_position((Vector3(laser.get_collision_point().x,0,laser.get_collision_point().z)))
 	
 	var global_mouse_pos
 	global_mouse_pos = $Camera3D.project_position(get_viewport().get_mouse_position(),0)
@@ -17,9 +31,9 @@ func _physics_process(delta):
 	
 	#$Camera3D/RayCast3D.position = get_viewport().get_camera_3d().project_ray_origin(get_viewport().get_mouse_position())
 	$Camera3D/RayCast3D.set_global_position(global_mouse_pos)
-	$Camera3D/RayCast3D/ray_col.set_global_position($Camera3D/RayCast3D.get_collision_point())
+	$Camera3D/RayCast3D/ray_pos.set_global_position($Camera3D/RayCast3D.get_collision_point())
 	#mouse_ray.target_position = $Camera3D.transform
-	$model.look_at(Vector3($Camera3D/RayCast3D/ray_col.get_global_position().x,1,$Camera3D/RayCast3D/ray_col.get_global_position().z),Vector3.UP,true)
+	$model.look_at(Vector3($Camera3D/RayCast3D/ray_pos.get_global_position().x,1,$Camera3D/RayCast3D/ray_pos.get_global_position().z),Vector3.UP,true)
 	$model.rotation.x = 0
 	$model.rotation.z = 0
 	#print($Camera3D/RayCast3D.is_colliding(), $Camera3D/RayCast3D.position, global_mouse_pos)	
@@ -63,8 +77,59 @@ func _physics_process(delta):
 	move_and_slide()
 	
 
+func _input(event):
+	if event.is_action_pressed("1") and battery.value >=1:
+		if flashlight.is_visible() == true:
+			laser.set_visible(false)
+			flashlight.set_visible(false)
+			lamp.set_visible(false)
+		else:
+			laser.set_visible(false)
+			flashlight.set_visible(true)
+			lamp.set_visible(false)
+		pass
 
+	if event.is_action_pressed("2") and battery.value >=1:
+		if lamp.is_visible() == true:
+			laser.set_visible(false)
+			flashlight.set_visible(false)
+			lamp.set_visible(false)
+		else:
+			laser.set_visible(false)
+			flashlight.set_visible(false)
+			lamp.set_visible(true)
+		pass
+
+	if event.is_action_pressed("3") and battery.value >=1:
+		if laser.is_visible() == true:
+			laser.set_visible(false)
+			flashlight.set_visible(false)
+			lamp.set_visible(false)
+		else:
+			laser.set_visible(true)
+			flashlight.set_visible(false)
+			lamp.set_visible(false)
+		pass
 
 func _on_button_pressed():
 	print("satisfaction")
+	pass # Replace with function body.
+
+
+func _on_timer_timeout():
+	if flashlight.is_visible() == true:
+		battery.value = battery.value - 2
+	if lamp.is_visible() == true:
+		battery.value = battery.value - 4
+	if laser.is_visible() == true:
+		battery.value = battery.value - 8
+	
+	if battery.value <=0:
+		laser.set_visible(false)
+		flashlight.set_visible(false)
+		lamp.set_visible(false)
+
+	if charging == true:
+		battery.value = battery.value +5
+		
 	pass # Replace with function body.

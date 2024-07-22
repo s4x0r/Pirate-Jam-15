@@ -32,7 +32,9 @@ wait_time = 0.1
 autostart = true
 
 [node name="SpotLight3D" type="SpotLight3D" parent="StaticBody3D"]
-spot_attenuation = 0.277392
-spot_angle = 20.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.436529, 0)
+spot_range = 10.0
+spot_attenuation = 0.016176
+spot_angle = 25.0
 
 [connection signal="timeout" from="StaticBody3D/Timer" to="." method="_on_timer_timeout"]

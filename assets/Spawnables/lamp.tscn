@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://nhim3erjh6mj"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ih08m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fye47"]
+albedo_color = Color(0, 0, 1, 1)
+emission_enabled = true
+emission = Color(0, 0, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_j1q2f"]
+material = SubResource("StandardMaterial3D_fye47")
+
+[node name="Lamp" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("SphereShape3D_ih08m")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("SphereMesh_j1q2f")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0558882, 0)
