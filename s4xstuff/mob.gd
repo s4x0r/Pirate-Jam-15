@@ -4,7 +4,7 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 var mode = "search"
-var minD = 1.5
+var minD = 2
 var hp = 10
 var rDist=5
 
@@ -37,63 +37,31 @@ func _physics_process(delta):
 			velocity.z = move_toward(velocity.z, 0, SPEED)
 
 		if input_dir.length()<minD:
-			print("reached: ", move_path[0])
+			#print("reached: ", move_path[0])
 			move_path.remove_at(0)
-		
-
-		print(position, $"../PlayerBase/model".global_position, input_dir, velocity, input_dir.length())
-		move_and_slide()
-
-		
-	elif mode == "search":
-		$AnimationPlayer.play("search")
-		pass
-
-
-	
-
-func broke_physics_process(delta):
-
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y -= gravity * delta
-
-	#THE MISSILE KNOWS WHERE IT IS
-	if !move_path.is_empty():
-		#IT ALSO KNOWS WHERE IT ISN'T
-		var destination := move_path[0]
-		#BY SUBTRACTING WHERE IT ISN't FROM WHERE IT IS, IT OBTAINS A DIFFERENCE
-		#var direction =  global_position -destination
-		var direction = -destination
-		#print(global_position, position, destination, direction, direction.normalized())
-
-		if direction.length() < minD:
-			print('r')
-			#ARRIVING AT IT'S LOCATION
-			move_path.remove_at(0)
-			direction = false
-			pass
-
-		#THAT DRIVE THE MISSILE FROM THE POSITION IT WAS
-		if direction:
-			velocity.x = direction.normalized().x * SPEED
-			velocity.z = direction.normalized().z * SPEED
-		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
-			velocity.z = move_toward(velocity.z, 0, SPEED)
-
-		#TO THE POSITION IT SHOULD BE
-		
-		pass
+			return
 	else:
+		velocity.x=0
+		velocity.z = 0
+
 		if mode == "search":
 			$AnimationPlayer.play("search")
-		#enter search mode or attack
 		pass
+
+#		print(	"""pos: %s
+#player: %s
+#input: %s
+#vel: %s
+#dist: %s
+#path: %s
+#	"""%[position, $"../PlayerBase/model".global_position, input_dir, velocity, input_dir.length(), move_path])
+
+		
+
+		
+
+
 	move_and_slide()
-	# Handle jump.
-	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		#velocity.y = JUMP_VELOCITY
 
 	
 func damage(dmg):
@@ -109,7 +77,7 @@ func get_nav_path(tPos):
 	var target_point := NavigationServer3D.map_get_closest_point(map, tPos) # get the target point
 
 	move_path = NavigationServer3D.map_get_path(map, global_position, target_point, true) # get the movement path
-	print([tPos, target_point, move_path])
+	#print([tPos, target_point, move_path])
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "damaged":
@@ -120,7 +88,7 @@ func _on_animation_player_animation_finished(anim_name):
 		#THE MISSILE DRIVES ITSELF TO A POSITION IT WASN'T 
 		mode = "search"
 		#get_nav_path(global_position+Vector3(randf_range(-rDist, rDist),0,randf_range(-rDist, rDist)))
-		get_nav_path($"../PlayerBase".position)
+		get_nav_path($"../PlayerBase".global_position)
 		pass
 	pass # Replace with function body.
 
