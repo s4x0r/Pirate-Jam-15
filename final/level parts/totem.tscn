@@ -1,0 +1,298 @@
+[gd_scene load_steps=14 format=3 uid="uid://c0wutd8mr55cu"]
+
+[ext_resource type="Script" path="res://final/level parts/totem.gd" id="1_1thr8"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_e1dng"]
+height = 3.0
+radius = 0.75
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qvmjh"]
+albedo_color = Color(0.168627, 0.337255, 0.337255, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_fawd3"]
+material = SubResource("StandardMaterial3D_qvmjh")
+top_radius = 0.75
+bottom_radius = 0.75
+height = 3.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3t0i7"]
+albedo_color = Color(0, 0, 0, 1)
+emission = Color(0.454902, 1, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_0adf2"]
+material = SubResource("StandardMaterial3D_3t0i7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dautx"]
+transparency = 1
+albedo_color = Color(0, 1, 0, 0.403922)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5dylc"]
+material = SubResource("StandardMaterial3D_dautx")
+top_radius = 5.0
+bottom_radius = 5.0
+height = 0.5
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gnsi2"]
+points = PackedVector3Array(0.951449, 0.305556, 5.07738, -0.951449, -0.329365, -5.07738, -1.58674, -0.329365, -4.9193, 1.58674, -0.329365, 4.9193, 4.9193, 0.305556, -1.58674, -5.07738, 0.305556, -0.951449, -4.44308, -0.329365, 2.69726, 5.07738, -0.329365, 0.951449, -0.951449, 0.305556, -5.07738, 3.17349, -0.329365, -4.12593, -3.17349, 0.305556, 4.12593, 4.12593, 0.305556, 3.17349, -4.44308, -0.329365, -2.69726, 2.06296, 0.305556, -4.76023, -1.58674, -0.329365, 4.9193, -3.17349, 0.305556, -4.12593, 4.76023, -0.329365, -2.06296, -4.76023, 0.305556, 2.06296, -5.07738, -0.329365, 0.951449, 3.17349, -0.329365, 4.12593, 4.12593, 0.305556, -3.17349, 5.07738, 0.305556, 0.951449, 0.951449, -0.329365, -5.07738, -0.951449, 0.305556, 5.07738, 2.69726, 0.305556, 4.44308, 4.44308, -0.329365, 2.69726, -4.44308, 0.305556, -2.69726, -3.17349, -0.329365, -4.12593, -3.17349, -0.329365, 4.12593, -5.07738, -0.329365, -0.951449, 5.07738, -0.329365, -0.951449, -0.951449, -0.329365, 5.07738)
+
+[sub_resource type="Animation" id="Animation_tsvg4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area3D:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area3D:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area3D/chargemesh:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("totemmesh/ballmesh:mesh:material:albedo_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("totemmesh/ballmesh:mesh:material:emission_enabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("totemmesh/ballmesh:mesh:material:emission")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.454902, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_34f0c"]
+resource_name = "off"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area3D:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area3D:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area3D/chargemesh:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("totemmesh/ballmesh:mesh:material:albedo_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("totemmesh/ballmesh:mesh:material:emission_enabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_8bbth"]
+resource_name = "on"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area3D/chargemesh:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area3D:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area3D:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("totemmesh/ballmesh:mesh:material:emission_enabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("totemmesh/ballmesh:mesh:material:emission")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.454902, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("totemmesh/ballmesh:mesh:material:albedo_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.211765, 0.211765, 0.211765, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_myxb1"]
+_data = {
+"RESET": SubResource("Animation_tsvg4"),
+"off": SubResource("Animation_34f0c"),
+"on": SubResource("Animation_8bbth")
+}
+
+[node name="totem" type="CharacterBody3D"]
+collision_layer = 3
+script = ExtResource("1_1thr8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("CylinderShape3D_e1dng")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="totemmesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+mesh = SubResource("CylinderMesh_fawd3")
+skeleton = NodePath("../..")
+
+[node name="ballmesh" type="MeshInstance3D" parent="totemmesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("SphereMesh_0adf2")
+
+[node name="Area3D" type="Area3D" parent="."]
+monitoring = false
+monitorable = false
+
+[node name="chargemesh" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
+mesh = SubResource("CylinderMesh_5dylc")
+skeleton = NodePath("../../totemmesh")
+
+[node name="chargeshape" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("ConvexPolygonShape3D_gnsi2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_myxb1")
+}
+autoplay = "off"
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
