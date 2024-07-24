@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://d1xok4qy88lku"]
+[gd_scene load_steps=11 format=3 uid="uid://d1xok4qy88lku"]
 
-[ext_resource type="PackedScene" uid="uid://b66g3xlcgnh6k" path="res://s4xstuff/player.tscn" id="1_glqkl"]
+[ext_resource type="PackedScene" uid="uid://b66g3xlcgnh6k" path="res://bang/PlayerBase.tscn" id="1_glqkl"]
 [ext_resource type="Texture2D" uid="uid://sofj3mnm6u3i" path="res://assets/kenny grid/Green/texture_04.png" id="1_pgscs"]
+[ext_resource type="PackedScene" uid="uid://hhjy4437tynv" path="res://s4xstuff/mob.tscn" id="1_q8sk6"]
 [ext_resource type="PackedScene" uid="uid://blo6scgkpyas2" path="res://bang/charge_area.tscn" id="3_cdp7l"]
 
 [sub_resource type="Environment" id="Environment_dvgcb"]
@@ -25,8 +26,16 @@ size = Vector2(500, 500)
 
 [node name="Node3D" type="Node3D"]
 
-[node name="player" parent="." instance=ExtResource("1_glqkl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05703, 0)
+[node name="mob" parent="." instance=ExtResource("1_q8sk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12147, 7.4635)
+
+[node name="mob2" parent="." instance=ExtResource("1_q8sk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.88399, 1.12147, 7.4635)
+
+[node name="mob3" parent="." instance=ExtResource("1_q8sk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.60384, 2.24293, 7.39331)
+
+[node name="PlayerBase" parent="." instance=ExtResource("1_glqkl")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_dvgcb")
@@ -55,3 +64,4 @@ skeleton = NodePath("../..")
 [node name="Towers" type="Node3D" parent="."]
 
 [node name="Charge_area" parent="." instance=ExtResource("3_cdp7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.30154, 0, -4.36576)

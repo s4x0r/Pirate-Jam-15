@@ -16,6 +16,10 @@ func _ready():
 	pass
 
 func _physics_process(delta):
+	#Delete if health is less then zero
+	if hp <=0:
+		queue_free()
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta

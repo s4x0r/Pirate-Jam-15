@@ -183,6 +183,7 @@ _data = {
 
 [node name="mob" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+collision_layer = 5
 script = ExtResource("1_u76e7")
 
 [node name="model" type="Node3D" parent="."]

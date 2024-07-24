@@ -6,6 +6,10 @@ var battery
 var laser
 var laser_end
 var charging = false
+var charge_particle
+var damage_group
+var weapon_collision
+var weapon_damage
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 8
@@ -15,16 +19,19 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
 	lamp = $model/Lamp
-	flashlight = $model/FlashLight
+	flashlight = $model/Flashlight
 	battery = $ui/HSplitContainer/VSeparator/ProgressBar
 	laser = $model/Laser
 	laser_end = $model/Laser/Laser_end
+	charge_particle = $Charge_particle
+	
 	
 func _physics_process(delta):
 	
-	print(laser.get_collision_point())
-	laser_end.set_global_position((Vector3(laser.get_collision_point().x,0,laser.get_collision_point().z)))
-	
+	if charging == true:
+		charge_particle.set_visible(true)
+	else:
+		charge_particle.set_visible(false)
 	var global_mouse_pos
 	global_mouse_pos = $Camera3D.project_position(get_viewport().get_mouse_position(),0)
 	
@@ -78,6 +85,7 @@ func _physics_process(delta):
 	
 
 func _input(event):
+	#Changes weapon selection and collision to flashlight
 	if event.is_action_pressed("1") and battery.value >=1:
 		if flashlight.is_visible() == true:
 			laser.set_visible(false)
@@ -87,6 +95,8 @@ func _input(event):
 			laser.set_visible(false)
 			flashlight.set_visible(true)
 			lamp.set_visible(false)
+			weapon_collision = get_node("model/Flashlight/Area3D")
+			weapon_damage = 2
 		pass
 
 	if event.is_action_pressed("2") and battery.value >=1:
@@ -98,6 +108,8 @@ func _input(event):
 			laser.set_visible(false)
 			flashlight.set_visible(false)
 			lamp.set_visible(true)
+			weapon_collision = get_node("model/Lamp/Area3D")
+			weapon_damage = 1
 		pass
 
 	if event.is_action_pressed("3") and battery.value >=1:
@@ -117,6 +129,13 @@ func _on_button_pressed():
 
 
 func _on_timer_timeout():
+	
+	if weapon_collision != null:
+		damage_group = weapon_collision.get_overlapping_bodies()
+		for i in damage_group.size():
+			print(damage_group[i], " in area")
+			damage_group[i].damage(weapon_damage)
+
 	if flashlight.is_visible() == true:
 		battery.value = battery.value - 2
 	if lamp.is_visible() == true:
@@ -131,5 +150,5 @@ func _on_timer_timeout():
 
 	if charging == true:
 		battery.value = battery.value +5
-		
 	pass # Replace with function body.
+
