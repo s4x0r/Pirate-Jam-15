@@ -5,7 +5,7 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 var mode = "search"
 var minD = 2
-var hp = 10
+var hp = 50
 var rDist=5
 
 var move_path: PackedVector3Array
@@ -16,6 +16,9 @@ func _ready():
 	pass
 
 func _physics_process(delta):
+	if hp <= 0:
+		queue_free()
+
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -60,7 +63,10 @@ func _physics_process(delta):
 
 	
 func damage(dmg):
+	print("damage: ", dmg, "    hp: ", hp)
 	hp -= dmg
+	$dmgCounter.text=str(dmg)
+	$AnimationPlayer.play("damaged")
 	pass 
 
 func attack():

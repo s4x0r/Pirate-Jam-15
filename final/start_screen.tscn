@@ -1,0 +1,129 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcgmnkusbb1mp"]
+
+[ext_resource type="Script" path="res://final/start_screen.gd" id="1_dislw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uixup"]
+font_size = 113
+
+[node name="start screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dislw")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.419608, 0.466667, 0.596078, 1)
+
+[node name="main menu" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -129.0
+offset_top = -328.0
+offset_right = 129.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="main menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="play" type="Button" parent="main menu/VBoxContainer"]
+layout_mode = 2
+text = "Play Game"
+
+[node name="levels" type="Button" parent="main menu/VBoxContainer"]
+layout_mode = 2
+text = "Levels"
+
+[node name="settings" type="Button" parent="main menu/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="credits" type="Button" parent="main menu/VBoxContainer"]
+layout_mode = 2
+text = "Credits"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -143.0
+offset_top = 66.0
+offset_right = 143.0
+offset_bottom = 221.0
+grow_horizontal = 2
+text = "TITLE"
+label_settings = SubResource("LabelSettings_uixup")
+
+[node name="credits" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -239.5
+offset_top = -226.5
+offset_right = 239.5
+offset_bottom = 226.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="credits"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "A game made for Pirate Software Jam 15"
+
+[node name="Button" type="Button" parent="credits"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -8.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "close"
+
+[connection signal="pressed" from="main menu/VBoxContainer/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="main menu/VBoxContainer/levels" to="." method="_on_levels_pressed"]
+[connection signal="pressed" from="main menu/VBoxContainer/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="main menu/VBoxContainer/credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="credits/Button" to="." method="_on_credits_close_pressed"]

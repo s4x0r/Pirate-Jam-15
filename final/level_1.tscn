@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://c8odp85nuyqyo"]
+
+[ext_resource type="Environment" uid="uid://cvoybkaw7n4e6" path="res://final/environment.tres" id="1_8gcd5"]
+[ext_resource type="PackedScene" uid="uid://sl5u2ympqypy" path="res://final/player.tscn" id="2_ajr0w"]
+[ext_resource type="PackedScene" uid="uid://ckp2syq6ungtv" path="res://final/charge_area.tscn" id="3_okhpn"]
+[ext_resource type="PackedScene" uid="uid://cawuunbmj2p1v" path="res://final/mob.tscn" id="4_08ncm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f8c82"]
+albedo_color = Color(0.184314, 0.380392, 0.72549, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_64l43"]
+material = SubResource("StandardMaterial3D_f8c82")
+size = Vector3(100, 0.5, 100)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qsuc1"]
+points = PackedVector3Array(50.7837, 0.543651, 50.7837, -50.7837, -1.04365, -50.7837, -50.7837, 0.543651, -50.7837, 50.7837, -1.04365, -50.7837, -50.7837, -1.04365, 50.7837, -50.7837, 0.543651, 50.7837, 50.7837, 0.543651, -50.7837, 50.7837, -1.04365, 50.7837)
+
+[node name="level 1" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_8gcd5")
+
+[node name="player" parent="." instance=ExtResource("2_ajr0w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.192886, 1.30995, -1.0848)
+
+[node name="floor" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor"]
+mesh = SubResource("BoxMesh_64l43")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor"]
+shape = SubResource("ConvexPolygonShape3D_qsuc1")
+
+[node name="Charge_area" parent="." instance=ExtResource("3_okhpn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.94848, 0.54365, -2.1181)
+
+[node name="mob" parent="." instance=ExtResource("4_08ncm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75079, 1.43736, 2.18032)
