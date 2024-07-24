@@ -11,11 +11,11 @@ func _ready():
 func check():
 	if get_tree().get_nodes_in_group("mobs") == []:
 		print("level clear")
-		get_tree().change_scene_to_file("res://final/start_screen.tscn")
+		get_tree().change_scene_to_file("res://final/levels/start_screen.tscn")
 
 func player_died():
 	print("game over")
-	get_tree().change_scene_to_file("res://final/start_screen.tscn")
+	get_tree().change_scene_to_file("res://final/levels/start_screen.tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
