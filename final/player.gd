@@ -152,6 +152,10 @@ func _on_timer_timeout():
 		
 	pass # Replace with function body.
 
+
+func damage(dmg):
+	battery.value-=dmg
+
 func body_detected(body):
 	print(body)
 	body.damage(5)

@@ -6,6 +6,7 @@ const JUMP_VELOCITY = 4.5
 var mode = "search"
 var minD = 2
 var hp = 50
+var strength = 5
 var rDist=5
 
 var move_path: PackedVector3Array
@@ -56,6 +57,12 @@ func _physics_process(delta):
 
 		if mode == "search":
 			$AnimationPlayer.play("search")
+		elif mode == "chase":
+			mode = "attack"
+			$AnimationPlayer.play("attack")
+			print("reached player last known position")
+		elif mode == "attack":
+			pass
 		pass
 
 	#THAT DRIVE THE MISSILE FROM A POSITION THAT IT WAS TO A POSITION IT SHOULD BE
@@ -91,13 +98,32 @@ func _on_animation_player_animation_finished(anim_name):
 		get_nav_path(global_position+Vector3(randf_range(-rDist, rDist),0,randf_range(-rDist, rDist)))
 		#get_nav_path($"../PlayerBase".global_position)
 		pass
+	elif anim_name == "attack":
+		mode= "search"
+		$AnimationPlayer.play("search")
+		pass
 	pass # Replace with function body.
 
 
 func _on_search_space_body_entered(body:Node3D):
 	if body.name == "player":
-		mode = "attack"
+		mode = "chase"
 		get_nav_path(body.global_position)
+		$AnimationPlayer.play("default")
 		pass
+
+	pass # Replace with function body.
+
+
+func _on_search_space_body_exited(body:Node3D):
+	if body.name == "player":
+		mode = "search"
+		$AnimationPlayer.play("search")
+		pass
+
+
+func _on_attack_space_body_entered(body):
+	if body.name == "player":
+		body.damage(strength)
 
 	pass # Replace with function body.
