@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dffcnlllhccwc"]
+
+[ext_resource type="Script" path="res://final/level parts/door.gd" id="1_mhevw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_58eoa"]
+albedo_color = Color(0.427451, 0.247059, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_oaw7n"]
+material = SubResource("StandardMaterial3D_58eoa")
+size = Vector3(6, 6, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1jmxf"]
+points = PackedVector3Array(-2.7942, -2.79365, -0.5, 3.04762, 3.04702, 0.595126, 3.04762, -3.04702, 0.595126, -3.04762, 3.04702, 0.595126, 2.7942, 2.79365, -0.5, -3.04762, -3.04702, 0.595126, 2.7942, -2.79365, -0.5, -2.7942, 2.79365, -0.5)
+
+[node name="door" type="Node3D"]
+script = ExtResource("1_mhevw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+mesh = SubResource("BoxMesh_oaw7n")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+shape = SubResource("ConvexPolygonShape3D_1jmxf")
+
+[connection signal="tree_exited" from="StaticBody3D" to="." method="_on_static_body_3d_tree_exited"]
