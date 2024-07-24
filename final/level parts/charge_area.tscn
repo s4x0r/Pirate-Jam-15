@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ckp2syq6ungtv"]
 
-[ext_resource type="Script" path="res://final/charge_area.gd" id="1_dfocm"]
+[ext_resource type="Script" path="res://final/level parts/charge_area.gd" id="1_dfocm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j02hi"]
 transparency = 1
