@@ -9,7 +9,7 @@ func _ready():
 	pass # Replace with function body.
 
 func check():
-	if get_tree().get_nodes_in_group("mobs") == []:
+	if get_tree().get_first_node_in_group("mobs")==null:
 		print("level clear")
 		get_tree().change_scene_to_file("res://final/levels/start_screen.tscn")
 
