@@ -15,6 +15,10 @@ run/main_scene="res://final/levels/splash_screen.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+DamageTypes="*res://final/damage_types.gd"
+
 [input]
 
 player_forward={

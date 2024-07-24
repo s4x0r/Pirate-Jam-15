@@ -6,6 +6,7 @@ var battery
 var laser
 var laser_end
 var charging = false
+var elements = ["light"]
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 8
@@ -154,9 +155,12 @@ func _on_timer_timeout():
 
 
 func damage(dmg):
-	battery.value-=dmg
+
+	var cDmg = DamageTypes.calculate_damage("light", dmg)
+
+	battery.value-=cDmg
 
 func body_detected(body):
-	print(body)
-	body.damage(5)
+	#print(body)
+	body.damage({"value":5, "types":elements})
 	pass

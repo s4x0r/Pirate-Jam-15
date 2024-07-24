@@ -8,6 +8,7 @@ var minD = 2
 var hp = 50
 var strength = 5
 var rDist=5
+var elements = ["dark"]
 
 var move_path: PackedVector3Array
 
@@ -70,9 +71,12 @@ func _physics_process(delta):
 
 	
 func damage(dmg):
-	print("damage: ", dmg, "    hp: ", hp)
-	hp -= dmg
-	$dmgCounter.text=str(dmg)
+
+	var cDmg = DamageTypes.calculate_damage(elements, dmg)
+
+	#print("damage: ", cDmg, "    hp: ", hp)
+	hp -= cDmg
+	$dmgCounter.text=str(cDmg)
 	$AnimationPlayer.play("damaged")
 	pass 
 
@@ -124,6 +128,6 @@ func _on_search_space_body_exited(body:Node3D):
 
 func _on_attack_space_body_entered(body):
 	if body.name == "player":
-		body.damage(strength)
+		body.damage({"value":strength, "types":elements})
 
 	pass # Replace with function body.
