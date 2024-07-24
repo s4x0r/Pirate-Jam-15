@@ -268,7 +268,7 @@ _data = {
 "search": SubResource("Animation_qd873")
 }
 
-[node name="mob" type="CharacterBody3D"]
+[node name="mob" type="CharacterBody3D" groups=["mobs"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
 collision_layer = 3
 script = ExtResource("1_a0nd1")

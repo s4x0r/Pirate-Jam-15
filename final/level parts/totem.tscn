@@ -16,6 +16,7 @@ bottom_radius = 0.75
 height = 3.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3t0i7"]
+transparency = 1
 albedo_color = Color(0, 0, 0, 1)
 emission = Color(0.454902, 1, 1, 1)
 
@@ -100,14 +101,14 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("totemmesh/ballmesh:mesh:material:emission")
+tracks/5/path = NodePath("OmniLight3D:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.454902, 1, 1, 1)]
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_34f0c"]
@@ -172,6 +173,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("OmniLight3D:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_8bbth"]
 resource_name = "on"
@@ -214,7 +227,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("totemmesh/ballmesh:mesh:material:emission_enabled")
+tracks/3/path = NodePath("OmniLight3D:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -226,26 +239,14 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("totemmesh/ballmesh:mesh:material:emission")
+tracks/4/path = NodePath("totemmesh/ballmesh:mesh:material:albedo_color")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.454902, 1, 1, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("totemmesh/ballmesh:mesh:material:albedo_color")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.211765, 0.211765, 0.211765, 1)]
+"values": [Color(0.211765, 0.211765, 0.211765, 0.705882)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_myxb1"]
@@ -293,6 +294,12 @@ libraries = {
 "": SubResource("AnimationLibrary_myxb1")
 }
 autoplay = "off"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.61629, 0)
+visible = false
+light_energy = 4.556
+light_indirect_energy = 2.293
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

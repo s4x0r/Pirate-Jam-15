@@ -11,6 +11,8 @@ var elements = ["light"]
 const SPEED = 5.0
 const JUMP_VELOCITY = 8
 
+signal died
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -21,9 +23,12 @@ func _ready():
 	laser = $model/Laser
 	laser_end = $model/Laser/Laser_end
 
-	print($model/FlashLight/Area3D.is_visible_in_tree())
+	#print($model/FlashLight/Area3D.is_visible_in_tree())
 	
 func _physics_process(delta):
+
+	if battery.value <= 0:
+		emit_signal("died") 
 	
 	#print(laser.get_collision_point())
 	laser_end.set_global_position((Vector3(laser.get_collision_point().x,0,laser.get_collision_point().z)))

@@ -61,7 +61,7 @@ func _physics_process(delta):
 		elif mode == "chase":
 			mode = "attack"
 			$AnimationPlayer.play("attack")
-			print("reached player last known position")
+			#print("reached player last known position")
 		elif mode == "attack":
 			pass
 		pass
