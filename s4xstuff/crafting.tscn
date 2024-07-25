@@ -1,0 +1,364 @@
+[gd_scene load_steps=8 format=3 uid="uid://htw77c7ltgq4"]
+
+[ext_resource type="Script" path="res://s4xstuff/crafting.gd" id="1_1blv7"]
+[ext_resource type="Texture2D" uid="uid://cly44lo6emiy6" path="res://assets/kenny grid/Orange/texture_09.png" id="1_usoye"]
+[ext_resource type="Texture2D" uid="uid://bvtu2717bvmkn" path="res://assets/kenny grid/Green/texture_09.png" id="2_p0gad"]
+[ext_resource type="Texture2D" uid="uid://to17hfvemesv" path="res://assets/kenny grid/Purple/texture_09.png" id="3_yr0mf"]
+[ext_resource type="Texture2D" uid="uid://ds7lo1iocp5ao" path="res://assets/kenny grid/Red/texture_09.png" id="4_4ewto"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0fjk5"]
+font_size = 35
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qx11o"]
+font_size = 35
+font_color = Color(0, 0, 0, 1)
+
+[node name="crafting" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1blv7")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemList" type="ItemList" parent="Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -464.0
+grow_horizontal = 0
+grow_vertical = 2
+item_count = 4
+max_columns = 3
+icon_mode = 0
+icon_scale = 0.07
+item_0/text = "metal"
+item_0/icon = ExtResource("1_usoye")
+item_0/disabled = true
+item_1/text = "glass"
+item_1/icon = ExtResource("2_p0gad")
+item_2/text = "bulbs"
+item_2/icon = ExtResource("3_yr0mf")
+item_3/text = "batteries"
+item_3/icon = ExtResource("4_4ewto")
+
+[node name="inventory" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="metal" type="ColorRect" parent="Panel/inventory"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="name" type="Label" parent="Panel/inventory/metal"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.5
+offset_right = 48.5
+offset_bottom = 49.0
+grow_horizontal = 2
+text = "metal"
+label_settings = SubResource("LabelSettings_0fjk5")
+horizontal_alignment = 1
+
+[node name="value" type="Label" parent="Panel/inventory/metal"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -48.5
+offset_top = -49.0
+offset_right = 48.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "0
+"
+label_settings = SubResource("LabelSettings_qx11o")
+horizontal_alignment = 1
+
+[node name="glass" type="ColorRect" parent="Panel/inventory"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="name" type="Label" parent="Panel/inventory/glass"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.5
+offset_right = 48.5
+offset_bottom = 49.0
+grow_horizontal = 2
+text = "glass"
+label_settings = SubResource("LabelSettings_0fjk5")
+horizontal_alignment = 1
+
+[node name="value" type="Label" parent="Panel/inventory/glass"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -48.5
+offset_top = -49.0
+offset_right = 48.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "0
+"
+label_settings = SubResource("LabelSettings_qx11o")
+horizontal_alignment = 1
+
+[node name="bulb" type="ColorRect" parent="Panel/inventory"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="name" type="Label" parent="Panel/inventory/bulb"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.5
+offset_right = 48.5
+offset_bottom = 49.0
+grow_horizontal = 2
+text = "bulbs"
+label_settings = SubResource("LabelSettings_0fjk5")
+horizontal_alignment = 1
+
+[node name="value" type="Label" parent="Panel/inventory/bulb"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -48.5
+offset_top = -49.0
+offset_right = 48.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "0
+"
+label_settings = SubResource("LabelSettings_qx11o")
+horizontal_alignment = 1
+
+[node name="battery" type="ColorRect" parent="Panel/inventory"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="name" type="Label" parent="Panel/inventory/battery"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.5
+offset_right = 48.5
+offset_bottom = 49.0
+grow_horizontal = 2
+text = "bttry"
+label_settings = SubResource("LabelSettings_0fjk5")
+horizontal_alignment = 1
+
+[node name="value" type="Label" parent="Panel/inventory/battery"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -48.5
+offset_top = -49.0
+offset_right = 48.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "0
+"
+label_settings = SubResource("LabelSettings_qx11o")
+horizontal_alignment = 1
+
+[node name="flashlight" type="ColorRect" parent="Panel/inventory"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="name" type="Label" parent="Panel/inventory/flashlight"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.5
+offset_right = 48.5
+offset_bottom = 49.0
+grow_horizontal = 2
+text = "f-lite"
+label_settings = SubResource("LabelSettings_0fjk5")
+horizontal_alignment = 1
+
+[node name="value" type="Label" parent="Panel/inventory/flashlight"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -48.5
+offset_top = -49.0
+offset_right = 48.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "0
+"
+label_settings = SubResource("LabelSettings_qx11o")
+horizontal_alignment = 1
+
+[node name="beacon" type="ColorRect" parent="Panel/inventory"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="name" type="Label" parent="Panel/inventory/beacon"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.5
+offset_right = 48.5
+offset_bottom = 49.0
+grow_horizontal = 2
+text = "bcon"
+label_settings = SubResource("LabelSettings_0fjk5")
+horizontal_alignment = 1
+
+[node name="value" type="Label" parent="Panel/inventory/beacon"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -48.5
+offset_top = -49.0
+offset_right = 48.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "0
+"
+label_settings = SubResource("LabelSettings_qx11o")
+horizontal_alignment = 1
+
+[node name="laser" type="ColorRect" parent="Panel/inventory"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="name" type="Label" parent="Panel/inventory/laser"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.5
+offset_right = 48.5
+offset_bottom = 49.0
+grow_horizontal = 2
+text = "lazr"
+label_settings = SubResource("LabelSettings_0fjk5")
+horizontal_alignment = 1
+
+[node name="value" type="Label" parent="Panel/inventory/laser"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -48.5
+offset_top = -49.0
+offset_right = 48.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "0
+"
+label_settings = SubResource("LabelSettings_qx11o")
+horizontal_alignment = 1
+
+[node name="lamp" type="ColorRect" parent="Panel/inventory"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="name" type="Label" parent="Panel/inventory/lamp"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.5
+offset_right = 48.5
+offset_bottom = 49.0
+grow_horizontal = 2
+text = "lamp"
+label_settings = SubResource("LabelSettings_0fjk5")
+horizontal_alignment = 1
+
+[node name="value" type="Label" parent="Panel/inventory/lamp"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -48.5
+offset_top = -49.0
+offset_right = 48.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "0
+"
+label_settings = SubResource("LabelSettings_qx11o")
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 508.0
+grow_horizontal = 2
+columns = 2

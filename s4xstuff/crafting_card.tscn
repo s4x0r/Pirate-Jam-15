@@ -1,0 +1,50 @@
+[gd_scene load_steps=2 format=3 uid="uid://bi0l8qqijjs64"]
+
+[ext_resource type="Script" path="res://s4xstuff/crafting_card.gd" id="1_mx1p5"]
+
+[node name="card" type="ColorRect"]
+custom_minimum_size = Vector2(300, 100)
+offset_left = 58.0
+offset_top = 69.0
+offset_right = 358.0
+offset_bottom = 169.0
+color = Color(0.494118, 0.494118, 0.494118, 1)
+script = ExtResource("1_mx1p5")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 51.0
+offset_right = 80.0
+offset_bottom = 85.0
+text = "craft"
+
+[node name="name" type="Label" parent="."]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 11.0
+offset_right = 93.0
+offset_bottom = 34.0
+text = "flashlight
+"
+
+[node name="reqs" type="Label" parent="."]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 12.0
+offset_right = 285.0
+offset_bottom = 87.0
+text = "Requires:"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="reqs"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -66.5
+offset_top = 24.0
+offset_right = 66.5
+offset_bottom = 75.0
+grow_horizontal = 2
+columns = 2
