@@ -46,6 +46,11 @@ func refresh_menu():
 		var s ="Panel/inventory/"+ i + "/value"
 		get_node(s).text=str(inventory[i])
 
+	for j in recipes.keys():
+		var t ="Panel/GridContainer/"+ j + "/Button"
+		get_node(t).disabled = !check_craftable(j)
+
+
 func check_craftable(item):
 	for i in recipes[item].keys():
 		if inventory[i] < recipes[item][i]:
