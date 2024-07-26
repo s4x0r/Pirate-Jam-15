@@ -30,8 +30,12 @@ func _physics_process(delta):
 	if battery.value <= 0:
 		emit_signal("died") 
 	
+
+
+	if $model/Laser.visible:
+		draw_laser()
 	#print(laser.get_collision_point())
-	laser_end.set_global_position((Vector3(laser.get_collision_point().x,0,laser.get_collision_point().z)))
+	#laser_end.set_global_position((Vector3(laser.get_collision_point().x,0,laser.get_collision_point().z)))
 	
 	var global_mouse_pos
 	global_mouse_pos = $Camera3D.project_position(get_viewport().get_mouse_position(),0)
@@ -82,6 +86,30 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+
+
+func draw_laser():
+
+	var pos = laser.get_collision_point()
+	var b_pos = ((laser.get_collision_point() - laser.global_position)).bounce(laser.get_collision_normal().normalized())
+	var angle = laser.get_collision_normal()
+	var ray_length = laser.global_position.distance_to(pos)
+
+	$model/Laser/lasermesh.mesh.height=ray_length
+	$model/Laser/lasermesh.position = Vector3(0,0,ray_length/2)
+
+	laser_end.set_global_position((Vector3(laser.get_collision_point().x,0,laser.get_collision_point().z)))
+
+
+	#laser_end.global_position+(pos-global_position)
+	#laser.get_collision_point().bounce(angle)
+	#laser_end.rotated
+	$model/Laser/Laser_end/bounce.look_at(b_pos*Vector3(-1,1,-1))
+	$model/Laser/Laser_end/bounce/bouncemesh.mesh.height = ray_length
+	$model/Laser/Laser_end/bounce/bouncemesh.position = Vector3(0,0,ray_length/2)
+	#print([global_position, pos, to_local(pos).bounce(angle), to_global(to_local(pos).bounce(angle))])
+	pass
+	
 	
 func set_weapon(weapon):
 	match weapon:

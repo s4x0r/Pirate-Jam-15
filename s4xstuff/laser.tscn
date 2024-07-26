@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdxjy1yy8tqeu"]
+
+[ext_resource type="Script" path="res://lasertest.gd" id="1_xyxma"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_04qfy"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_xyxma")
+
+[node name="Laser" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -100)
+collision_mask = 7
+
+[node name="Beams" type="Node3D" parent="."]
+
+[node name="Splits" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_04qfy")
