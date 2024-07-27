@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://htw77c7ltgq4"]
 
-[ext_resource type="Script" path="res://s4xstuff/crafting.gd" id="1_1blv7"]
+[ext_resource type="Script" path="res://final/level parts/crafting.gd" id="1_1blv7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0fjk5"]
 font_size = 35
@@ -75,13 +75,13 @@ text = "0
 label_settings = SubResource("LabelSettings_qx11o")
 horizontal_alignment = 1
 
-[node name="glass" type="ColorRect" parent="Panel/inventory"]
+[node name="lens" type="ColorRect" parent="Panel/inventory"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="name" type="Label" parent="Panel/inventory/glass"]
+[node name="name" type="Label" parent="Panel/inventory/lens"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -90,11 +90,11 @@ offset_left = -48.5
 offset_right = 48.5
 offset_bottom = 49.0
 grow_horizontal = 2
-text = "glass"
+text = "lens"
 label_settings = SubResource("LabelSettings_0fjk5")
 horizontal_alignment = 1
 
-[node name="value" type="Label" parent="Panel/inventory/glass"]
+[node name="value" type="Label" parent="Panel/inventory/lens"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5

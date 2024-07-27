@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bi0l8qqijjs64"]
 
-[ext_resource type="Script" path="res://s4xstuff/crafting_card.gd" id="1_mx1p5"]
+[ext_resource type="Script" path="res://final/level parts/crafting_card.gd" id="1_mx1p5"]
 
 [node name="card" type="ColorRect"]
 custom_minimum_size = Vector2(300, 100)

@@ -1,5 +1,5 @@
 extends Control
-var protocard= preload("res://s4xstuff/crafting_card.tscn")
+var protocard= preload("res://final/level parts/crafting_card.tscn")
 
 var inventory = {
 	"flashlight":0,
@@ -7,16 +7,16 @@ var inventory = {
 	"laser":0,
 	"beacon":0,
 	"metal":10,
-	"glass":10,
+	"lens":10,
 	"battery":10,
 	"bulb":10
 }
 
 var recipes ={
-	"flashlight": {"metal":1, "glass":1, "battery":1, "bulb":1},
-	"lamp":{"metal":2, "glass":1, "battery":1, "bulb":1},
-	"laser":{"metal":1, "glass":2, "battery":2, "bulb":3},
-	"beacon":{"metal":1, "glass":4, "battery":4, "bulb":2}
+	"flashlight": {"metal":1, "lens":1, "battery":1, "bulb":1},
+	"lamp":{"metal":2, "lens":1, "battery":1, "bulb":1},
+	"laser":{"metal":1, "lens":2, "battery":2, "bulb":3},
+	"beacon":{"metal":1, "lens":4, "battery":4, "bulb":2}
 }
 
 

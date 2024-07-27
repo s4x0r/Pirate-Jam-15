@@ -258,6 +258,7 @@ _data = {
 
 [node name="totem" type="CharacterBody3D"]
 collision_layer = 3
+input_ray_pickable = false
 script = ExtResource("1_1thr8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -276,6 +277,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 mesh = SubResource("SphereMesh_0adf2")
 
 [node name="Area3D" type="Area3D" parent="."]
+input_ray_pickable = false
 monitoring = false
 monitorable = false
 

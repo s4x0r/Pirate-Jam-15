@@ -1,5 +1,5 @@
 extends CharacterBody3D
-
+var dropscn = preload("res://final/level parts/drop.tscn")
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -19,7 +19,12 @@ func _ready():
 
 func _physics_process(delta):
 	if hp <= 0:
+		var instance = dropscn.instantiate()
+		instance.items = {"metal":5, "lens":5, "battery": 5, "bulb":5}
+		get_parent().add_child(instance)
+		instance.global_position = global_position
 		queue_free()
+
 
 	# Add the gravity.
 	if not is_on_floor():

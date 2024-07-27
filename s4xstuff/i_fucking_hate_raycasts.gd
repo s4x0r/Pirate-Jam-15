@@ -36,6 +36,6 @@ func _process(_delta):
 		bouncemesh.visible = false
 
 
-func _on_area_3d_input_event(_camera:Node, event:InputEvent, eposition:Vector3, _normal:Vector3, _shape_idx:int):
+func _on_mouse(_camera:Node, event:InputEvent, eposition:Vector3, _normal:Vector3, _shape_idx:int):
 	if event is InputEventMouseMotion:
 		$CharacterBody3D.look_at(eposition*Vector3(1,0,1))
