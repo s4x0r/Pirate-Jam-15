@@ -45,7 +45,7 @@ func _physics_process(delta):
 			velocity.x = direction.x * SPEED
 			velocity.z = direction.z * SPEED 
 
-			$model.look_at(to_global(Vector3(-velocity.x, 0, -velocity.z)))
+			$model.look_at(to_global(Vector3(velocity.x, 0, velocity.z)))
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.z = move_toward(velocity.z, 0, SPEED)
