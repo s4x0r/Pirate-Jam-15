@@ -17,6 +17,7 @@ func check():
 
 func player_died():
 	print("game over")
+	$player.queue_free()
 	$"ui/game over".visible = true
 
 func goto_main_menu():

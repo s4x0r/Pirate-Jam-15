@@ -76,7 +76,7 @@ offset_top = 66.0
 offset_right = 143.0
 offset_bottom = 221.0
 grow_horizontal = 2
-text = "TITLE"
+text = "Rayve"
 label_settings = SubResource("LabelSettings_uixup")
 
 [node name="credits" type="Panel" parent="."]

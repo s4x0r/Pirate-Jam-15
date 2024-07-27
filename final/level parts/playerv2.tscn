@@ -299,6 +299,8 @@ cast_shadow = 0
 gi_mode = 0
 mesh = SubResource("SphereMesh_wks1i")
 
+[connection signal="body_entered" from="pivot/laser/beam" to="." method="body_detected"]
+[connection signal="body_entered" from="pivot/laser/bounce" to="." method="body_detected"]
 [connection signal="body_entered" from="pivot/Lamp/Area3D" to="." method="body_detected"]
 [connection signal="body_entered" from="pivot/FlashLight/Area3D" to="." method="body_detected"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

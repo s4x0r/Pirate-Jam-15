@@ -8,7 +8,7 @@ var laser
 var charging = false
 var elements = ["light"]
 
-const SPEED = 10.0
+const SPEED = 5.0
 const JUMP_VELOCITY = 8
 
 signal died
@@ -53,7 +53,7 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("player_left", "player_right", "player_forward", "player_back")
 
-	var direction = (transform.basis*Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var direction = (Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
