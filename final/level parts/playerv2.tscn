@@ -1,10 +1,10 @@
 [gd_scene load_steps=19 format=3 uid="uid://bsjjo30b5fe14"]
 
 [ext_resource type="Script" path="res://final/level parts/playerv2.gd" id="1_ytndl"]
-[ext_resource type="PackedScene" uid="uid://0jbmuq03f6mw" path="res://final/assets/3D/Main Char/lightman.glb" id="2_1vhed"]
+[ext_resource type="PackedScene" uid="uid://bjspjnymwhujo" path="res://final/assets/3D/Main Char/lightman.glb" id="2_1vhed"]
 [ext_resource type="PackedScene" uid="uid://htw77c7ltgq4" path="res://final/level parts/crafting.tscn" id="2_u20nh"]
-[ext_resource type="PackedScene" uid="uid://dhpo18v1fudnc" path="res://final/assets/3D/Attachables/Laser/laser.glb" id="3_j1b11"]
-[ext_resource type="PackedScene" uid="uid://b3fpm3q00xqhv" path="res://final/assets/3D/Attachables/Flashlight/flashlight.glb" id="4_6cv6w"]
+[ext_resource type="PackedScene" uid="uid://cuq5besv4xcnw" path="res://final/assets/3D/Attachables/Laser/laser.glb" id="3_j1b11"]
+[ext_resource type="PackedScene" uid="uid://0vwamd3544ot" path="res://final/assets/3D/Attachables/Flashlight/flashlight.glb" id="4_6cv6w"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3jfj8"]
 radius = 1.0
@@ -185,6 +185,7 @@ offset_top = 8.0
 offset_right = 120.0
 offset_bottom = 62.0
 mouse_filter = 2
+max_value = 150.0
 value = 100.0
 
 [node name="Flashlight" type="Panel" parent="ui/HSplitContainer/VSeparator"]

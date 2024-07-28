@@ -113,6 +113,7 @@ func draw_laser():
 func laser():
 	for i in bounces:
 		i.free()
+
 	bounces = []
 	#print(bounces)
 	#position ray at 0

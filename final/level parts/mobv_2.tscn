@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://mu4jqthadawj"]
+
+[ext_resource type="Script" path="res://final/level parts/mobv_2.gd" id="1_eu3sm"]
+[ext_resource type="ArrayMesh" uid="uid://c37he5k0n24qj" path="res://final/assets/3D/Enemies/Medium.obj" id="1_qrnnf"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cuavq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qboao"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rndsy"]
+transparency = 1
+albedo_color = Color(0.968627, 0.0823529, 0.0156863, 0.854902)
+emission_enabled = true
+emission = Color(0.878431, 0.129412, 0.0156863, 1)
+emission_energy_multiplier = 4.6
+emission_operator = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hud2k"]
+transparency = 1
+albedo_color = Color(0.529412, 1, 1, 0.807843)
+
+[node name="mobv2" type="CharacterBody3D"]
+script = ExtResource("1_eu3sm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.531418, 0)
+shape = SubResource("CapsuleShape3D_cuavq")
+
+[node name="Medium" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.4142, 0, 1.41422, 0, 2, 0, -1.41422, 0, -1.4142, 0, 0.515667, 0)
+mesh = ExtResource("1_qrnnf")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_qboao")
+surface_material_override/1 = SubResource("StandardMaterial3D_rndsy")
+surface_material_override/2 = SubResource("StandardMaterial3D_hud2k")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

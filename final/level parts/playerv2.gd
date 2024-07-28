@@ -8,7 +8,7 @@ var laser
 var charging = false
 var elements = ["light"]
 
-const SPEED = 5.0
+const SPEED = 12.0
 const JUMP_VELOCITY = 8
 
 var zoom_max = 50
@@ -183,6 +183,8 @@ func _on_timer_timeout():
 
 	if charging == true:
 		battery.value = battery.value +5
+	
+
 		
 	pass # Replace with function body.
 

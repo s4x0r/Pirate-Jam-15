@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://cawuunbmj2p1v"]
 
 [ext_resource type="Script" path="res://final/level parts/mob.gd" id="1_a0nd1"]
-[ext_resource type="ArrayMesh" uid="uid://bpqbf3sduxcal" path="res://final/assets/3D/Enemies/Medium.obj" id="2_kp607"]
+[ext_resource type="ArrayMesh" uid="uid://c37he5k0n24qj" path="res://final/assets/3D/Enemies/Medium.obj" id="2_kp607"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yn2nw"]
 radius = 1.0
@@ -63,19 +63,19 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("model:rotation")
+tracks/1/path = NodePath("model/attackSpace/MeshInstance3D:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
+"update": 1,
+"values": [true]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("model/attackSpace/MeshInstance3D:visible")
+tracks/2/path = NodePath("model/attackSpace:monitoring")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -84,44 +84,43 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
-tracks/3/type = "value"
+tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("model/attackSpace:monitoring")
+tracks/3/path = NodePath("model/Medium:position:x")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 tracks/4/type = "bezier"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("model/Medium:position:x")
+tracks/4/path = NodePath("model/Medium:position:y")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0.25, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/5/type = "bezier"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("model/Medium:position:y")
+tracks/5/path = NodePath("model/Medium:position:z")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0.25, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/6/type = "bezier"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("model/Medium:position:z")
+tracks/6/path = NodePath("model/Medium:rotation:x")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -132,35 +131,60 @@ tracks/6/keys = {
 tracks/7/type = "bezier"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("model/Medium:rotation:x")
+tracks/7/path = NodePath("model/Medium:rotation:y")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(2.35619, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/8/type = "bezier"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("model/Medium:rotation:y")
+tracks/8/path = NodePath("model/Medium:rotation:z")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(2.35619, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
-tracks/9/type = "bezier"
+tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("model/Medium:rotation:z")
+tracks/9/path = NodePath(".:rotation")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("model/Medium:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.35619, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("model/Medium:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.25, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_e6ftk"]
@@ -205,6 +229,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [false, true, false]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("model/Medium:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 2.35619, 0), Vector3(-0.321674, 2.29844, 0.352337), Vector3(0, 2.35619, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("model/Medium:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.25, 0), Vector3(0.00617938, 0.25, 0.354012), Vector3(0, 0.25, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_ty2i4"]
 resource_name = "default"
@@ -243,22 +291,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_qd873"]
-resource_name = "search"
-length = 4.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("model:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 3.1, 4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 1.12656, 0), Vector3(0, -1.13509, 0), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_4cxhj"]
@@ -332,6 +364,22 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.4, 0.7, 1.1, 1.6, 1.9, 2.1, 2.4, 2.7, 3)
 }
 
+[sub_resource type="Animation" id="Animation_qd873"]
+resource_name = "search"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.26573, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4g8eu"]
 _data = {
 "RESET": SubResource("Animation_aaxd5"),
@@ -355,7 +403,7 @@ shape = SubResource("CapsuleShape3D_yn2nw")
 [node name="model" type="Node3D" parent="."]
 
 [node name="Medium" type="MeshInstance3D" parent="model"]
-transform = Transform3D(-1.41421, 0, 1.41421, 0, 2, 0, -1.41421, 0, -1.41421, 0, 0.25, 0)
+transform = Transform3D(-1.4142, 0, 1.41422, 0, 2, 0, -1.41422, 0, -1.4142, 0, 0.25, 0)
 mesh = ExtResource("2_kp607")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_ago2q")

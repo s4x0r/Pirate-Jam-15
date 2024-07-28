@@ -1,13 +1,13 @@
 extends CharacterBody3D
 var dropscn = preload("res://final/level parts/drop.tscn")
 
-const SPEED = 6.0
+const SPEED = 10.0
 const JUMP_VELOCITY = 4.5
 var mode = "search"
-var minD = 2
+var minD = 2.5
 var hp = 50
 var strength = 5
-var rDist=5
+var rDist=20
 var elements = ["dark"]
 
 var move_path: PackedVector3Array
@@ -38,7 +38,7 @@ func _physics_process(delta):
 
 		#BY SUBTRACTING WHERE IT ISN'T FROM WHERE IT IS
 		#IT OBTAINS THE DIFFERENCE, OR DEVIATION
-		var input_dir =  to - position
+		var input_dir =  to - global_position
 
 		#THE MISSILE GUIDANCE SUBSYSTEM GENERATES CORRECTIVE COMMANDS
 		var direction = input_dir.normalized()
@@ -46,18 +46,20 @@ func _physics_process(delta):
 			velocity.x = direction.x * SPEED
 			velocity.z = direction.z * SPEED 
 
-			$model.look_at(to_global(Vector3(velocity.x, 0, velocity.z)))
+			$model.look_at(global_position+Vector3(velocity.x, 0, velocity.z))
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.z = move_toward(velocity.z, 0, SPEED)
 
 		#ARRIVING AT ITS TARGET
-		if input_dir.length()<minD:
+		if global_position.distance_to(move_path[0])<minD:
+			
 			#print("reached: ", move_path[0])
 			move_path.remove_at(0)
 			return
 			
-		print(move_path, velocity, direction)
+		#print(move_path, global_position, velocity, input_dir.length(), direction)
+		print(global_position.distance_to(move_path[0]), global_position, move_path[0])
 	
 	#IF THE MISSILE HAS NO TARGET
 	else:
@@ -123,6 +125,7 @@ func _on_animation_player_animation_finished(anim_name):
 
 func _on_search_space_body_entered(body:Node3D):
 	#print(body)
+
 	if body.name == "player":
 		mode = "chase"
 		get_nav_path(body.global_position)
@@ -134,8 +137,11 @@ func _on_search_space_body_entered(body:Node3D):
 
 func _on_search_space_body_exited(body:Node3D):
 	if body.name == "player":
-		mode = "search"
-		$AnimationPlayer.play("search")
+		#var t  = (body.global_position-global_position).normalized()*2*global_position.distance_to(body.global_position)
+		get_nav_path(body.global_position)
+		#print(t)
+		mode = "chase"
+		#$AnimationPlayer.play("search")
 		pass
 
 
