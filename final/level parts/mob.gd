@@ -1,7 +1,7 @@
 extends CharacterBody3D
 var dropscn = preload("res://final/level parts/drop.tscn")
 
-const SPEED = 5.0
+const SPEED = 6.0
 const JUMP_VELOCITY = 4.5
 var mode = "search"
 var minD = 2
@@ -57,6 +57,8 @@ func _physics_process(delta):
 			move_path.remove_at(0)
 			return
 			
+		print(move_path, velocity, direction)
+	
 	#IF THE MISSILE HAS NO TARGET
 	else:
 		velocity.x=0
@@ -74,7 +76,6 @@ func _physics_process(delta):
 
 	#THAT DRIVE THE MISSILE FROM A POSITION THAT IT WAS TO A POSITION IT SHOULD BE
 	move_and_slide()
-
 	
 func damage(dmg):
 

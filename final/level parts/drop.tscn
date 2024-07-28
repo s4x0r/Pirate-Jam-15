@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://jsly03gv64ly"]
+[gd_scene load_steps=4 format=3 uid="uid://jsly03gv64ly"]
 
 [ext_resource type="Script" path="res://final/level parts/drop.gd" id="1_doo74"]
-[ext_resource type="PackedScene" uid="uid://cwxycd6d22igy" path="res://final/assets/3D/Collectibles/metal/metalchunk.glb" id="2_vb126"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_q17xg"]
 
@@ -19,6 +18,3 @@ mesh = SubResource("SphereMesh_q17xg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_mxvp4")
-
-[node name="metalchunk" parent="." instance=ExtResource("2_vb126")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
