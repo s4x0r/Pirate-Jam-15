@@ -10,7 +10,7 @@
 radius = 1.0
 height = 3.4665
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5mkak"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cm8c1"]
 transparency = 1
 albedo_color = Color(1, 0, 0, 0.360784)
 emission_enabled = true
@@ -18,7 +18,7 @@ emission = Color(1, 0, 0, 1)
 emission_energy_multiplier = 2.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_r0lhj"]
-material = SubResource("StandardMaterial3D_5mkak")
+material = SubResource("StandardMaterial3D_cm8c1")
 top_radius = 0.1
 bottom_radius = 0.1
 height = 15.0

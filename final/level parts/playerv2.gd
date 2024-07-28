@@ -103,7 +103,8 @@ func draw_laser():
 		$pivot/laser/bounce.monitoring=false
 		$pivot/laser/bounce.visible = false
 
-	print(global_position, pos, ray.get_collider())
+	#print(global_position, pos, ray.get_collider())
+
 func set_weapon(weapon):
 	match weapon:
 		"none":
