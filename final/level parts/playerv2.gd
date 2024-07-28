@@ -15,6 +15,11 @@ var zoom_max = 50
 var zoom_min = 20
 var zoom_step = 2
 
+var damage_table = {
+	"flashlight":2,
+	"lamp":1,
+	"laser":4
+}
 
 signal died
 
@@ -47,6 +52,9 @@ func _physics_process(delta):
 	if Input.is_action_just_released("zoom_out"): $Camera3D.size += zoom_step
 	if $Camera3D.size < zoom_min: $Camera3D.size = zoom_min
 	if $Camera3D.size > zoom_max: $Camera3D.size = zoom_max
+
+	if Input.is_action_just_released("cam_rot_l"): rotation_degrees.y+=90
+	if Input.is_action_just_released("cam_rot_r"): rotation_degrees.y-=90
 	
 	#interact
 	if Input.is_action_just_pressed("player_interact") and is_on_floor():
@@ -171,12 +179,24 @@ func _input(event):
 
 
 func _on_timer_timeout():
+	var bodies = []
+	var weap = ""
+
 	if flashlight.is_visible() == true:
 		battery.value = battery.value - 2
+		bodies = $pivot/FlashLight/Area3D.get_overlapping_bodies()
+		weap = "flashlight"
+
 	if lamp.is_visible() == true:
 		battery.value = battery.value - 4
+		bodies = $pivot/Lamp/Area3D.get_overlapping_bodies()
+		weap = "lamp"
+
 	if laser.is_visible() == true:
 		battery.value = battery.value - 8
+		bodies = $pivot/laser/beam.get_overlapping_bodies()
+		bodies = $pivot/laser/bounce.get_overlapping_bodies()
+		weap = "laser"
 	
 	if battery.value <=0:
 		set_weapon("none")
@@ -184,6 +204,8 @@ func _on_timer_timeout():
 	if charging == true:
 		battery.value = battery.value +5
 	
+	for i in bodies:
+		i.damage({"value":damage_table[weap], "types":elements})
 
 		
 	pass # Replace with function body.
@@ -201,7 +223,7 @@ func damage(dmg):
 	battery.value-=cDmg
 
 func body_detected(body):
-	body.damage({"value":5, "types":elements})
+	#body.damage({"value":5, "types":elements})
 	pass
 
 

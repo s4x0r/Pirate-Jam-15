@@ -1,11 +1,11 @@
 extends CharacterBody3D
 var dropscn = preload("res://final/level parts/drop.tscn")
 
-const SPEED = 10.0
+const SPEED = 9.0
 const JUMP_VELOCITY = 4.5
 var mode = "search"
 var minD = 2.5
-var hp = 50
+var hp = 30
 var strength = 5
 var rDist=20
 var elements = ["dark"]

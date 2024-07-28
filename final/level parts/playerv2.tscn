@@ -144,7 +144,6 @@ transform = Transform3D(-1, 0, 8.74228e-08, 1.33745e-08, 0.988228, 0.152986, -8.
 
 [node name="interactSpace" type="Area3D" parent="pivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
-visible = false
 collision_layer = 16
 collision_mask = 16
 monitorable = false
@@ -186,7 +185,7 @@ offset_right = 120.0
 offset_bottom = 62.0
 mouse_filter = 2
 max_value = 150.0
-value = 100.0
+value = 150.0
 
 [node name="Flashlight" type="Panel" parent="ui/HSplitContainer/VSeparator"]
 layout_mode = 2
