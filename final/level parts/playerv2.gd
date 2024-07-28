@@ -59,9 +59,9 @@ func _physics_process(delta):
 	#interact
 	if Input.is_action_just_pressed("player_interact") and is_on_floor():
 		#print($Area3D.get_overlapping_bodies())
-		var bodies = $model/interactSpace.get_overlapping_bodies()
+		var bodies = $pivot/interactSpace.get_overlapping_bodies()
 		if bodies != []:
-			bodies[0].interact(self)
+			bodies[0].interact()
 			pass
 
 	# Handle jump.
@@ -125,6 +125,9 @@ func draw_laser():
 	#print(global_position, pos, ray.get_collider())
 
 func set_weapon(weapon):
+	if battery.value<15:
+		weapon = "none"
+
 	match weapon:
 		"none":
 			$pivot/FlashLight.visible = false
@@ -179,6 +182,8 @@ func _input(event):
 
 
 func _on_timer_timeout():
+	if battery.value<15: set_weapon("none")
+
 	var bodies = []
 	var weap = ""
 

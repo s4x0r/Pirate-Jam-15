@@ -4,7 +4,7 @@ var dropscn = preload("res://final/level parts/drop.tscn")
 const SPEED = 9.0
 const JUMP_VELOCITY = 4.5
 var mode = "search"
-var minD = 2.5
+var minD = 3
 var hp = 30
 var strength = 5
 var rDist=20
@@ -52,14 +52,14 @@ func _physics_process(delta):
 			velocity.z = move_toward(velocity.z, 0, SPEED)
 
 		#ARRIVING AT ITS TARGET
-		if global_position.distance_to(move_path[0])<minD:
+		if global_position.distance_to(to)<minD:
 			
 			#print("reached: ", move_path[0])
 			move_path.remove_at(0)
 			return
 			
 		#print(move_path, global_position, velocity, input_dir.length(), direction)
-		print(global_position.distance_to(move_path[0]), global_position, move_path[0])
+		#print(global_position.distance_to(move_path[0]), global_position, move_path[0])
 	
 	#IF THE MISSILE HAS NO TARGET
 	else:
