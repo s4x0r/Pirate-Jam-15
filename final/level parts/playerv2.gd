@@ -11,7 +11,13 @@ var elements = ["light"]
 const SPEED = 5.0
 const JUMP_VELOCITY = 8
 
+var zoom_max = 50
+var zoom_min = 20
+var zoom_step = 2
+
+
 signal died
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -37,6 +43,11 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("player_inventory"):
 		$ui/Panel.visible = !$ui/Panel.visible
 
+	if Input.is_action_just_released("zoom_in"):	$Camera3D.size -= zoom_step
+	if Input.is_action_just_released("zoom_out"): $Camera3D.size += zoom_step
+	if $Camera3D.size < zoom_min: $Camera3D.size = zoom_min
+	if $Camera3D.size > zoom_max: $Camera3D.size = zoom_max
+	
 	#interact
 	if Input.is_action_just_pressed("player_interact") and is_on_floor():
 		#print($Area3D.get_overlapping_bodies())

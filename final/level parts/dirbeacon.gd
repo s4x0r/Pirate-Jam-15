@@ -132,7 +132,9 @@ func laser():
 	var ray_length
 	var pos
 	#print(result["collider"])
-	if result["collider"] != null:
+	if result == {}:
+		return
+	elif result["collider"] != null:
 		ray_length= origin.distance_to(result["position"])
 		pos=result["position"]
 	else:

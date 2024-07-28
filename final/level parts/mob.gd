@@ -32,6 +32,7 @@ func _physics_process(delta):
 	#THE MISSILE KNOWS WHERE IT IS
 	var to = position
 	if !move_path.is_empty():
+		#print(move_path)
 		#IT KNOWS THIS BECAUSE IT KNOWS WHERE IT ISN'T
 		to = move_path[0]
 
@@ -97,7 +98,11 @@ func get_nav_path(tPos):
 	#print([tPos, target_point, move_path])
 
 func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "default":
+		$AnimationPlayer.play("search")
+	
 	if anim_name == "damaged":
+
 		pass
 	
 	#IN THE EVENT THAT NO TARGET WAS FOUND
@@ -105,6 +110,7 @@ func _on_animation_player_animation_finished(anim_name):
 		#THE MISSILE DRIVES ITSELF TO A POSITION IT WASN'T 
 		mode = "search"
 		get_nav_path(global_position+Vector3(randf_range(-rDist, rDist),0,randf_range(-rDist, rDist)))
+		$AnimationPlayer.play("moving")
 		#get_nav_path($"../PlayerBase".global_position)
 		pass
 	elif anim_name == "attack":
@@ -115,10 +121,11 @@ func _on_animation_player_animation_finished(anim_name):
 
 
 func _on_search_space_body_entered(body:Node3D):
+	#print(body)
 	if body.name == "player":
 		mode = "chase"
 		get_nav_path(body.global_position)
-		$AnimationPlayer.play("default")
+		$AnimationPlayer.play("moving")
 		pass
 
 	pass # Replace with function body.
