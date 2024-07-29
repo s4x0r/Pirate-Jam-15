@@ -23,7 +23,7 @@ func goto_main_menu():
 	get_parent().switch_to("res://final/levels/start_screen.tscn")
 
 func reload():
-	get_tree().reload_current_scene()
+	get_parent().switch_to("res://final/levels/level_1.tscn")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -4,10 +4,12 @@ extends Node
 
 func switch_to(scene):
 	var scn = load(scene).instantiate()
+	print(loaded, scene, scn)
 	if loaded != null:
 		loaded.queue_free()
 	add_child(scn)
 	loaded = scn
+	print(loaded, scene, scn)
 	pass
 
 func play_bgm(audio):
