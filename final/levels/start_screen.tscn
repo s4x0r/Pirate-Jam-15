@@ -1,9 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://bcgmnkusbb1mp"]
+[gd_scene load_steps=7 format=3 uid="uid://bcgmnkusbb1mp"]
 
 [ext_resource type="Script" path="res://final/levels/start_screen.gd" id="1_dislw"]
+[ext_resource type="Texture2D" uid="uid://uik3t6njpwtv" path="res://final/levels/rayvetitle.png" id="2_0tmfi"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_uixup"]
-font_size = 113
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d34pi"]
+bg_color = Color(0.543311, 0.110701, 0.135925, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="Theme" id="Theme_6gu3r"]
+Panel/styles/panel = SubResource("StyleBoxFlat_d34pi")
+
+[sub_resource type="Theme" id="Theme_d7qma"]
+
+[sub_resource type="Theme" id="Theme_xmwlv"]
 
 [node name="start screen" type="Control"]
 layout_mode = 3
@@ -12,16 +24,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_6gu3r")
 script = ExtResource("1_dislw")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.419608, 0.466667, 0.596078, 1)
 
 [node name="main menu" type="Panel" parent="."]
 layout_mode = 1
@@ -36,6 +40,7 @@ offset_right = 129.0
 offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = SubResource("Theme_d7qma")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="main menu"]
 layout_mode = 1
@@ -48,6 +53,7 @@ offset_right = -10.0
 offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_xmwlv")
 alignment = 1
 
 [node name="play" type="Button" parent="main menu/VBoxContainer"]
@@ -65,19 +71,6 @@ text = "Settings"
 [node name="credits" type="Button" parent="main menu/VBoxContainer"]
 layout_mode = 2
 text = "Credits"
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -143.0
-offset_top = 66.0
-offset_right = 143.0
-offset_bottom = 221.0
-grow_horizontal = 2
-text = "Rayve"
-label_settings = SubResource("LabelSettings_uixup")
 
 [node name="credits" type="Panel" parent="."]
 visible = false
@@ -121,6 +114,25 @@ offset_right = 4.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "close"
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_left = 581.0
+offset_top = 215.0
+offset_right = 621.0
+offset_bottom = 255.0
+
+[node name="Rayvetitle" type="Sprite2D" parent="."]
+position = Vector2(581, 215)
+scale = Vector2(0.272506, 0.272506)
+texture = ExtResource("2_0tmfi")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="pressed" from="main menu/VBoxContainer/play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="main menu/VBoxContainer/levels" to="." method="_on_levels_pressed"]
