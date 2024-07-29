@@ -22,7 +22,7 @@ func player_died():
 
 func goto_main_menu():
 	main_menu.instantiate()
-	get_tree().root.add_child(main_menu)
+	get_node("/root").add_child(main_menu.instantiate())
 	queue_free()
 
 func reload():

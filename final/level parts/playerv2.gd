@@ -9,7 +9,7 @@ var charging = false
 var elements = ["light"]
 
 const SPEED = 12.0
-const JUMP_VELOCITY = 8
+const JUMP_VELOCITY = 10
 
 var zoom_max = 50
 var zoom_min = 20
