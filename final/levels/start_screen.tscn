@@ -27,6 +27,14 @@ grow_vertical = 2
 theme = SubResource("Theme_6gu3r")
 script = ExtResource("1_dislw")
 
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="main menu" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 7
@@ -116,6 +124,7 @@ grow_vertical = 0
 text = "close"
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
 offset_left = 581.0
 offset_top = 215.0
 offset_right = 621.0
@@ -125,14 +134,6 @@ offset_bottom = 255.0
 position = Vector2(581, 215)
 scale = Vector2(0.272506, 0.272506)
 texture = ExtResource("2_0tmfi")
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [connection signal="pressed" from="main menu/VBoxContainer/play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="main menu/VBoxContainer/levels" to="." method="_on_levels_pressed"]

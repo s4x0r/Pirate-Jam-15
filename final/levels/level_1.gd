@@ -1,5 +1,4 @@
 extends Node3D
-var main_menu = preload("res://final/levels/start_screen.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,9 +20,7 @@ func player_died():
 	$"ui/game over".visible = true
 
 func goto_main_menu():
-	main_menu.instantiate()
-	get_node("/root").add_child(main_menu.instantiate())
-	queue_free()
+	get_parent().switch_to("res://final/levels/start_screen.tscn")
 
 func reload():
 	get_tree().reload_current_scene()
