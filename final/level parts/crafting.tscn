@@ -1,14 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://htw77c7ltgq4"]
+[gd_scene load_steps=11 format=3 uid="uid://htw77c7ltgq4"]
 
 [ext_resource type="Script" path="res://final/level parts/crafting.gd" id="1_1blv7"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_0fjk5"]
-font_size = 35
-font_color = Color(0, 0, 0, 1)
+[ext_resource type="Texture2D" uid="uid://1sesci30dja1" path="res://final/assets/3D/Collectibles/metal/metalchunkicon.png" id="2_hywrw"]
+[ext_resource type="Texture2D" uid="uid://7poexfbqec2v" path="res://final/assets/3D/Collectibles/lenses/lensicon.png" id="3_gmukm"]
+[ext_resource type="Texture2D" uid="uid://bu0c71jmo8y5n" path="res://final/assets/3D/Collectibles/bulbs/bulbicon.png" id="4_0p1ha"]
+[ext_resource type="Texture2D" uid="uid://nq73bcfpk6o2" path="res://final/assets/3D/Collectibles/batteries/batteryicon.png" id="5_hrmtb"]
+[ext_resource type="Texture2D" uid="uid://bx4ej4ckisfcp" path="res://final/assets/3D/Attachables/Flashlight/flashlighticon.png" id="6_hqrfe"]
+[ext_resource type="Texture2D" uid="uid://0r743dqqt1ix" path="res://final/assets/3D/Attachables/Beacon/BeaconIcon.png" id="7_7jn5n"]
+[ext_resource type="Texture2D" uid="uid://cvr7iybm2rcka" path="res://final/assets/3D/Attachables/Laser/lasericon.png" id="8_gib6y"]
+[ext_resource type="Texture2D" uid="uid://dksbunrycu62y" path="res://final/assets/3D/Attachables/Lamp/lampicon.png" id="9_p8sdj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qx11o"]
+line_spacing = 0.65
 font_size = 35
-font_color = Color(0, 0, 0, 1)
 
 [node name="crafting" type="Control"]
 layout_mode = 3
@@ -44,19 +48,17 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+color = Color(1, 1, 1, 0)
 
-[node name="name" type="Label" parent="Panel/inventory/metal"]
+[node name="TextureRect" type="TextureRect" parent="Panel/inventory/metal"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -48.5
-offset_right = 48.5
-offset_bottom = 49.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-text = "metal"
-label_settings = SubResource("LabelSettings_0fjk5")
-horizontal_alignment = 1
+grow_vertical = 2
+texture = ExtResource("2_hywrw")
+expand_mode = 3
 
 [node name="value" type="Label" parent="Panel/inventory/metal"]
 layout_mode = 1
@@ -66,33 +68,31 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -48.5
-offset_top = -49.0
+offset_top = -63.0
 offset_right = 48.5
 grow_horizontal = 2
 grow_vertical = 0
 text = "0
 "
 label_settings = SubResource("LabelSettings_qx11o")
-horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="lens" type="ColorRect" parent="Panel/inventory"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+color = Color(1, 1, 1, 0)
 
-[node name="name" type="Label" parent="Panel/inventory/lens"]
+[node name="TextureRect" type="TextureRect" parent="Panel/inventory/lens"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -48.5
-offset_right = 48.5
-offset_bottom = 49.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-text = "lens"
-label_settings = SubResource("LabelSettings_0fjk5")
-horizontal_alignment = 1
+grow_vertical = 2
+texture = ExtResource("3_gmukm")
+expand_mode = 3
 
 [node name="value" type="Label" parent="Panel/inventory/lens"]
 layout_mode = 1
@@ -102,33 +102,31 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -48.5
-offset_top = -49.0
+offset_top = -63.0
 offset_right = 48.5
 grow_horizontal = 2
 grow_vertical = 0
 text = "0
 "
 label_settings = SubResource("LabelSettings_qx11o")
-horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="bulb" type="ColorRect" parent="Panel/inventory"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+color = Color(1, 1, 1, 0)
 
-[node name="name" type="Label" parent="Panel/inventory/bulb"]
+[node name="TextureRect" type="TextureRect" parent="Panel/inventory/bulb"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -48.5
-offset_right = 48.5
-offset_bottom = 49.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-text = "bulbs"
-label_settings = SubResource("LabelSettings_0fjk5")
-horizontal_alignment = 1
+grow_vertical = 2
+texture = ExtResource("4_0p1ha")
+expand_mode = 3
 
 [node name="value" type="Label" parent="Panel/inventory/bulb"]
 layout_mode = 1
@@ -138,33 +136,31 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -48.5
-offset_top = -49.0
+offset_top = -63.0
 offset_right = 48.5
 grow_horizontal = 2
 grow_vertical = 0
 text = "0
 "
 label_settings = SubResource("LabelSettings_qx11o")
-horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="battery" type="ColorRect" parent="Panel/inventory"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+color = Color(1, 1, 1, 0)
 
-[node name="name" type="Label" parent="Panel/inventory/battery"]
+[node name="TextureRect" type="TextureRect" parent="Panel/inventory/battery"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -48.5
-offset_right = 48.5
-offset_bottom = 49.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-text = "bttry"
-label_settings = SubResource("LabelSettings_0fjk5")
-horizontal_alignment = 1
+grow_vertical = 2
+texture = ExtResource("5_hrmtb")
+expand_mode = 3
 
 [node name="value" type="Label" parent="Panel/inventory/battery"]
 layout_mode = 1
@@ -181,26 +177,24 @@ grow_vertical = 0
 text = "0
 "
 label_settings = SubResource("LabelSettings_qx11o")
-horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="flashlight" type="ColorRect" parent="Panel/inventory"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+color = Color(1, 1, 1, 0)
 
-[node name="name" type="Label" parent="Panel/inventory/flashlight"]
+[node name="TextureRect" type="TextureRect" parent="Panel/inventory/flashlight"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -48.5
-offset_right = 48.5
-offset_bottom = 49.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-text = "f-lite"
-label_settings = SubResource("LabelSettings_0fjk5")
-horizontal_alignment = 1
+grow_vertical = 2
+texture = ExtResource("6_hqrfe")
+expand_mode = 3
 
 [node name="value" type="Label" parent="Panel/inventory/flashlight"]
 layout_mode = 1
@@ -210,33 +204,31 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -48.5
-offset_top = -49.0
+offset_top = -63.0
 offset_right = 48.5
 grow_horizontal = 2
 grow_vertical = 0
 text = "0
 "
 label_settings = SubResource("LabelSettings_qx11o")
-horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="beacon" type="ColorRect" parent="Panel/inventory"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+color = Color(1, 1, 1, 0)
 
-[node name="name" type="Label" parent="Panel/inventory/beacon"]
+[node name="TextureRect" type="TextureRect" parent="Panel/inventory/beacon"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -48.5
-offset_right = 48.5
-offset_bottom = 49.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-text = "bcon"
-label_settings = SubResource("LabelSettings_0fjk5")
-horizontal_alignment = 1
+grow_vertical = 2
+texture = ExtResource("7_7jn5n")
+expand_mode = 3
 
 [node name="value" type="Label" parent="Panel/inventory/beacon"]
 layout_mode = 1
@@ -246,33 +238,31 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -48.5
-offset_top = -49.0
+offset_top = -63.0
 offset_right = 48.5
 grow_horizontal = 2
 grow_vertical = 0
 text = "0
 "
 label_settings = SubResource("LabelSettings_qx11o")
-horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="laser" type="ColorRect" parent="Panel/inventory"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+color = Color(1, 1, 1, 0)
 
-[node name="name" type="Label" parent="Panel/inventory/laser"]
+[node name="TextureRect" type="TextureRect" parent="Panel/inventory/laser"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -48.5
-offset_right = 48.5
-offset_bottom = 49.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-text = "lazr"
-label_settings = SubResource("LabelSettings_0fjk5")
-horizontal_alignment = 1
+grow_vertical = 2
+texture = ExtResource("8_gib6y")
+expand_mode = 3
 
 [node name="value" type="Label" parent="Panel/inventory/laser"]
 layout_mode = 1
@@ -282,33 +272,31 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -48.5
-offset_top = -49.0
+offset_top = -63.0
 offset_right = 48.5
 grow_horizontal = 2
 grow_vertical = 0
 text = "0
 "
 label_settings = SubResource("LabelSettings_qx11o")
-horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="lamp" type="ColorRect" parent="Panel/inventory"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+color = Color(1, 1, 1, 0)
 
-[node name="name" type="Label" parent="Panel/inventory/lamp"]
+[node name="TextureRect" type="TextureRect" parent="Panel/inventory/lamp"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -48.5
-offset_right = 48.5
-offset_bottom = 49.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-text = "lamp"
-label_settings = SubResource("LabelSettings_0fjk5")
-horizontal_alignment = 1
+grow_vertical = 2
+texture = ExtResource("9_p8sdj")
+expand_mode = 3
 
 [node name="value" type="Label" parent="Panel/inventory/lamp"]
 layout_mode = 1
@@ -318,14 +306,14 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -48.5
-offset_top = -49.0
+offset_top = -63.0
 offset_right = 48.5
 grow_horizontal = 2
 grow_vertical = 0
 text = "0
 "
 label_settings = SubResource("LabelSettings_qx11o")
-horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="GridContainer" type="GridContainer" parent="Panel"]
 layout_mode = 1

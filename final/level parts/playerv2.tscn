@@ -1,10 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://bsjjo30b5fe14"]
+[gd_scene load_steps=23 format=3 uid="uid://bsjjo30b5fe14"]
 
 [ext_resource type="Script" path="res://final/level parts/playerv2.gd" id="1_ytndl"]
 [ext_resource type="PackedScene" path="res://final/assets/3D/Main Char/lightmanv2.tscn" id="2_agxyt"]
 [ext_resource type="PackedScene" uid="uid://htw77c7ltgq4" path="res://final/level parts/crafting.tscn" id="2_u20nh"]
 [ext_resource type="PackedScene" uid="uid://cuq5besv4xcnw" path="res://final/assets/3D/Attachables/Laser/laser.glb" id="3_j1b11"]
 [ext_resource type="PackedScene" uid="uid://0vwamd3544ot" path="res://final/assets/3D/Attachables/Flashlight/flashlight.glb" id="4_6cv6w"]
+[ext_resource type="Texture2D" uid="uid://bx4ej4ckisfcp" path="res://final/assets/3D/Attachables/Flashlight/flashlighticon.png" id="4_wjta5"]
+[ext_resource type="Texture2D" uid="uid://dksbunrycu62y" path="res://final/assets/3D/Attachables/Lamp/lampicon.png" id="5_v20cc"]
+[ext_resource type="Texture2D" uid="uid://cvr7iybm2rcka" path="res://final/assets/3D/Attachables/Laser/lasericon.png" id="6_aysms"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3jfj8"]
 radius = 1.0
@@ -42,6 +45,8 @@ points = PackedVector3Array(-7, 7.5, 0, -6.96711, 7.5, -0.68657, -5.70086, 4.498
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_f1tbw"]
 height = 0.5
 radius = 0.75
+
+[sub_resource type="Theme" id="Theme_s30we"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_g583g"]
 font_size = 37
@@ -209,14 +214,24 @@ offset_top = 8.0
 offset_right = 184.0
 offset_bottom = 56.0
 mouse_filter = 2
+theme = SubResource("Theme_s30we")
+
+[node name="TextureRect" type="TextureRect" parent="ui/HSplitContainer/VSeparator/Flashlight"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wjta5")
+expand_mode = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ui/HSplitContainer/VSeparator/Flashlight"]
 layout_mode = 0
 offset_right = 48.0
 offset_bottom = 48.0
 mouse_filter = 2
-text = "Flash
-light"
+text = "1"
 
 [node name="Lamp" type="Panel" parent="ui/HSplitContainer/VSeparator"]
 layout_mode = 2
@@ -226,12 +241,22 @@ offset_right = 248.0
 offset_bottom = 56.0
 mouse_filter = 2
 
+[node name="TextureRect" type="TextureRect" parent="ui/HSplitContainer/VSeparator/Lamp"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_v20cc")
+expand_mode = 3
+
 [node name="RichTextLabel" type="RichTextLabel" parent="ui/HSplitContainer/VSeparator/Lamp"]
 layout_mode = 0
 offset_right = 48.0
 offset_bottom = 48.0
 mouse_filter = 2
-text = "Lamp"
+text = "2"
 
 [node name="Laser" type="Panel" parent="ui/HSplitContainer/VSeparator"]
 layout_mode = 2
@@ -241,12 +266,22 @@ offset_right = 312.0
 offset_bottom = 56.0
 mouse_filter = 2
 
+[node name="TextureRect" type="TextureRect" parent="ui/HSplitContainer/VSeparator/Laser"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_aysms")
+expand_mode = 3
+
 [node name="RichTextLabel" type="RichTextLabel" parent="ui/HSplitContainer/VSeparator/Laser"]
 layout_mode = 0
 offset_right = 48.0
 offset_bottom = 48.0
 mouse_filter = 2
-text = "Laser"
+text = "3"
 
 [node name="Panel" type="Panel" parent="ui"]
 visible = false
