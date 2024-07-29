@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://ry4r6rho7yo8"]
+[gd_scene load_steps=9 format=3 uid="uid://coldv1d00bnl2"]
 
-[ext_resource type="Script" path="res://final/levels/level_1.gd" id="1_85khd"]
-[ext_resource type="Environment" uid="uid://cvoybkaw7n4e6" path="res://final/level parts/environment.tres" id="1_oqpga"]
-[ext_resource type="AudioStream" uid="uid://b36oxtdn14a32" path="res://final/assets/Music/Techie.wav" id="2_4af6m"]
-[ext_resource type="PackedScene" uid="uid://bsjjo30b5fe14" path="res://final/level parts/playerv2.tscn" id="4_4i48w"]
+[ext_resource type="Script" path="res://final/levels/level_1.gd" id="1_nqyyn"]
+[ext_resource type="Environment" uid="uid://cvoybkaw7n4e6" path="res://final/level parts/environment.tres" id="2_upxxe"]
+[ext_resource type="AudioStream" uid="uid://b36oxtdn14a32" path="res://final/assets/Music/Techie.wav" id="3_atyfw"]
+[ext_resource type="PackedScene" uid="uid://bsjjo30b5fe14" path="res://final/level parts/playerv2.tscn" id="4_6q7lx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_r0ylg"]
 font_size = 70
@@ -20,10 +20,10 @@ size = Vector3(20, 1, 20)
 data = PackedVector3Array(-10, 0.5, 10, 10, 0.5, 10, -10, -0.5, 10, 10, 0.5, 10, 10, -0.5, 10, -10, -0.5, 10, 10, 0.5, -10, -10, 0.5, -10, 10, -0.5, -10, -10, 0.5, -10, -10, -0.5, -10, 10, -0.5, -10, 10, 0.5, 10, 10, 0.5, -10, 10, -0.5, 10, 10, 0.5, -10, 10, -0.5, -10, 10, -0.5, 10, -10, 0.5, -10, -10, 0.5, 10, -10, -0.5, -10, -10, 0.5, 10, -10, -0.5, 10, -10, -0.5, -10, 10, 0.5, 10, -10, 0.5, 10, 10, 0.5, -10, -10, 0.5, 10, -10, 0.5, -10, 10, 0.5, -10, -10, -0.5, 10, 10, -0.5, 10, -10, -0.5, -10, 10, -0.5, 10, 10, -0.5, -10, -10, -0.5, -10)
 
 [node name="protolevel" type="Node3D"]
-script = ExtResource("1_85khd")
+script = ExtResource("1_nqyyn")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("1_oqpga")
+environment = ExtResource("2_upxxe")
 
 [node name="darklight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 12, 0)
@@ -97,11 +97,11 @@ layout_mode = 2
 text = "Main Menu"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_4af6m")
+stream = ExtResource("3_atyfw")
 volume_db = -14.055
 autoplay = true
 
-[node name="player" parent="." instance=ExtResource("4_4i48w")]
+[node name="player" parent="." instance=ExtResource("4_6q7lx")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.0216391, 3, -0.112126)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]

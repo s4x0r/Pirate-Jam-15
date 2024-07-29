@@ -46,7 +46,8 @@ func _physics_process(delta):
 			velocity.x = direction.x * SPEED
 			velocity.z = direction.z * SPEED 
 
-			$model.look_at(global_position+Vector3(velocity.x, 0, velocity.z))
+			#$model.look_at(global_position+Vector3(velocity.x, 0, velocity.z))
+			
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.z = move_toward(velocity.z, 0, SPEED)
@@ -57,6 +58,8 @@ func _physics_process(delta):
 			#print("reached: ", move_path[0])
 			move_path.remove_at(0)
 			return
+		else:
+			$model.look_at(Vector3(to.x, global_position.y, to.z))
 			
 		#print(move_path, global_position, velocity, input_dir.length(), direction)
 		#print(global_position.distance_to(move_path[0]), global_position, move_path[0])

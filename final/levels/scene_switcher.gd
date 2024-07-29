@@ -12,9 +12,7 @@ func switch_to(scene):
 	print(loaded, scene, scn)
 	pass
 
-func play_bgm(audio):
-	$AudioStreamPlayer.playing = false
-	$AudioStreamPlayer.stream=(audio)
+func play_bgm():
 	$AudioStreamPlayer.playing = true
 	pass
 

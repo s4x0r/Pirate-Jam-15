@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://bsjjo30b5fe14"]
+[gd_scene load_steps=20 format=3 uid="uid://bsjjo30b5fe14"]
 
 [ext_resource type="Script" path="res://final/level parts/playerv2.gd" id="1_ytndl"]
+[ext_resource type="PackedScene" path="res://final/assets/3D/Main Char/lightmanv2.tscn" id="2_agxyt"]
 [ext_resource type="PackedScene" uid="uid://htw77c7ltgq4" path="res://final/level parts/crafting.tscn" id="2_u20nh"]
 [ext_resource type="PackedScene" uid="uid://cuq5besv4xcnw" path="res://final/assets/3D/Attachables/Laser/laser.glb" id="3_j1b11"]
 [ext_resource type="PackedScene" uid="uid://0vwamd3544ot" path="res://final/assets/3D/Attachables/Flashlight/flashlight.glb" id="4_6cv6w"]
@@ -74,8 +75,8 @@ shape = SubResource("CapsuleShape3D_3jfj8")
 
 [node name="pivot" type="Node3D" parent="."]
 
-[node name="lightman" type="Node3D" parent="pivot"]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0.0789855, 0)
+[node name="lightman" parent="pivot" instance=ExtResource("2_agxyt")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="laser" type="Node3D" parent="pivot"]
 visible = false
@@ -177,10 +178,14 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="HSplitContainer" type="HSplitContainer" parent="ui"]
-layout_mode = 0
-offset_top = 576.0
-offset_right = 1152.0
-offset_bottom = 648.0
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -71.0
+grow_horizontal = 2
+grow_vertical = 0
 mouse_filter = 2
 
 [node name="VSeparator" type="VSeparator" parent="ui/HSplitContainer"]
