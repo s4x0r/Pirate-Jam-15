@@ -59,9 +59,9 @@ func _physics_process(delta):
 	#interact
 	if Input.is_action_just_pressed("player_interact") and is_on_floor():
 		#print($Area3D.get_overlapping_bodies())
-		var bodies = $pivot/interactSpace.get_overlapping_bodies()
+		var bodies = $pivot/interactSpace.get_overlapping_areas()
 		if bodies != []:
-			bodies[0].interact()
+			bodies[0].get_parent().interact()
 			pass
 
 	# Handle jump.

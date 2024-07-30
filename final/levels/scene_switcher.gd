@@ -1,15 +1,26 @@
 extends Node
 @onready var loaded = $splash
+var levels=["tutorial", "level_1", "level_2"]
+var cur_level = 0
 
+
+
+func next_level():
+	cur_level+=1
+	switch_to("res://final/levels/"+levels[cur_level]+".tscn")
+
+func switch_to_level(lvl):
+	cur_level+=lvl
+	switch_to("res://final/levels/"+levels[cur_level]+".tscn")
 
 func switch_to(scene):
 	var scn = load(scene).instantiate()
-	print(loaded, scene, scn)
+	#print(loaded, scene, scn)
 	if loaded != null:
 		loaded.queue_free()
 	add_child(scn)
 	loaded = scn
-	print(loaded, scene, scn)
+	#print(loaded, scene, scn)
 	pass
 
 func play_bgm():

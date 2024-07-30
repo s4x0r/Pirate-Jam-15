@@ -1,7 +1,8 @@
 extends CharacterBody3D
 var dropscn = preload("res://final/level parts/drop.tscn")
 
-const SPEED = 9.0
+@export var speed = 9.0
+@export var active = true
 const JUMP_VELOCITY = 4.5
 var mode = "search"
 var minD = 3
@@ -12,12 +13,16 @@ var elements = ["dark"]
 
 var move_path: PackedVector3Array
 
+signal died
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 func _ready():
 	pass
 
 func _physics_process(delta):
+	if !active: return
+
 	if hp <= 0:
 		var instance = dropscn.instantiate()
 		instance.items = {"metal":5, "lens":5, "battery": 5, "bulb":5}
@@ -43,14 +48,14 @@ func _physics_process(delta):
 		#THE MISSILE GUIDANCE SUBSYSTEM GENERATES CORRECTIVE COMMANDS
 		var direction = input_dir.normalized()
 		if direction:
-			velocity.x = direction.x * SPEED
-			velocity.z = direction.z * SPEED 
+			velocity.x = direction.x * speed
+			velocity.z = direction.z * speed 
 
 			#$model.look_at(global_position+Vector3(velocity.x, 0, velocity.z))
 			
 		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
-			velocity.z = move_toward(velocity.z, 0, SPEED)
+			velocity.x = move_toward(velocity.x, 0, speed)
+			velocity.z = move_toward(velocity.z, 0, speed)
 
 		#ARRIVING AT ITS TARGET
 		if global_position.distance_to(to)<minD:
@@ -90,6 +95,7 @@ func damage(dmg):
 	hp -= cDmg
 	$dmgCounter.text=str(cDmg)
 	$AnimationPlayer.play("damaged")
+	emit_signal("died")
 	pass 
 
 func attack():

@@ -1,9 +1,12 @@
 extends CharacterBody3D
-var hp = 20
-var active = false
+@export var hp = 20
+@export var active = false
 var elements = ["dark"]
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if active:
+		elements = ["light"]
+		$AnimationPlayer.play("on")
 	pass # Replace with function body.
 
 
@@ -13,7 +16,7 @@ func _process(delta):
 
 func damage(dmg):
 	if elements == ["light"]: return
-	print("dmg")
+	#print("dmg")
 
 	var cDmg = DamageTypes.calculate_damage(elements, dmg)
 
@@ -25,12 +28,12 @@ func damage(dmg):
 	pass
 
 func _on_area_3d_body_entered(body):
-	if body.name == "player":
+	if body.name == "player" && active:
 		body.charging = true
 	pass # Replace with function body.
 
 
 func _on_area_3d_body_exited(body):
-	if body.name == "player":
+	if body.name == "player" && active:
 		body.charging = false
 	pass # Replace with function body.

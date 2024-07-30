@@ -14,7 +14,7 @@ func _process(delta):
 
 
 func _on_play_pressed():
-	get_parent().switch_to("res://final/levels/level_1.tscn")
+	get_parent().switch_to_level(0)
 
 	pass # Replace with function body.
 
