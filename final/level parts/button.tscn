@@ -2,21 +2,6 @@
 
 [ext_resource type="Script" path="res://final/level parts/button.gd" id="1_qene6"]
 
-[sub_resource type="Animation" id="Animation_6wjd0"]
-resource_name = "pressed"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../MeshInstance3D2:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-0.24, 0, 0), Vector3(-0.1, 0, 0), Vector3(-0.1, 0, 0), Vector3(-0.25, 0, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_h5tal"]
 length = 0.001
 tracks/0/type = "value"
@@ -30,6 +15,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(-0.24, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6wjd0"]
+resource_name = "pressed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MeshInstance3D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.24, 0, 0), Vector3(-0.1, 0, 0), Vector3(-0.1, 0, 0), Vector3(-0.25, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ylr64"]

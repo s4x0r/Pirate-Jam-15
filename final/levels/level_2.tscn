@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://b2ux5b1xkpc8b"]
+[gd_scene load_steps=7 format=3 uid="uid://b2ux5b1xkpc8b"]
 
 [ext_resource type="Script" path="res://final/levels/level_1.gd" id="1_gnu7a"]
 [ext_resource type="Environment" uid="uid://cvoybkaw7n4e6" path="res://final/level parts/environment.tres" id="2_toh2b"]
-[ext_resource type="AudioStream" uid="uid://b36oxtdn14a32" path="res://final/assets/Music/Techie.wav" id="3_vdu2y"]
 [ext_resource type="PackedScene" uid="uid://bsjjo30b5fe14" path="res://final/level parts/playerv2.tscn" id="4_fg4ir"]
 [ext_resource type="PackedScene" uid="uid://5badw2r21go3" path="res://final/assets/3D/Levels/Level 2/level_2_collision.tscn" id="5_x2s5d"]
 
@@ -91,11 +90,6 @@ text = "Retry"
 [node name="goto main" type="Button" parent="ui/game over/HBoxContainer"]
 layout_mode = 2
 text = "Main Menu"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_vdu2y")
-volume_db = -14.055
-autoplay = true
 
 [node name="player" parent="." instance=ExtResource("4_fg4ir")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.0216391, 3, -0.112126)

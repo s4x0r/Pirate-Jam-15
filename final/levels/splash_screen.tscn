@@ -12,6 +12,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0ba10")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -29,3 +38,4 @@ autoplay = true
 expand = true
 
 [connection signal="finished" from="AspectRatioContainer/VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
+[connection signal="gui_input" from="AspectRatioContainer/VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]

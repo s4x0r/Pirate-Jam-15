@@ -8,10 +8,8 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
-
-
 
 func _on_area_3d_area_exited(_area:Area3D):
 	if $Area3D.get_overlapping_areas() == []:

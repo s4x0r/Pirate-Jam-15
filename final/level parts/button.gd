@@ -11,6 +11,6 @@ func _ready():
 
 func interact():
 		if $AnimationPlayer.is_playing(): return
-		$AnimationPlayer.play("on")
+		$AnimationPlayer.play("pressed")
 		emit_signal("activate")
 		emit_signal("toggle")

@@ -12,12 +12,12 @@ height = 10.0
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_oojcg"]
 data = PackedVector3Array(-4.5, 3.5, 0.5, 4.5, 3.5, 0.5, -4.5, -3.5, 0.5, 4.5, 3.5, 0.5, 4.5, -3.5, 0.5, -4.5, -3.5, 0.5, 4.5, 3.5, -0.5, -4.5, 3.5, -0.5, 4.5, -3.5, -0.5, -4.5, 3.5, -0.5, -4.5, -3.5, -0.5, 4.5, -3.5, -0.5, 4.5, 3.5, 0.5, 4.5, 3.5, -0.5, 4.5, -3.5, 0.5, 4.5, 3.5, -0.5, 4.5, -3.5, -0.5, 4.5, -3.5, 0.5, -4.5, 3.5, -0.5, -4.5, 3.5, 0.5, -4.5, -3.5, -0.5, -4.5, 3.5, 0.5, -4.5, -3.5, 0.5, -4.5, -3.5, -0.5, 4.5, 3.5, 0.5, -4.5, 3.5, 0.5, 4.5, 3.5, -0.5, -4.5, 3.5, 0.5, -4.5, 3.5, -0.5, 4.5, 3.5, -0.5, -4.5, -3.5, 0.5, 4.5, -3.5, 0.5, -4.5, -3.5, -0.5, 4.5, -3.5, 0.5, 4.5, -3.5, -0.5, -4.5, -3.5, -0.5)
 
-[sub_resource type="Animation" id="Animation_olqba"]
-resource_name = "open"
+[sub_resource type="Animation" id="Animation_86md4"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("bars:visible")
+tracks/0/path = NodePath("bars/clip/CollisionShape3D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -29,7 +29,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("bars/clip/CollisionShape3D:disabled")
+tracks/1/path = NodePath("bars:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -66,12 +66,12 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_86md4"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_olqba"]
+resource_name = "open"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("bars/clip/CollisionShape3D:disabled")
+tracks/0/path = NodePath("bars:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -83,7 +83,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("bars:visible")
+tracks/1/path = NodePath("bars/clip/CollisionShape3D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {

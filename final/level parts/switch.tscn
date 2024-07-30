@@ -61,8 +61,8 @@ _data = {
 }
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_7w6rh"]
-height = 0.5
-radius = 0.984215
+height = 3.0
+radius = 1.5
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4ioej"]
 points = PackedVector3Array(0.125, 1, 0.75, -0.125, 1, 0.75, 0.125, -1, 0.75, 0.125, 1, -0.75, -0.125, 1, -0.75, -0.125, -1, 0.75, 0.125, -1, -0.75, -0.125, -1, -0.75)
@@ -104,7 +104,7 @@ collision_layer = 16
 collision_mask = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="interactspace"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.725405, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.580643, 0)
 shape = SubResource("CylinderShape3D_7w6rh")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]

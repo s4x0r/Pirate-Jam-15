@@ -1,9 +1,8 @@
-extends Node3D
-
+extends Area3D
+@export var damage = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
 	pass # Replace with function body.
 
 
@@ -12,12 +11,7 @@ func _process(delta):
 	pass
 
 
-
-func _on_static_body_3d_tree_exited():
-	get_node("/root/scene switcher").loaded.get_node("NavigationRegion3D").bake_navigation_mesh()
-	queue_free()
+func _on_timer_timeout():
+	for i in get_overlapping_bodies():
+		i.damage({"value":damage, "elements":["light"]})
 	pass # Replace with function body.
-
-func open():
-	$StaticBody3D.queue_free()
-	
