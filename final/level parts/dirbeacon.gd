@@ -1,4 +1,4 @@
-extends CharacterBody3D
+extends StaticBody3D
 var hp = 20
 var active = false
 var elements = ["dark"]
@@ -40,6 +40,16 @@ func rotate_r():
 	pass
 
 func activate():
+		$pivot/laser.visible = true
+		$pivot/laser/beam.monitoring = true
+		$AnimationPlayer.play("on")
+
+func deactivate():
+		$pivot/laser.visible = false
+		$pivot/laser/beam.monitoring = false
+		$AnimationPlayer.play("off")
+
+func toggle():
 	if $pivot/laser.visible:
 		$pivot/laser.visible = false
 		$pivot/laser/beam.monitoring = false
@@ -51,64 +61,8 @@ func activate():
 
 	pass
 
-func draw_laser():
-	var ray = $pivot/laser/ray
-	var pos
-	ray.position *= Vector3(0, 1, 0)
-	ray.look_at($pivot/laser.to_global(Vector3(0, 0, - 1)))
-	ray.force_raycast_update()
-	print(ray.get_collider())
-	print(bounces.size())
-	for i in bounces:
-		print(i)
-		if i == null:
-			continue
-		#i.free()
-	print(bounces.size())
-
-	if ray.is_colliding():
-		pos = ray.get_collision_point()
-	else:
-		pos = ray.to_global(ray.target_position)
-
-	var ray_length = ray.global_position.distance_to(pos)
-
-	$pivot/laser/beam/beammesh.mesh.height = ray_length
-	$pivot/laser/beam/beamshape.shape.height = ray_length
-
-	$pivot/laser/beam/beammesh.position = Vector3(0, 0, - ray_length / 2)
-	$pivot/laser/beam/beamshape.position = Vector3(0, 0, - ray_length / 2)
-
-	if ray.is_colliding():
-		while ray.get_collider().collision_layer&64:
-			print(true)
-			
-			var b_pos = ((ray.get_collision_point() - ray.global_position)).bounce(ray.get_collision_normal())
-			print("before", ray.global_position, pos, b_pos)
-			ray.global_position = pos
-			ray.look_at(b_pos * ray_length)
-			
-			ray.force_raycast_update()
-			
-			if ray.is_colliding():
-				pos = ray.get_collision_point()
-			else:
-				pos = ray.to_global(ray.target_position)
-
-			print("after", ray.global_position, pos, b_pos)
-
-			ray_length = ray.global_position.distance_to(pos)
-			var bounce = bouncescn.instantiate()
-			add_child(bounce)
-			bounces.append(bounce)
-			
-			bounce.get_node("bouncemesh").mesh.height = ray_length
-			bounce.get_node("bounceshape").shape.height = ray_length
-			bounce.global_position = ray.global_position
-			bounce.look_at(pos)
-			#bounce.position = Vector3(0,0,-ray_length/2)
-			bounce.get_node("bouncemesh").position = Vector3(0, 0, - ray_length / 2)
-			bounce.get_node("bounceshape").position = Vector3(0, 0, - ray_length / 2)
+func look_at_activator(target):
+	$piot.look_at(Vector3(target.global_position.x, global_position.y, target.global_position.z))
 
 func laser():
 	for i in bounces:

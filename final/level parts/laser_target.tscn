@@ -1,6 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dxtumaxs46ieb"]
+[gd_scene load_steps=12 format=3 uid="uid://dxtumaxs46ieb"]
 
 [ext_resource type="Script" path="res://final/level parts/laser_target.gd" id="1_xgh1v"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jebkc"]
+radius = 0.75
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_38174"]
 height = 3.0
@@ -22,11 +25,105 @@ albedo_color = Color(0.572549, 0.572549, 0.572549, 0.709804)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0r5rf"]
 material = SubResource("StandardMaterial3D_cwnsy")
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_jebkc"]
-radius = 0.75
+[sub_resource type="Animation" id="Animation_2omrp"]
+resource_name = "on"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("totemmesh/ballmesh:mesh:material:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.572549, 0, 0, 0.709804)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OmniLight3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_d52tr"]
+resource_name = "off"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("totemmesh/ballmesh:mesh:material:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.572549, 0.572549, 0.572549, 0.709804)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OmniLight3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_uhb0j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("totemmesh/ballmesh:mesh:material:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.572549, 0.572549, 0.572549, 0.709804)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OmniLight3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_epll1"]
+_data = {
+"RESET": SubResource("Animation_uhb0j"),
+"off": SubResource("Animation_d52tr"),
+"on": SubResource("Animation_2omrp")
+}
 
 [node name="laser target" type="Node3D"]
 script = ExtResource("1_xgh1v")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+collision_layer = 65
+collision_mask = 65
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.201913, 0)
+shape = SubResource("SphereShape3D_jebkc")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -43,13 +140,16 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 mesh = SubResource("CapsuleMesh_0r5rf")
 
-[node name="Area3D" type="Area3D" parent="totemmesh/ballmesh"]
-collision_layer = 65
-collision_mask = 65
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_epll1")
+}
+autoplay = "off"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="totemmesh/ballmesh/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.201913, 0)
-shape = SubResource("SphereShape3D_jebkc")
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+light_color = Color(0.862745, 0.176471, 0.258824, 1)
+omni_range = 30.0
 
-[connection signal="area_entered" from="totemmesh/ballmesh/Area3D" to="." method="_on_area_3d_area_entered"]
-[connection signal="area_exited" from="totemmesh/ballmesh/Area3D" to="." method="_on_area_3d_area_exited"]
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]
