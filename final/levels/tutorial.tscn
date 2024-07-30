@@ -1,8 +1,7 @@
-[gd_scene load_steps=27 format=3 uid="uid://coldv1d00bnl2"]
+[gd_scene load_steps=30 format=3 uid="uid://coldv1d00bnl2"]
 
 [ext_resource type="Script" path="res://final/levels/tutorial.gd" id="1_wbc0t"]
 [ext_resource type="Environment" uid="uid://cvoybkaw7n4e6" path="res://final/level parts/environment.tres" id="2_upxxe"]
-[ext_resource type="AudioStream" uid="uid://b36oxtdn14a32" path="res://final/assets/Music/Techie.wav" id="3_atyfw"]
 [ext_resource type="PackedScene" uid="uid://bsjjo30b5fe14" path="res://final/level parts/playerv2.tscn" id="4_6q7lx"]
 [ext_resource type="Texture2D" uid="uid://df5flfv8hl8rq" path="res://final/road_muddy_02.jpg" id="5_pyw4o"]
 [ext_resource type="PackedScene" uid="uid://c0wutd8mr55cu" path="res://final/level parts/totem.tscn" id="6_hn3rt"]
@@ -12,6 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://dglyu44lpw0n7" path="res://final/level parts/exit.tscn" id="10_wo75y"]
 [ext_resource type="PackedScene" uid="uid://d24are02qhe4b" path="res://final/level parts/dirbeacon.tscn" id="11_qy6sc"]
 [ext_resource type="PackedScene" uid="uid://dxtumaxs46ieb" path="res://final/level parts/laser_target.tscn" id="12_jh85j"]
+[ext_resource type="PackedScene" uid="uid://2s78ib5dxhcj" path="res://final/level parts/gate.tscn" id="13_6ovvb"]
+[ext_resource type="Script" path="res://final/level parts/gate.gd" id="14_34fxy"]
+[ext_resource type="PackedScene" uid="uid://lc8a4tkehn8m" path="res://final/level parts/button.tscn" id="15_bvde4"]
+[ext_resource type="PackedScene" uid="uid://cuwj00hlu60a" path="res://final/level parts/instastairs.tscn" id="16_svv3x"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_r0ylg"]
 font_size = 70
@@ -53,13 +56,13 @@ size = Vector3(16, 1, 1)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_n1yro"]
 points = PackedVector3Array(8, 0.5, 0.5, 8, 0.5, -0.5, -8, 0.5, 0.5, 8, -0.5, 0.5, 8, -0.5, -0.5, -8, 0.5, -0.5, -8, -0.5, 0.5, -8, -0.5, -0.5)
 
-[sub_resource type="BoxMesh" id="BoxMesh_4ah6t"]
-size = Vector3(3, 10, 3)
+[sub_resource type="BoxMesh" id="BoxMesh_nh54p"]
+size = Vector3(2, 2, 2)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_wo7i4"]
-data = PackedVector3Array(-1.5, 5, 1.5, 1.5, 5, 1.5, -1.5, -5, 1.5, 1.5, 5, 1.5, 1.5, -5, 1.5, -1.5, -5, 1.5, 1.5, 5, -1.5, -1.5, 5, -1.5, 1.5, -5, -1.5, -1.5, 5, -1.5, -1.5, -5, -1.5, 1.5, -5, -1.5, 1.5, 5, 1.5, 1.5, 5, -1.5, 1.5, -5, 1.5, 1.5, 5, -1.5, 1.5, -5, -1.5, 1.5, -5, 1.5, -1.5, 5, -1.5, -1.5, 5, 1.5, -1.5, -5, -1.5, -1.5, 5, 1.5, -1.5, -5, 1.5, -1.5, -5, -1.5, 1.5, 5, 1.5, -1.5, 5, 1.5, 1.5, 5, -1.5, -1.5, 5, 1.5, -1.5, 5, -1.5, 1.5, 5, -1.5, -1.5, -5, 1.5, 1.5, -5, 1.5, -1.5, -5, -1.5, 1.5, -5, 1.5, 1.5, -5, -1.5, -1.5, -5, -1.5)
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_xsuqg"]
+data = PackedVector3Array(-1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1)
 
-[node name="protolevel" type="Node3D"]
+[node name="tutorial" type="Node3D"]
 script = ExtResource("1_wbc0t")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -73,6 +76,7 @@ sky_mode = 1
 
 [node name="sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 12, 0)
+visible = false
 light_energy = 0.515
 sky_mode = 1
 
@@ -471,220 +475,241 @@ text = "Retry"
 layout_mode = 2
 text = "Main Menu"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_atyfw")
-volume_db = -14.055
-autoplay = true
-
 [node name="player" parent="." instance=ExtResource("4_6q7lx")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -83.8153, 3, 5.68419)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -97, 18.5, -27)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
 navigation_mesh = SubResource("NavigationMesh_uikyb")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D"]
+[node name="walls" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/walls"]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.199091, 0, -0.336036)
 mesh = SubResource("BoxMesh_ergob")
+skeleton = NodePath("../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/walls/MeshInstance3D"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/walls/MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_4o3ey")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="NavigationRegion3D"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="NavigationRegion3D/walls"]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -49, 0, -11)
 mesh = SubResource("BoxMesh_ergob")
+skeleton = NodePath("../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/walls/MeshInstance3D2"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D2/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/walls/MeshInstance3D2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_gsl10")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="NavigationRegion3D"]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="NavigationRegion3D/walls"]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -70.4484, 0, 50.0464)
 mesh = SubResource("BoxMesh_ergob")
+skeleton = NodePath("../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D5"]
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/walls/MeshInstance3D5"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D5/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/walls/MeshInstance3D5/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_gsl10")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="NavigationRegion3D"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="NavigationRegion3D/walls"]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -43.343, 7.07054, 4.54675)
 mesh = SubResource("BoxMesh_q8f6i")
+skeleton = NodePath("../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D3"]
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/walls/MeshInstance3D3"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D3/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/walls/MeshInstance3D3/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_5qvly")
 
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="NavigationRegion3D"]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -86.4765, 7.07054, 56.1656)
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="NavigationRegion3D/walls"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -95.3585, 7.07054, 46.6627)
 mesh = SubResource("BoxMesh_q8f6i")
+skeleton = NodePath("../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D6"]
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/walls/MeshInstance3D6"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D6/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/walls/MeshInstance3D6/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_5qvly")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="NavigationRegion3D"]
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="NavigationRegion3D/walls"]
+transform = Transform3D(0.707107, 0.707107, -4.21468e-08, -1.19209e-07, -4.37114e-08, -1, -0.707107, 0.707107, 4.21468e-08, -72.3344, 7.07054, 70.3077)
+mesh = SubResource("BoxMesh_q8f6i")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/walls/MeshInstance3D7"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/walls/MeshInstance3D7/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_5qvly")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="NavigationRegion3D/walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16687, 0)
 mesh = SubResource("BoxMesh_audsp")
+skeleton = NodePath("../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D4"]
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/walls/MeshInstance3D4"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D4/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/walls/MeshInstance3D4/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_8ckpb")
 
-[node name="zoom trigger" type="Area3D" parent="."]
+[node name="objects" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="switch" parent="NavigationRegion3D/objects" instance=ExtResource("8_5tvb0")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -65.0202, 2.64218, 14.6752)
+
+[node name="switch2" parent="NavigationRegion3D/objects" instance=ExtResource("8_5tvb0")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -95.181, 1.89631, 35.3199)
+
+[node name="drawbridge" parent="NavigationRegion3D/objects" instance=ExtResource("9_y8h1t")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -73.5391, 0.293314, 14.1421)
+
+[node name="exit" parent="NavigationRegion3D/objects" instance=ExtResource("10_wo75y")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -50.2046, 0.566264, 70.0036)
+
+[node name="laser group" type="Node3D" parent="NavigationRegion3D/objects"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -59.0951, 14.5564, 20.1008)
+
+[node name="totem2" parent="NavigationRegion3D/objects/laser group" instance=ExtResource("6_hn3rt")]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -41, -0.640285, -27.886)
+
+[node name="gate" parent="NavigationRegion3D/objects" instance=ExtResource("13_6ovvb")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -60.1683, 0, 60.1683)
+script = ExtResource("14_34fxy")
+
+[node name="instastairs" parent="NavigationRegion3D/objects" instance=ExtResource("16_svv3x")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -74.2462, 8.6423, 30.4056)
+
+[node name="triggers" type="Node3D" parent="."]
+
+[node name="zoom trigger" type="Area3D" parent="triggers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47169, 24.0914)
 collision_layer = 3
 collision_mask = 3
 metadata/_edit_group_ = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="zoom trigger"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="triggers/zoom trigger"]
 visible = false
 mesh = SubResource("BoxMesh_6sh2a")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="zoom trigger"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="triggers/zoom trigger"]
 shape = SubResource("ConvexPolygonShape3D_n1yro")
 
-[node name="jump trigger" type="Area3D" parent="."]
+[node name="jump trigger" type="Area3D" parent="triggers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47169, 8.38073)
 collision_layer = 3
 collision_mask = 3
 metadata/_edit_group_ = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="jump trigger"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="triggers/jump trigger"]
 visible = false
 mesh = SubResource("BoxMesh_6sh2a")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="jump trigger"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="triggers/jump trigger"]
 shape = SubResource("ConvexPolygonShape3D_n1yro")
 
-[node name="rotate trigger" type="Area3D" parent="."]
+[node name="rotate trigger" type="Area3D" parent="triggers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47169, -34.1675)
 collision_layer = 4
 collision_mask = 4
 metadata/_edit_group_ = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="rotate trigger"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="triggers/rotate trigger"]
 visible = false
 mesh = SubResource("BoxMesh_6sh2a")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="rotate trigger"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="triggers/rotate trigger"]
 shape = SubResource("ConvexPolygonShape3D_n1yro")
 
-[node name="tool trigger" type="Area3D" parent="."]
+[node name="tool trigger" type="Area3D" parent="triggers"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.73707, 1.47169, -42.6409)
 collision_layer = 4
 collision_mask = 4
 metadata/_edit_group_ = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="tool trigger"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="triggers/tool trigger"]
 visible = false
 mesh = SubResource("BoxMesh_6sh2a")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="tool trigger"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="triggers/tool trigger"]
 shape = SubResource("ConvexPolygonShape3D_n1yro")
 
-[node name="charge trigger" type="Area3D" parent="."]
+[node name="charge trigger" type="Area3D" parent="triggers"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -21.199, 1.47169, -42.6409)
 collision_layer = 4
 collision_mask = 4
 metadata/_edit_group_ = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="charge trigger"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="triggers/charge trigger"]
 visible = false
 mesh = SubResource("BoxMesh_6sh2a")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="charge trigger"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="triggers/charge trigger"]
 shape = SubResource("ConvexPolygonShape3D_n1yro")
 
-[node name="recharge trigger" type="Area3D" parent="."]
+[node name="recharge trigger" type="Area3D" parent="triggers"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -36.4362, 1.47169, -42.6409)
 collision_layer = 4
 collision_mask = 4
 metadata/_edit_group_ = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="recharge trigger"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="triggers/recharge trigger"]
 visible = false
 mesh = SubResource("BoxMesh_6sh2a")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="recharge trigger"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="triggers/recharge trigger"]
 shape = SubResource("ConvexPolygonShape3D_n1yro")
 
 [node name="totem" parent="." instance=ExtResource("6_hn3rt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.4952, 0.5, -42.8408)
 active = true
 
+[node name="laser" parent="." instance=ExtResource("11_qy6sc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97, 13.9161, -27.5731)
+
+[node name="laser target2" parent="laser" instance=ExtResource("12_jh85j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.4236)
+
+[node name="Button2" parent="." instance=ExtResource("15_bvde4")]
+transform = Transform3D(-0.993969, 0, 0.109665, 0, 1, 0, -0.109665, 0, -0.993969, -101.524, 15.5487, -46.0148)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Button2"]
+transform = Transform3D(-0.0671625, 0, 0.997742, 0, 1, 0, -0.997742, 0, -0.0671625, 1.08125, 0, -0.0727806)
+mesh = SubResource("BoxMesh_nh54p")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Button2/MeshInstance3D3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Button2/MeshInstance3D3/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_xsuqg")
+
 [node name="mob" parent="." instance=ExtResource("7_xnp2f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.1312, 1.76705, -42.1949)
 active = false
 
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81, 0, -3)
+[node name="laser target" parent="." instance=ExtResource("12_jh85j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.1017, 13.9161, -27.5731)
 
-[node name="switch" parent="." instance=ExtResource("8_5tvb0")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -56.3532, 2.64218, -35.5993)
-
-[node name="drawbridge" parent="." instance=ExtResource("9_y8h1t")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -62, 0.293314, -42)
-
-[node name="exit" parent="." instance=ExtResource("10_wo75y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 0.566264, 14)
-
-[node name="laser group" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56, 14.5564, -27.5731)
-
-[node name="totem2" parent="laser group" instance=ExtResource("11_qy6sc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.564, 0, 0)
-
-[node name="laser target" parent="laser group" instance=ExtResource("12_jh85j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.099, 0, 0)
-
-[node name="gate" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 0.566264, -12.2897)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="gate"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 5, 0)
-mesh = SubResource("BoxMesh_4ah6t")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="gate/MeshInstance3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="gate/MeshInstance3D/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_wo7i4")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="gate"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 8.5, 0)
-mesh = SubResource("BoxMesh_4ah6t")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="gate/MeshInstance3D3"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="gate/MeshInstance3D3/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_wo7i4")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="gate"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 5, 0)
-mesh = SubResource("BoxMesh_4ah6t")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="gate/MeshInstance3D2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="gate/MeshInstance3D2/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_wo7i4")
-
-[connection signal="body_entered" from="zoom trigger" to="." method="trigger" binds= ["zoom"]]
-[connection signal="body_entered" from="jump trigger" to="." method="trigger" binds= ["jump"]]
-[connection signal="body_entered" from="rotate trigger" to="." method="trigger" binds= ["rotate"]]
-[connection signal="body_entered" from="tool trigger" to="." method="trigger" binds= ["tool"]]
-[connection signal="body_entered" from="charge trigger" to="." method="trigger" binds= ["charge"]]
-[connection signal="body_entered" from="recharge trigger" to="." method="trigger" binds= ["recharge"]]
-[connection signal="activate" from="switch" to="drawbridge" method="lower"]
-[connection signal="deactivate" from="switch" to="drawbridge" method="raise"]
+[connection signal="activate" from="NavigationRegion3D/objects/switch" to="NavigationRegion3D/objects/drawbridge" method="lower"]
+[connection signal="deactivate" from="NavigationRegion3D/objects/switch" to="NavigationRegion3D/objects/drawbridge" method="raise"]
+[connection signal="activate" from="NavigationRegion3D/objects/switch2" to="laser" method="activate"]
+[connection signal="deactivate" from="NavigationRegion3D/objects/switch2" to="laser" method="deactivate"]
+[connection signal="body_entered" from="triggers/zoom trigger" to="." method="trigger" binds= ["zoom"]]
+[connection signal="body_entered" from="triggers/jump trigger" to="." method="trigger" binds= ["jump"]]
+[connection signal="body_entered" from="triggers/rotate trigger" to="." method="trigger" binds= ["rotate"]]
+[connection signal="body_entered" from="triggers/tool trigger" to="." method="trigger" binds= ["tool"]]
+[connection signal="body_entered" from="triggers/charge trigger" to="." method="trigger" binds= ["charge"]]
+[connection signal="body_entered" from="triggers/recharge trigger" to="." method="trigger" binds= ["recharge"]]
+[connection signal="activate" from="laser/laser target2" to="NavigationRegion3D/objects/instastairs" method="activate"]
+[connection signal="deactivate" from="laser/laser target2" to="NavigationRegion3D/objects/instastairs" method="deactivate"]
+[connection signal="activate" from="Button2" to="laser" method="rotate_r"]
+[connection signal="activate" from="laser target" to="NavigationRegion3D/objects/gate" method="activate"]
+[connection signal="deactivate" from="laser target" to="NavigationRegion3D/objects/gate" method="deactivate"]

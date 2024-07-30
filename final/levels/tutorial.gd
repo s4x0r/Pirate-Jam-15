@@ -1,9 +1,12 @@
 extends Node3D
 
+var loaded = self
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#for i in get_tree().get_nodes_in_group("mobs"):
 		#i.tree_exited.connect(check)
+	print(get_node("/root").get_children())
 	$player.died.connect(player_died)
 	$mob.died.connect(trigger.bind($player, "enemy"))
 
@@ -54,22 +57,30 @@ func trigger(_body:Node3D, tname:String):
 	match tname:
 		"zoom":
 			$ui/zoom.visible = true
+			$"triggers/zoom trigger".monitoring = false
 		"jump":
 			$ui/jump.visible = true
+			$"triggers/jump trigger".monitoring = false
 		"rotate":
 			$ui/rotate.visible = true
+			$"triggers/rotate trigger".monitoring = false
 		"tool":#schism
 			$ui/tools.visible = true
+			$"triggers/tool trigger".monitoring = false
 		"charge":
 			$ui/charge.visible = false
 			$ui/recharge.visible = true
+			$"triggers/charge trigger".monitoring = false
 		"recharge":
 			$ui/recharge.visible = false
 			$ui/enemy.visible = true
 			$mob.active = true
+			$"triggers/recharge trigger".monitoring = false
 		"enemy":
 			$ui/enemy.visible = false
 			$ui/inventory.visible = true
+			$"triggers/zoom trigger".monitoring = false
 
 
 	pass
+

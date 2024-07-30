@@ -13,10 +13,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	laser()
-	if $pivot/laser.visible:
-		
-		pass
+	pass
 
 func damage(dmg):
 	if elements == ["light"]: return
@@ -32,37 +29,35 @@ func damage(dmg):
 	pass
 
 func rotate_l():
-	rotation_degrees.y += 5
+	$pivot.rotation_degrees.y += 15
 	pass
 
 func rotate_r():
-	rotation_degrees.y -= 5
+	$pivot.rotation_degrees.y -= 15
 	pass
 
 func activate():
-		$pivot/laser.visible = true
-		$pivot/laser/beam.monitoring = true
-		$AnimationPlayer.play("on")
+	$pivot/laser.visible = true
+	#$pivot/laser/beam.monitoring = true
+	$AnimationPlayer.play("on")
+	laser()
 
 func deactivate():
-		$pivot/laser.visible = false
-		$pivot/laser/beam.monitoring = false
-		$AnimationPlayer.play("off")
+	$pivot/laser.visible = false
+	#$pivot/laser/beam.monitoring = false
+	$AnimationPlayer.play("off")
+	for i in bounces:
+		i.free()
+
+	bounces = []
 
 func toggle():
-	if $pivot/laser.visible:
-		$pivot/laser.visible = false
-		$pivot/laser/beam.monitoring = false
-		$AnimationPlayer.play("off")
-	else:
-		$pivot/laser.visible = true
-		$pivot/laser/beam.monitoring = true
-		$AnimationPlayer.play("on")
+	if $pivot/laser.visible:	deactivate()
+	else:	activate()
 
-	pass
 
 func look_at_activator(target):
-	$piot.look_at(Vector3(target.global_position.x, global_position.y, target.global_position.z))
+	$piot.look_at(Vector3(target.x, global_position.y, target.z))
 
 func laser():
 	for i in bounces:
@@ -88,19 +83,18 @@ func laser():
 	var pos
 	#print(result["collider"])
 	if result == {}:
-		return
+		ray_length = max_ray_dist
+		pos = end
+
 	elif result["collider"] != null:
 		ray_length= origin.distance_to(result["position"])
 		pos=result["position"]
-	else:
-		ray_length = max_ray_dist
-		pos = end
 
 
 	while true:
 		#print(result["collider"],result["normal"])
 		var bounce = bouncescn.instantiate()
-		add_child(bounce)
+		$pivot.add_child(bounce)
 		bounces.append(bounce)
 		bounce.get_node("bouncemesh").mesh = bounce.get_node("bouncemesh").mesh.duplicate()
 		bounce.get_node("bounceshape").shape = bounce.get_node("bounceshape").shape.duplicate()
@@ -116,7 +110,7 @@ func laser():
 
 		
 		
-		if result["collider"].collision_layer & 64:
+		if result != {} && result["collider"].collision_layer & 64:
 
 			end = ((pos - origin)).bounce(result["normal"]).normalized()*max_ray_dist
 			origin = result["position"]
