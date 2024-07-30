@@ -19,31 +19,19 @@ func _process(delta):
 func activate():
 	$AnimationPlayer.play("on")
 	active = true
+	$Timer.start()
 
 func deactivate():
 	$AnimationPlayer.play("on")
 	active = true
+	$Timer.stop()
 	
 func toggle():
 	if active: deactivate()
 	else : activate()
 
-
-func _on_area_3d_body_entered(body):
-	if body.name == "player" && active:
-		body.charging = true
-	pass # Replace with function body.
-
-
-func _on_area_3d_body_exited(body):
-	if body.name == "player" && active:
-		body.charging = false
-	pass # Replace with function body.
-
-
-
 func _on_laserspace_area_exited(_area:Area3D):
-	print("the bonesa")
+	#print("the bonesa")
 	if $laserspace.get_overlapping_areas() == []:
 		$AnimationPlayer.play("off")	
 	
@@ -51,10 +39,17 @@ func _on_laserspace_area_exited(_area:Area3D):
 
 
 func _on_laserspace_area_entered(_area:Area3D):
-	print("bone_pose_changed")
+	#print("bone_pose_changed")
 	if len($laserspace.get_overlapping_areas())==1 :
 		$AnimationPlayer.play("on")	
 	
 
 	pass # Replace with function body.
 
+
+func _on_timer_timeout():
+	for i in $Area3D.get_overlapping_bodies():
+		match i.name:
+			"player": i.damage({"value":-5, "elements":["light"]})
+			_: i.damage({"value":5, "elements":["light"]})
+	pass # Replace with function body.
