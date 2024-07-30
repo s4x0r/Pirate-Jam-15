@@ -25,16 +25,16 @@ script = ExtResource("1_mnwoc")
 environment = ExtResource("2_pofxr")
 
 [node name="Charge_area" parent="." instance=ExtResource("2_lhu28")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.94848, 0.54365, -2.1181)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.94135, 0.0128034, -30.9087)
 
 [node name="mob" parent="." instance=ExtResource("3_8fxsa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75079, 1.43736, 2.18032)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.98726, 1.43736, 33.1077)
 
 [node name="mob2" parent="." instance=ExtResource("3_8fxsa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.75079, 1.43736, -6.8197)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0383, 1.43736, 10.4171)
 
 [node name="mob3" parent="." instance=ExtResource("3_8fxsa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.7508, 1.43736, -11.8197)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.0394, 2.79031, 16.889)
 
 [node name="mob5" parent="." instance=ExtResource("3_8fxsa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.2492, 1.43736, -2.8197)
@@ -46,7 +46,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.2492, 1.43736, 32.1803)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.7508, 1.43736, 40.1803)
 
 [node name="mob8" parent="." instance=ExtResource("3_8fxsa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.7508, 1.43736, -4.8197)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.6971, 1.43736, 0.136865)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -56,20 +56,22 @@ navigation_mesh = SubResource("NavigationMesh_03x8e")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6)
 
 [node name="totem" parent="." instance=ExtResource("4_3foc5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.34203, -0.781918, 3)
 
 [node name="totem3" parent="." instance=ExtResource("4_3foc5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, 36)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.832878, 36)
 
 [node name="totem4" parent="." instance=ExtResource("4_3foc5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -0.798843, -10)
 
 [node name="totem5" parent="." instance=ExtResource("4_3foc5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 1, 35)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.3674, -0.832878, 35)
+
+[node name="totem6" parent="." instance=ExtResource("4_3foc5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.1796, -0.832878, -14.4314)
 
 [node name="player" parent="." instance=ExtResource("6_tc7tc")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -4, 1, -4)
-rotation_edit_mode = 0
+transform = Transform3D(0.167268, 0, 0.985912, 0, 1, 0, -0.985912, 0, 0.167268, 5.55703, 1.08502, -30.9598)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 12, 0)
