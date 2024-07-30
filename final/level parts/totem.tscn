@@ -6,22 +6,22 @@
 height = 3.0
 radius = 0.75
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qvmjh"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ly4sa"]
 albedo_color = Color(0.168627, 0.337255, 0.337255, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_fawd3"]
-material = SubResource("StandardMaterial3D_qvmjh")
+material = SubResource("StandardMaterial3D_ly4sa")
 top_radius = 0.75
 bottom_radius = 0.75
 height = 3.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3t0i7"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_whvkg"]
 transparency = 1
 albedo_color = Color(0, 0, 0, 1)
 emission = Color(0.454902, 1, 1, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_0adf2"]
-material = SubResource("StandardMaterial3D_3t0i7")
+material = SubResource("StandardMaterial3D_whvkg")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dautx"]
 transparency = 1

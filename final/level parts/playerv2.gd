@@ -21,6 +21,34 @@ var damage_table = {
 	"laser":4
 }
 
+var upgrades = {
+	"levels":{
+		"flashlight":[0,0,0],
+		"lamp":[0,0,0],
+		"laser":[0,0,0],
+		"self":[0,0,0]
+
+	},
+	"flashlight":{
+		"damage":1,
+		"drain":3,
+		"range":10
+	},
+	"lamp":{
+		"damage":2,
+		"drain":5,
+		"range":10
+	},
+	"laser":{
+		"damage":4,
+		"drain":10,
+		"range":10
+	},
+	"self":{
+		"speed":0
+	}
+}
+
 signal died
 
 
@@ -32,6 +60,13 @@ func _ready():
 	flashlight = $pivot/FlashLight
 	battery = $ui/HSplitContainer/VSeparator/ProgressBar
 	laser = $pivot/laser
+
+	for i in $ui/Panel/crafting.recipes:
+		var j = i.split(" ")
+		upgrade(
+			i, 
+			$ui/Panel/crafting.upgrades[j[0]][j[1]][$ui/Panel/crafting.recipes[i]["cur level"]])
+
 	
 func _physics_process(delta):
 
@@ -124,6 +159,33 @@ func draw_laser():
 
 	#print(global_position, pos, ray.get_collider())
 
+func upgrade(item, value):
+	var j =item.split(" ")
+	upgrades[j[0]][j[1]]=value
+	if j[1] == "range":
+		match j[0]:
+			"flashlight":
+				$pivot/FlashLight/Area3D/MeshInstance3D.mesh.height=value
+				$pivot/FlashLight/Area3D/MeshInstance3D.position = Vector3(0, 0.5, -value/2)
+				$pivot/FlashLight/Area3D/MeshInstance3D.mesh.top_radius = value/2
+				
+
+				$pivot/FlashLight/Area3D/CollisionShape3D.free()
+
+				$pivot/FlashLight/Area3D/MeshInstance3D.create_convex_collision()
+
+				$pivot/FlashLight/Area3D/MeshInstance3D/MeshInstance3D_col/CollisionShape3D.reparent($pivot/FlashLight/Area3D)
+				
+				$pivot/FlashLight/Area3D/MeshInstance3D/MeshInstance3D_col.call_deferred("free")
+				
+				$pivot/FlashLight.spot_range=value
+			"lamp":
+				$pivot/Lamp/Area3D/CollisionShape3D.shape.radius = value
+				$pivot/Lamp.omni_range = value
+			"laser":
+				$pivot/laser/ray.target_position=Vector3(0,0,-value)	
+
+
 func set_weapon(weapon):
 	if battery.value<15:
 		weapon = "none"
@@ -188,29 +250,26 @@ func _on_timer_timeout():
 	var weap = ""
 
 	if flashlight.is_visible() == true:
-		battery.value = battery.value - 2
+		battery.value = battery.value - upgrades["flashlight"]["drain"]
 		bodies = $pivot/FlashLight/Area3D.get_overlapping_bodies()
 		weap = "flashlight"
 
 	if lamp.is_visible() == true:
-		battery.value = battery.value - 4
+		battery.value = battery.value - upgrades["lamp"]["drain"]
 		bodies = $pivot/Lamp/Area3D.get_overlapping_bodies()
 		weap = "lamp"
 
 	if laser.is_visible() == true:
-		battery.value = battery.value - 8
+		battery.value = battery.value - upgrades["laser"]["drain"]
 		bodies = $pivot/laser/beam.get_overlapping_bodies()
-		bodies = $pivot/laser/bounce.get_overlapping_bodies()
+		bodies += $pivot/laser/bounce.get_overlapping_bodies()
 		weap = "laser"
 	
-	if battery.value <=0:
-		set_weapon("none")
-
 	if charging == true:
 		battery.value = battery.value +5
 	
 	for i in bodies:
-		i.damage({"value":damage_table[weap], "types":elements})
+		i.damage({"value":upgrades[weap]["damage"], "types":elements})
 
 		
 	pass # Replace with function body.

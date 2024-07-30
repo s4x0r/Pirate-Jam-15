@@ -3,7 +3,7 @@ extends Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print([get_node("/root/scene switcher"), get_node("/root/scene switcher").get_children()])
+	#print([get_node("/root/scene switcher"), get_node("/root/scene switcher").get_children()])
 	pass # Replace with function body.
 
 

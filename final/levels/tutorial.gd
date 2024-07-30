@@ -6,6 +6,8 @@ func _ready():
 		#i.tree_exited.connect(check)
 	$player.died.connect(player_died)
 	$mob.died.connect(trigger.bind($player, "enemy"))
+
+
 	pass # Replace with function body.
 
 func check():

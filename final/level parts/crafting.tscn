@@ -6,13 +6,16 @@
 [ext_resource type="Texture2D" uid="uid://bu0c71jmo8y5n" path="res://final/assets/3D/Collectibles/bulbs/bulbicon.png" id="4_0p1ha"]
 [ext_resource type="Texture2D" uid="uid://nq73bcfpk6o2" path="res://final/assets/3D/Collectibles/batteries/batteryicon.png" id="5_hrmtb"]
 [ext_resource type="Texture2D" uid="uid://bx4ej4ckisfcp" path="res://final/assets/3D/Attachables/Flashlight/flashlighticon.png" id="6_hqrfe"]
-[ext_resource type="Texture2D" uid="uid://0r743dqqt1ix" path="res://final/assets/3D/Attachables/Beacon/BeaconIcon.png" id="7_7jn5n"]
 [ext_resource type="Texture2D" uid="uid://cvr7iybm2rcka" path="res://final/assets/3D/Attachables/Laser/lasericon.png" id="8_gib6y"]
 [ext_resource type="Texture2D" uid="uid://dksbunrycu62y" path="res://final/assets/3D/Attachables/Lamp/lampicon.png" id="9_p8sdj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qx11o"]
 line_spacing = 0.65
 font_size = 35
+
+[sub_resource type="LabelSettings" id="LabelSettings_wes4s"]
+line_spacing = 0.65
+font_size = 23
 
 [node name="crafting" type="Control"]
 layout_mode = 3
@@ -40,7 +43,7 @@ anchor_bottom = 1.0
 offset_top = -100.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/separation = 40
+theme_override_constants/separation = 69
 alignment = 1
 
 [node name="metal" type="ColorRect" parent="Panel/inventory"]
@@ -179,146 +182,119 @@ text = "0
 label_settings = SubResource("LabelSettings_qx11o")
 vertical_alignment = 2
 
-[node name="flashlight" type="ColorRect" parent="Panel/inventory"]
+[node name="flashlight" type="TextureRect" parent="Panel/inventory"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-color = Color(1, 1, 1, 0)
-
-[node name="TextureRect" type="TextureRect" parent="Panel/inventory/flashlight"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 texture = ExtResource("6_hqrfe")
 expand_mode = 3
 
-[node name="value" type="Label" parent="Panel/inventory/flashlight"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/inventory/flashlight"]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -48.5
-offset_top = -63.0
-offset_right = 48.5
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -17.0
+offset_top = -120.0
+offset_right = 18.0
 grow_horizontal = 2
-grow_vertical = 0
-text = "0
-"
-label_settings = SubResource("LabelSettings_qx11o")
+
+[node name="damage" type="Label" parent="Panel/inventory/flashlight/VBoxContainer"]
+layout_mode = 2
+text = "dmg: 1  lvl: 0"
+label_settings = SubResource("LabelSettings_wes4s")
+horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="beacon" type="ColorRect" parent="Panel/inventory"]
-custom_minimum_size = Vector2(100, 100)
+[node name="range" type="Label" parent="Panel/inventory/flashlight/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-color = Color(1, 1, 1, 0)
-
-[node name="TextureRect" type="TextureRect" parent="Panel/inventory/beacon"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("7_7jn5n")
-expand_mode = 3
-
-[node name="value" type="Label" parent="Panel/inventory/beacon"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -48.5
-offset_top = -63.0
-offset_right = 48.5
-grow_horizontal = 2
-grow_vertical = 0
-text = "0
-"
-label_settings = SubResource("LabelSettings_qx11o")
+text = "rng: 1  lvl: 0"
+label_settings = SubResource("LabelSettings_wes4s")
+horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="laser" type="ColorRect" parent="Panel/inventory"]
+[node name="drain" type="Label" parent="Panel/inventory/flashlight/VBoxContainer"]
+layout_mode = 2
+text = "drn: 1  lvl: 0"
+label_settings = SubResource("LabelSettings_wes4s")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="laser" type="TextureRect" parent="Panel/inventory"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-color = Color(1, 1, 1, 0)
-
-[node name="TextureRect" type="TextureRect" parent="Panel/inventory/laser"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 texture = ExtResource("8_gib6y")
 expand_mode = 3
 
-[node name="value" type="Label" parent="Panel/inventory/laser"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/inventory/laser"]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -48.5
-offset_top = -63.0
-offset_right = 48.5
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -17.0
+offset_top = -120.0
+offset_right = 18.0
 grow_horizontal = 2
-grow_vertical = 0
-text = "0
-"
-label_settings = SubResource("LabelSettings_qx11o")
+
+[node name="damage" type="Label" parent="Panel/inventory/laser/VBoxContainer"]
+layout_mode = 2
+text = "dmg: 1  lvl: 0"
+label_settings = SubResource("LabelSettings_wes4s")
+horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="lamp" type="ColorRect" parent="Panel/inventory"]
+[node name="range" type="Label" parent="Panel/inventory/laser/VBoxContainer"]
+layout_mode = 2
+text = "rng: 1  lvl: 0"
+label_settings = SubResource("LabelSettings_wes4s")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="drain" type="Label" parent="Panel/inventory/laser/VBoxContainer"]
+layout_mode = 2
+text = "drn: 1  lvl: 0"
+label_settings = SubResource("LabelSettings_wes4s")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="lamp" type="TextureRect" parent="Panel/inventory"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-color = Color(1, 1, 1, 0)
-
-[node name="TextureRect" type="TextureRect" parent="Panel/inventory/lamp"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 texture = ExtResource("9_p8sdj")
-expand_mode = 3
+expand_mode = 2
+stretch_mode = 4
 
-[node name="value" type="Label" parent="Panel/inventory/lamp"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/inventory/lamp"]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -48.5
-offset_top = -63.0
-offset_right = 48.5
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -20.0
+offset_top = -120.0
+offset_right = 15.0
 grow_horizontal = 2
-grow_vertical = 0
-text = "0
-"
-label_settings = SubResource("LabelSettings_qx11o")
+
+[node name="damage" type="Label" parent="Panel/inventory/lamp/VBoxContainer"]
+layout_mode = 2
+text = "dmg: 1  lvl: 0"
+label_settings = SubResource("LabelSettings_wes4s")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="range" type="Label" parent="Panel/inventory/lamp/VBoxContainer"]
+layout_mode = 2
+text = "rng: 1  lvl: 0"
+label_settings = SubResource("LabelSettings_wes4s")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="drain" type="Label" parent="Panel/inventory/lamp/VBoxContainer"]
+layout_mode = 2
+text = "drn: 1  lvl: 0"
+label_settings = SubResource("LabelSettings_wes4s")
+horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="GridContainer" type="GridContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 508.0
+offset_bottom = 496.0
 grow_horizontal = 2
-columns = 2
+columns = 3
