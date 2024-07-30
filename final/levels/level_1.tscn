@@ -86,18 +86,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="ui"]
-layout_mode = 0
-offset_left = 916.0
-offset_top = 494.0
-offset_right = 1140.0
-offset_bottom = 636.0
-text = "WASD to move
-Q/R to rotate camera
-F for crafting menu
-Scroll to zoom
-1/2/3 to select light weapon"
-
 [node name="game over" type="ColorRect" parent="ui"]
 visible = false
 layout_mode = 1

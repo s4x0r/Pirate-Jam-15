@@ -1,7 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://bsjjo30b5fe14"]
+[gd_scene load_steps=25 format=3 uid="uid://bsjjo30b5fe14"]
 
 [ext_resource type="Script" path="res://final/level parts/playerv2.gd" id="1_ytndl"]
-[ext_resource type="PackedScene" path="res://final/assets/3D/Main Char/lightmanv2.tscn" id="2_agxyt"]
+[ext_resource type="PackedScene" uid="uid://db33xf3brnokr" path="res://final/assets/3D/Main Char/lightmanv2.tscn" id="2_agxyt"]
 [ext_resource type="PackedScene" uid="uid://htw77c7ltgq4" path="res://final/level parts/crafting.tscn" id="2_u20nh"]
 [ext_resource type="PackedScene" uid="uid://cuq5besv4xcnw" path="res://final/assets/3D/Attachables/Laser/laser.glb" id="3_j1b11"]
 [ext_resource type="PackedScene" uid="uid://0vwamd3544ot" path="res://final/assets/3D/Attachables/Flashlight/flashlight.glb" id="4_6cv6w"]
@@ -45,6 +45,9 @@ points = PackedVector3Array(-7, 7.5, 0, -6.96711, 7.5, -0.68657, -5.70086, 4.498
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_f1tbw"]
 height = 0.5
 radius = 0.75
+
+[sub_resource type="LabelSettings" id="LabelSettings_mtf8i"]
+font_size = 26
 
 [sub_resource type="Theme" id="Theme_s30we"]
 
@@ -181,6 +184,29 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="GridContainer" type="GridContainer" parent="ui"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.889
+anchor_top = 0.441
+anchor_right = 1.0
+anchor_bottom = 0.559
+offset_left = -0.880112
+offset_top = 0.219984
+offset_bottom = -0.220016
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ui/GridContainer"]
+layout_mode = 2
+text = "WASD to move
+Q/R to rotate camera
+F for crafting menu
+Scroll to zoom
+1/2/3 to select light weapon"
+label_settings = SubResource("LabelSettings_mtf8i")
+horizontal_alignment = 2
 
 [node name="HSplitContainer" type="HSplitContainer" parent="ui"]
 layout_mode = 1
