@@ -283,8 +283,9 @@ func pickup(items): #{"metal":6, "glass":3}
 func damage(dmg):
 
 	var cDmg = DamageTypes.calculate_damage("light", dmg)
-
+	$AnimationPlayer.play("damaged")
 	battery.value-=cDmg
+
 
 func body_detected(body):
 	#body.damage({"value":5, "types":elements})
