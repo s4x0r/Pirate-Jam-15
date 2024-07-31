@@ -26,6 +26,3 @@ func reload():
 	get_parent().switch_to("res://final/levels/level_1.tscn")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

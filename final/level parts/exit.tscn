@@ -20,7 +20,7 @@ emission = Color(0.654902, 0.592157, 0.0666667, 1)
 material = SubResource("StandardMaterial3D_hnuqv")
 top_radius = 0.0
 bottom_radius = 0.0
-height = 30.0
+height = 50.0
 
 [sub_resource type="Animation" id="Animation_oe5w8"]
 length = 0.001
@@ -198,13 +198,15 @@ mesh = SubResource("CylinderMesh_r86yq")
 shape = SubResource("ConcavePolygonShape3D_1xqm8")
 
 [node name="beam" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25.1363, 0)
 mesh = SubResource("CylinderMesh_g7r2a")
+metadata/_edit_group_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_u0vtn")
 }
+speed_scale = 1.5
 
 [node name="rays" type="Node3D" parent="."]
 visible = false

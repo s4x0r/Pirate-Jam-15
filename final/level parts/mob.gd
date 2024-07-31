@@ -83,6 +83,7 @@ func _physics_process(delta):
 
 		if mode == "search":
 			$AnimationPlayer.play("search")
+			$sounds/search.play()
 		elif mode == "chase":
 			mode = "attack"
 			$AnimationPlayer.play("attack")
@@ -95,7 +96,7 @@ func _physics_process(delta):
 	move_and_slide()
 	
 func damage(dmg):
-
+	$sounds/damaged.play()
 	hp -= dmg
 	$dmgCounter.text=str(dmg)
 	$AnimationPlayer.play("damaged")
@@ -137,12 +138,12 @@ func _on_animation_player_animation_finished(anim_name):
 
 func _on_search_space_body_entered(body:Node3D):
 	#print(body)
-
 	if body.name == "player":
 		mode = "chase"
 		get_nav_path(body.global_position)
 		$AnimationPlayer.play("moving")
 		pass
+		$sounds/path.play()
 
 	pass # Replace with function body.
 
@@ -159,6 +160,7 @@ func _on_search_space_body_exited(body:Node3D):
 
 func _on_attack_space_body_entered(body):
 	if body.name == "player":
+		$sounds/hit.play()
 		body.damage(strength)
 
 	pass # Replace with function body.

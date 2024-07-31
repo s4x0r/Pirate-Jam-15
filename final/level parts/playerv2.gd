@@ -189,6 +189,8 @@ func upgrade(item, value):
 func set_weapon(weapon):
 	if battery.value<15:
 		weapon = "none"
+	else:
+		$sounds/switchweapon.play()
 
 	match weapon:
 		"none":
@@ -281,13 +283,9 @@ func pickup(items): #{"metal":6, "glass":3}
 	$ui/Panel/crafting.refresh_menu()
 
 func damage(dmg):
-
+	$sounds/damaged.play()
 	battery.value-=dmg
 
-
-func body_detected(body):
-	#body.damage({"value":5, "types":elements})
-	pass
 
 
 

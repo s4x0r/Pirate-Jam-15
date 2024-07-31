@@ -1,7 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://sl5u2ympqypy"]
+[gd_scene load_steps=17 format=3 uid="uid://sl5u2ympqypy"]
 
 [ext_resource type="Script" path="res://final/level parts/player.gd" id="1_pmsj1"]
 [ext_resource type="PackedScene" uid="uid://htw77c7ltgq4" path="res://final/level parts/crafting.tscn" id="2_w7b85"]
+[ext_resource type="AudioStream" uid="uid://c2opga8rm7j3q" path="res://final/assets/SFX/mp3/playerdamaged.mp3" id="3_tkp5q"]
+[ext_resource type="AudioStream" uid="uid://0o226mgu5s0s" path="res://final/assets/SFX/mp3/switchweapon.mp3" id="4_jw766"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2kn44"]
 albedo_color = Color(0.266667, 0.364706, 0.909804, 1)
@@ -261,6 +263,14 @@ text = "Laser"
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="damaged" type="AudioStreamPlayer3D" parent="Node3D"]
+stream = ExtResource("3_tkp5q")
+
+[node name="switchweapon" type="AudioStreamPlayer3D" parent="Node3D"]
+stream = ExtResource("4_jw766")
 
 [connection signal="body_entered" from="model/Lamp/Area3D" to="." method="body_detected"]
 [connection signal="body_entered" from="model/FlashLight/Area3D" to="." method="body_detected"]

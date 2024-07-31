@@ -92,7 +92,7 @@ func draw_laser():
 
 	var pos = laser.get_collision_point()
 	var b_pos = ((laser.get_collision_point() - laser.global_position)).bounce(laser.get_collision_normal().normalized())
-	var angle = laser.get_collision_normal()
+	#var angle = laser.get_collision_normal()
 	var ray_length = laser.global_position.distance_to(pos)
 
 	$model/Laser/lasermesh.mesh.height=ray_length

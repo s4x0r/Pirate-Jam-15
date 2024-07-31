@@ -85,7 +85,7 @@ func damage(dmg):
 
 	#print("damage: ", cDmg, "    hp: ", hp)
 	hp -= dmg
-	$dmgCounter.text=str(cDmg)
+	$dmgCounter.text=str(dmg)
 	$AnimationPlayer.play("damaged")
 	pass 
 

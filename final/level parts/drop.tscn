@@ -95,6 +95,7 @@ autoplay = "bounce"
 
 [node name="metal" parent="models" instance=ExtResource("2_7rfp1")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+visible = false
 
 [node name="lens" parent="models" instance=ExtResource("3_xu4c5")]
 visible = false

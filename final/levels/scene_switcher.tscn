@@ -9,7 +9,7 @@ script = ExtResource("1_mtprv")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_4hqmn")
-volume_db = -8.0
+volume_db = -20.0
 
 [node name="splash" parent="." instance=ExtResource("2_q0jre")]
 

@@ -2,10 +2,10 @@ extends Control
 var protocard= preload("res://final/level parts/crafting_card.tscn")
 
 var inventory = {
-	"metal":10,
-	"lens": 10,
-	"battery":10,
-	"bulb": 10
+	"metal":0,
+	"lens": 0,
+	"battery":0,
+	"bulb": 0
 }
 
 var recipes ={

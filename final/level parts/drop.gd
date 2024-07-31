@@ -12,7 +12,3 @@ func set_model():
 	if items != {}:
 		get_node("models/"+items.keys()[0]).visible= true
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

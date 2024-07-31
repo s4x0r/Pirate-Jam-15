@@ -11,7 +11,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	#print($laserspace.get_overlapping_areas())
 	pass
 
@@ -21,6 +21,7 @@ func activate():
 	$AnimationPlayer.play("on")
 	active = true
 	$Timer.start()
+	$sounds/activate.play()
 
 func deactivate():
 	$AnimationPlayer.play("on")
