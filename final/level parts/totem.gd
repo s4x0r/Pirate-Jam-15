@@ -6,6 +6,7 @@ var elements = ["light"]
 func _ready():
 	if active:
 		$AnimationPlayer.play("on")
+		$Timer.start()
 	pass # Replace with function body.
 
 
@@ -48,8 +49,9 @@ func _on_laserspace_area_entered(_area:Area3D):
 
 
 func _on_timer_timeout():
+	#print($Area3D.get_overlapping_bodies())
 	for i in $Area3D.get_overlapping_bodies():
 		match i.name:
-			"player": i.damage({"value":-5, "elements":["light"]})
-			_: i.damage({"value":5, "elements":["light"]})
+			"player": i.damage(-5)
+			_: i.damage(5)
 	pass # Replace with function body.

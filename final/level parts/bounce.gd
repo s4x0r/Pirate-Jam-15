@@ -13,5 +13,5 @@ func _process(delta):
 
 func _on_timer_timeout():
 	for i in get_overlapping_bodies():
-		i.damage({"value":damage, "elements":["light"]})
+		i.damage(damage)
 	pass # Replace with function body.

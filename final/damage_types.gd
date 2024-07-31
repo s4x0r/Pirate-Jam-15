@@ -51,7 +51,7 @@ func calculate_damage(rcv_type, damage):
 		for i in damage["types"]:
 			if j in type_chart[i]["resist"]: multiplier = multiplier/2
 			elif j in type_chart[i]["weak"]: multiplier = multiplier+1
-			elif j in type_chart[i]["immune"]: multiplier = 0
+			elif j in type_chart[i]["immune"]: multiplier = -1
 
 	return damage["value"]*multiplier
 

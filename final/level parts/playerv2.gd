@@ -269,7 +269,7 @@ func _on_timer_timeout():
 		battery.value = battery.value +5
 	
 	for i in bodies:
-		i.damage({"value":upgrades[weap]["damage"], "types":elements})
+		i.damage(upgrades[weap]["damage"])
 
 		
 	pass # Replace with function body.
@@ -282,9 +282,7 @@ func pickup(items): #{"metal":6, "glass":3}
 
 func damage(dmg):
 
-	var cDmg = DamageTypes.calculate_damage("light", dmg)
-
-	battery.value-=cDmg
+	battery.value-=dmg
 
 func body_detected(body):
 	#body.damage({"value":5, "types":elements})

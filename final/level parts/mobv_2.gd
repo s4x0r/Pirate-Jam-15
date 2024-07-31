@@ -83,10 +83,8 @@ func _physics_process(delta):
 	
 func damage(dmg):
 
-	var cDmg = DamageTypes.calculate_damage(elements, dmg)
-
 	#print("damage: ", cDmg, "    hp: ", hp)
-	hp -= cDmg
+	hp -= dmg
 	$dmgCounter.text=str(cDmg)
 	$AnimationPlayer.play("damaged")
 	pass 

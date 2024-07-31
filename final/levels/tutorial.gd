@@ -57,29 +57,29 @@ func trigger(_body:Node3D, tname:String):
 	match tname:
 		"zoom":
 			$ui/zoom.visible = true
-			$"triggers/zoom trigger".monitoring = false
+			$"triggers/zoom trigger".set_deferred("monitoring",  false)
 		"jump":
 			$ui/jump.visible = true
-			$"triggers/jump trigger".monitoring = false
+			$"triggers/jump trigger".set_deferred("monitoring",  false)
 		"rotate":
 			$ui/rotate.visible = true
-			$"triggers/rotate trigger".monitoring = false
+			$"triggers/rotate trigger".set_deferred("monitoring",  false)
 		"tool":#schism
 			$ui/tools.visible = true
-			$"triggers/tool trigger".monitoring = false
+			$"triggers/tool trigger".set_deferred("monitoring",  false)
 		"charge":
 			$ui/charge.visible = false
 			$ui/recharge.visible = true
-			$"triggers/charge trigger".monitoring = false
+			$"triggers/charge trigger".set_deferred("monitoring",  false)
 		"recharge":
 			$ui/recharge.visible = false
 			$ui/enemy.visible = true
 			$mob.active = true
-			$"triggers/recharge trigger".monitoring = false
+			$"triggers/recharge trigger".set_deferred("monitoring",  false)
 		"enemy":
 			$ui/enemy.visible = false
 			$ui/inventory.visible = true
-			$"triggers/zoom trigger".monitoring = false
+			$"triggers/zoom trigger".set_deferred("monitoring",  false)
 
 
 	pass

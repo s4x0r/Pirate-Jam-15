@@ -11,6 +11,8 @@ var strength = 5
 var rDist=20
 var elements = ["dark"]
 
+var drops = ["metal","lens","battery","bulb"]
+
 var move_path: PackedVector3Array
 
 signal died
@@ -24,8 +26,13 @@ func _physics_process(delta):
 	if !active: return
 
 	if hp <= 0:
+		emit_signal("died")
 		var instance = dropscn.instantiate()
-		instance.items = {"metal":5, "lens":5, "battery": 5, "bulb":5}
+
+		var random_drop = drops[randi() % drops.size()]
+
+		instance.items = {random_drop:randi_range(1, 5)}
+		instance.set_model()
 		get_parent().add_child(instance)
 		instance.global_position = global_position
 		queue_free()
@@ -89,13 +96,9 @@ func _physics_process(delta):
 	
 func damage(dmg):
 
-	var cDmg = DamageTypes.calculate_damage(elements, dmg)
-
-	#print("damage: ", cDmg, "    hp: ", hp)
-	hp -= cDmg
-	$dmgCounter.text=str(cDmg)
+	hp -= dmg
+	$dmgCounter.text=str(dmg)
 	$AnimationPlayer.play("damaged")
-	emit_signal("died")
 	pass 
 
 func attack():
@@ -156,6 +159,6 @@ func _on_search_space_body_exited(body:Node3D):
 
 func _on_attack_space_body_entered(body):
 	if body.name == "player":
-		body.damage({"value":strength, "types":elements})
+		body.damage(strength)
 
 	pass # Replace with function body.
