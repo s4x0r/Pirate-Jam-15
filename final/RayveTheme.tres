@@ -1,11 +1,20 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://db887ibii36e3"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://db887ibii36e3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r1073"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uohsi"]
+bg_color = Color(0.241156, 0.241156, 0.241156, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_ydbce"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gvmuc"]
-bg_color = Color(0.403791, 0.216674, 0.141679, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+bg_color = Color(0, 0, 0, 0.647059)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.105882)
+shadow_size = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ev6ld"]
 bg_color = Color(0, 0, 0, 1)
@@ -22,6 +31,10 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
 [resource]
+Button/styles/hover = SubResource("StyleBoxFlat_r1073")
+Button/styles/pressed = SubResource("StyleBoxFlat_uohsi")
+Label/font_sizes/font_size = 22
+Label/fonts/font = SubResource("SystemFont_ydbce")
 Panel/styles/panel = SubResource("StyleBoxFlat_gvmuc")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_ev6ld")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_tshig")

@@ -1,7 +1,44 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3y5ypomiynro"]
+[gd_scene load_steps=6 format=3 uid="uid://d3y5ypomiynro"]
 
 [ext_resource type="Script" path="res://final/levels/splash_screen.gd" id="1_0ba10"]
-[ext_resource type="VideoStream" path="res://final/assets/TheDiscPit-Logo-ANIM.ogv" id="2_2g7u6"]
+[ext_resource type="Texture2D" uid="uid://63udquaxmwgy" path="res://final/assets/Icons/TheDiscPit-Logo_WHT.png" id="2_7c2sc"]
+
+[sub_resource type="Animation" id="Animation_r0iu4"]
+resource_name = "fadeinout"
+length = 4.0185
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 3.5, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_exddq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cj0ub"]
+_data = {
+"RESET": SubResource("Animation_exddq"),
+"fadeinout": SubResource("Animation_r0iu4")
+}
 
 [node name="splash" type="Control"]
 layout_mode = 3
@@ -21,21 +58,23 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+[node name="AspectRatioContainer" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-ratio = 1.7777
-stretch_mode = 1
 
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="AspectRatioContainer"]
+[node name="TextureRect" type="TextureRect" parent="AspectRatioContainer"]
 layout_mode = 2
-stream = ExtResource("2_2g7u6")
-autoplay = true
-expand = true
+texture = ExtResource("2_7c2sc")
+stretch_mode = 3
 
-[connection signal="finished" from="AspectRatioContainer/VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
-[connection signal="gui_input" from="AspectRatioContainer/VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AspectRatioContainer/TextureRect"]
+libraries = {
+"": SubResource("AnimationLibrary_cj0ub")
+}
+autoplay = "fadeinout"
+
+[connection signal="animation_finished" from="AspectRatioContainer/TextureRect/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -23,6 +23,7 @@ DamageTypes="*res://final/damage_types.gd"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/stretch/mode="viewport"
 
 [input]
 

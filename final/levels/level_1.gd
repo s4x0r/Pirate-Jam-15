@@ -11,7 +11,8 @@ func check():
 	if get_tree() == null:
 		return
 	if get_tree().get_first_node_in_group("mobs")==null:
-		print("level clear")
+		$ui/Panel.set_visible(true)
+		await get_tree().create_timer(4.0).timeout
 		goto_main_menu()
 
 func player_died():

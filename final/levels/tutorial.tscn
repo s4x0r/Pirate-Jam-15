@@ -1,7 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://coldv1d00bnl2"]
+[gd_scene load_steps=26 format=3 uid="uid://coldv1d00bnl2"]
 
 [ext_resource type="Script" path="res://final/levels/tutorial.gd" id="1_wbc0t"]
 [ext_resource type="Environment" uid="uid://cvoybkaw7n4e6" path="res://final/level parts/environment.tres" id="2_upxxe"]
+[ext_resource type="Theme" uid="uid://db887ibii36e3" path="res://final/RayveTheme.tres" id="3_fk4gc"]
 [ext_resource type="PackedScene" uid="uid://bsjjo30b5fe14" path="res://final/level parts/playerv2.tscn" id="4_6q7lx"]
 [ext_resource type="Texture2D" uid="uid://df5flfv8hl8rq" path="res://final/road_muddy_02.jpg" id="5_pyw4o"]
 [ext_resource type="PackedScene" uid="uid://c0wutd8mr55cu" path="res://final/level parts/totem.tscn" id="6_hn3rt"]
@@ -450,7 +451,7 @@ anchor_bottom = 0.5
 offset_left = -172.0
 offset_top = 74.0
 offset_right = 172.0
-offset_bottom = 237.0
+offset_bottom = 282.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 0.52)
@@ -458,10 +459,14 @@ alignment = 1
 
 [node name="retry" type="Button" parent="ui/game over/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_fk4gc")
+theme_override_font_sizes/font_size = 0
 text = "Retry"
 
 [node name="goto main" type="Button" parent="ui/game over/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Main Menu"
 
 [node name="player" parent="." instance=ExtResource("4_6q7lx")]
@@ -637,6 +642,8 @@ script = ExtResource("10_xnmpt")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.6276, -29.6035, -19.6428)
 shape = SubResource("BoxShape3D_wmhch")
 
+[connection signal="pressed" from="ui/game over/HBoxContainer/retry" to="." method="reload"]
+[connection signal="pressed" from="ui/game over/HBoxContainer/goto main" to="." method="goto_main_menu"]
 [connection signal="activate" from="NavigationRegion3D/objects/switch" to="NavigationRegion3D/objects/drawbridge" method="lower"]
 [connection signal="deactivate" from="NavigationRegion3D/objects/switch" to="NavigationRegion3D/objects/drawbridge" method="raise"]
 [connection signal="body_entered" from="triggers/zoom trigger" to="." method="trigger" binds= ["zoom"]]

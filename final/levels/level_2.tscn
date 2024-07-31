@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b2ux5b1xkpc8b"]
+[gd_scene load_steps=8 format=3 uid="uid://b2ux5b1xkpc8b"]
 
 [ext_resource type="Script" path="res://final/levels/level_1.gd" id="1_gnu7a"]
 [ext_resource type="Environment" uid="uid://cvoybkaw7n4e6" path="res://final/level parts/environment.tres" id="2_toh2b"]
 [ext_resource type="PackedScene" uid="uid://bsjjo30b5fe14" path="res://final/level parts/playerv2.tscn" id="4_fg4ir"]
+[ext_resource type="PackedScene" uid="uid://cawuunbmj2p1v" path="res://final/level parts/mob.tscn" id="5_r2oet"]
 [ext_resource type="PackedScene" uid="uid://5badw2r21go3" path="res://final/assets/3D/Levels/Level 2/level_2_collision.tscn" id="5_x2s5d"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_r0ylg"]
@@ -32,6 +33,7 @@ light_energy = 0.515
 sky_mode = 1
 
 [node name="ui" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,7 +43,6 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="game over" type="ColorRect" parent="ui"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -92,9 +93,33 @@ layout_mode = 2
 text = "Main Menu"
 
 [node name="player" parent="." instance=ExtResource("4_fg4ir")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.0216391, 3, -0.112126)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.0216391, 3, -35.6243)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_uikyb")
 
 [node name="level 2" parent="NavigationRegion3D" instance=ExtResource("5_x2s5d")]
+
+[node name="mob" parent="." instance=ExtResource("5_r2oet")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.2844, 2.61391, 2.38086)
+
+[node name="mob2" parent="." instance=ExtResource("5_r2oet")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.2844, 2.61391, 27.6398)
+
+[node name="mob3" parent="." instance=ExtResource("5_r2oet")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.34545, 2.61391, 27.6398)
+
+[node name="mob4" parent="." instance=ExtResource("5_r2oet")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.91512, 2.61391, 4.07906)
+
+[node name="mob5" parent="." instance=ExtResource("5_r2oet")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.6911, 2.61391, -5.89161)
+
+[node name="mob6" parent="." instance=ExtResource("5_r2oet")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.9844, 2.61391, -25.8806)
+
+[node name="mob7" parent="." instance=ExtResource("5_r2oet")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.7587, 4.24305, 18.0706)
+
+[node name="mob8" parent="." instance=ExtResource("5_r2oet")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5862, 4.24305, 23.2266)
