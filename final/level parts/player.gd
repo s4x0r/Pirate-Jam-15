@@ -190,7 +190,7 @@ func _on_timer_timeout():
 func damage(dmg):
 
 	var cDmg = DamageTypes.calculate_damage("light", dmg)
-
+	
 	battery.value-=cDmg
 
 func body_detected(body):

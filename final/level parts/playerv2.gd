@@ -284,6 +284,7 @@ func damage(dmg):
 
 	battery.value-=dmg
 
+
 func body_detected(body):
 	#body.damage({"value":5, "types":elements})
 	pass
