@@ -9,7 +9,7 @@ var charging = false
 var elements = ["light"]
 
 const SPEED = 12.0
-const JUMP_VELOCITY = 10
+const JUMP_VELOCITY = 15
 
 var zoom_max = 50
 var zoom_min = 20
@@ -283,7 +283,8 @@ func pickup(items): #{"metal":6, "glass":3}
 	$ui/Panel/crafting.refresh_menu()
 
 func damage(dmg):
-	$sounds/damaged.play()
+	if dmg >=-0:
+		$sounds/damaged.play()
 	battery.value-=dmg
 
 

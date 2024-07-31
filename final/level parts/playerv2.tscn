@@ -1,7 +1,7 @@
 [gd_scene load_steps=30 format=3 uid="uid://bsjjo30b5fe14"]
 
 [ext_resource type="Script" path="res://final/level parts/playerv2.gd" id="1_ytndl"]
-[ext_resource type="PackedScene" path="res://final/assets/3D/Main Char/lightmanv2.tscn" id="2_agxyt"]
+[ext_resource type="PackedScene" uid="uid://db33xf3brnokr" path="res://final/assets/3D/Main Char/lightmanv2.tscn" id="2_agxyt"]
 [ext_resource type="PackedScene" uid="uid://htw77c7ltgq4" path="res://final/level parts/crafting.tscn" id="2_u20nh"]
 [ext_resource type="PackedScene" uid="uid://cuq5besv4xcnw" path="res://final/assets/3D/Attachables/Laser/laser.glb" id="3_j1b11"]
 [ext_resource type="PackedScene" uid="uid://0vwamd3544ot" path="res://final/assets/3D/Attachables/Flashlight/flashlight.glb" id="4_6cv6w"]

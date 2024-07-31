@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://c0wutd8mr55cu"]
+[gd_scene load_steps=19 format=3 uid="uid://c0wutd8mr55cu"]
 
 [ext_resource type="Script" path="res://final/level parts/totem.gd" id="1_1thr8"]
 [ext_resource type="AudioStream" uid="uid://bo2y3ijtaf26p" path="res://final/assets/SFX/mp3/totem.mp3" id="2_wx1yk"]
+[ext_resource type="PackedScene" uid="uid://cng1nhbe4pipi" path="res://final/level parts/switch.tscn" id="3_n768b"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0plvj"]
 radius = 1.0
@@ -12,6 +13,7 @@ radius = 0.75
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ly4sa"]
 albedo_color = Color(0.168627, 0.337255, 0.337255, 1)
+emission = Color(0, 0.568627, 0, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_fawd3"]
 material = SubResource("StandardMaterial3D_ly4sa")
@@ -27,15 +29,27 @@ emission = Color(0.454902, 1, 1, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_0adf2"]
 material = SubResource("StandardMaterial3D_whvkg")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dautx"]
-transparency = 1
-albedo_color = Color(0, 1, 0, 0.403922)
+[sub_resource type="PlaceholderMesh" id="PlaceholderMesh_a7wsn"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_5dylc"]
-material = SubResource("StandardMaterial3D_dautx")
-top_radius = 5.0
-bottom_radius = 5.0
-height = 0.5
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ex4k2"]
+emission_shape = 1
+emission_sphere_radius = 4.81
+spread = 91.071
+gravity = Vector3(0, 3.26, 0)
+scale_min = 0.0
+turbulence_enabled = true
+turbulence_noise_strength = 0.09
+turbulence_noise_scale = 1.816
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_et08d"]
+albedo_color = Color(0, 0.513726, 0.152941, 0.478431)
+emission_enabled = true
+emission = Color(0.215686, 0.784314, 0.109804, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_rcnp5"]
+material = SubResource("StandardMaterial3D_et08d")
+radius = 0.1
+height = 0.2
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gnsi2"]
 points = PackedVector3Array(0.951449, 0.305556, 5.07738, -0.951449, -0.329365, -5.07738, -1.58674, -0.329365, -4.9193, 1.58674, -0.329365, 4.9193, 4.9193, 0.305556, -1.58674, -5.07738, 0.305556, -0.951449, -4.44308, -0.329365, 2.69726, 5.07738, -0.329365, 0.951449, -0.951449, 0.305556, -5.07738, 3.17349, -0.329365, -4.12593, -3.17349, 0.305556, 4.12593, 4.12593, 0.305556, 3.17349, -4.44308, -0.329365, -2.69726, 2.06296, 0.305556, -4.76023, -1.58674, -0.329365, 4.9193, -3.17349, 0.305556, -4.12593, 4.76023, -0.329365, -2.06296, -4.76023, 0.305556, 2.06296, -5.07738, -0.329365, 0.951449, 3.17349, -0.329365, 4.12593, 4.12593, 0.305556, -3.17349, 5.07738, 0.305556, 0.951449, 0.951449, -0.329365, -5.07738, -0.951449, 0.305556, 5.07738, 2.69726, 0.305556, 4.44308, 4.44308, -0.329365, 2.69726, -4.44308, 0.305556, -2.69726, -3.17349, -0.329365, -4.12593, -3.17349, -0.329365, 4.12593, -5.07738, -0.329365, -0.951449, 5.07738, -0.329365, -0.951449, -0.951449, -0.329365, 5.07738)
@@ -297,8 +311,18 @@ monitorable = false
 [node name="chargemesh" type="MeshInstance3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 visible = false
-mesh = SubResource("CylinderMesh_5dylc")
+mesh = SubResource("PlaceholderMesh_a7wsn")
 skeleton = NodePath("../../totemmesh")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Area3D/chargemesh"]
+transform = Transform3D(1.03064, 0, 0, 0, 1.03064, 0, 0, 0, 1.03064, 0, 0, 0)
+amount = 78
+lifetime = 1.89
+fixed_fps = 20
+visibility_aabb = AABB(-3.65097, -4, -3.68427, 7.30194, 8, 7.36854)
+trail_lifetime = 0.95
+process_material = SubResource("ParticleProcessMaterial_ex4k2")
+draw_pass_1 = SubResource("SphereMesh_rcnp5")
 
 [node name="chargeshape" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -313,16 +337,21 @@ autoplay = "off"
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.61629, 0)
 visible = false
-light_color = Color(0.901961, 0.85098, 0.741176, 1)
-light_energy = 4.556
+light_color = Color(0, 0.798181, 0.0254204, 1)
+light_energy = 12.258
 light_indirect_energy = 2.293
-omni_range = 20.0
+omni_range = 7.883
 
 [node name="sounds" type="Node3D" parent="."]
 
 [node name="activate" type="AudioStreamPlayer3D" parent="sounds"]
 stream = ExtResource("2_wx1yk")
 
+[node name="switch" parent="." instance=ExtResource("3_n768b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.272178, 1.40125, 0)
+visible = false
+
 [connection signal="area_entered" from="laserspace" to="." method="_on_laserspace_area_entered"]
 [connection signal="area_exited" from="laserspace" to="." method="_on_laserspace_area_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="activate" from="switch" to="." method="activate"]
