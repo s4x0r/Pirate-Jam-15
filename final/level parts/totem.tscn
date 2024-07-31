@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c0wutd8mr55cu"]
+[gd_scene load_steps=16 format=3 uid="uid://c0wutd8mr55cu"]
 
 [ext_resource type="Script" path="res://final/level parts/totem.gd" id="1_1thr8"]
 [ext_resource type="AudioStream" uid="uid://bo2y3ijtaf26p" path="res://final/assets/SFX/mp3/totem.mp3" id="2_wx1yk"]
@@ -30,26 +30,6 @@ emission = Color(0.454902, 1, 1, 1)
 material = SubResource("StandardMaterial3D_whvkg")
 
 [sub_resource type="PlaceholderMesh" id="PlaceholderMesh_a7wsn"]
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ex4k2"]
-emission_shape = 1
-emission_sphere_radius = 4.81
-spread = 91.071
-gravity = Vector3(0, 3.26, 0)
-scale_min = 0.0
-turbulence_enabled = true
-turbulence_noise_strength = 0.09
-turbulence_noise_scale = 1.816
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_et08d"]
-albedo_color = Color(0, 0.513726, 0.152941, 0.478431)
-emission_enabled = true
-emission = Color(0.215686, 0.784314, 0.109804, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_rcnp5"]
-material = SubResource("StandardMaterial3D_et08d")
-radius = 0.1
-height = 0.2
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gnsi2"]
 points = PackedVector3Array(0.951449, 0.305556, 5.07738, -0.951449, -0.329365, -5.07738, -1.58674, -0.329365, -4.9193, 1.58674, -0.329365, 4.9193, 4.9193, 0.305556, -1.58674, -5.07738, 0.305556, -0.951449, -4.44308, -0.329365, 2.69726, 5.07738, -0.329365, 0.951449, -0.951449, 0.305556, -5.07738, 3.17349, -0.329365, -4.12593, -3.17349, 0.305556, 4.12593, 4.12593, 0.305556, 3.17349, -4.44308, -0.329365, -2.69726, 2.06296, 0.305556, -4.76023, -1.58674, -0.329365, 4.9193, -3.17349, 0.305556, -4.12593, 4.76023, -0.329365, -2.06296, -4.76023, 0.305556, 2.06296, -5.07738, -0.329365, 0.951449, 3.17349, -0.329365, 4.12593, 4.12593, 0.305556, -3.17349, 5.07738, 0.305556, 0.951449, 0.951449, -0.329365, -5.07738, -0.951449, 0.305556, 5.07738, 2.69726, 0.305556, 4.44308, 4.44308, -0.329365, 2.69726, -4.44308, 0.305556, -2.69726, -3.17349, -0.329365, -4.12593, -3.17349, -0.329365, 4.12593, -5.07738, -0.329365, -0.951449, 5.07738, -0.329365, -0.951449, -0.951449, -0.329365, 5.07738)
@@ -313,19 +293,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 visible = false
 mesh = SubResource("PlaceholderMesh_a7wsn")
 skeleton = NodePath("../../totemmesh")
-
-[node name="GPUParticles3D" type="GPUParticles3D" parent="Area3D/chargemesh"]
-transform = Transform3D(1.03064, 0, 0, 0, 1.03064, 0, 0, 0, 1.03064, 0, 0, 0)
-amount = 78
-lifetime = 1.89
-preprocess = 1.36
-fixed_fps = 12
-interpolate = false
-fract_delta = false
-visibility_aabb = AABB(-3.65097, -4, -3.68427, 7.30194, 8, 7.36854)
-trail_lifetime = 0.95
-process_material = SubResource("ParticleProcessMaterial_ex4k2")
-draw_pass_1 = SubResource("SphereMesh_rcnp5")
 
 [node name="chargeshape" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
