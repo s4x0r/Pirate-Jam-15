@@ -9,7 +9,7 @@ var charging = false
 var elements = ["light"]
 
 const SPEED = 12.0
-const JUMP_VELOCITY = 10
+const JUMP_VELOCITY = 15
 
 var zoom_max = 50
 var zoom_min = 20
@@ -67,7 +67,26 @@ func _ready():
 			i, 
 			$ui/Panel/crafting.upgrades[j[0]][j[1]][$ui/Panel/crafting.recipes[i]["cur level"]])
 
-	
+func _input(event):
+	if event.is_action_pressed("1") and battery.value >=1:
+		set_weapon("flashlight")
+		pass
+
+	if event.is_action_pressed("2") and battery.value >=1:
+		set_weapon("lamp")
+
+	if event.is_action_pressed("3") and battery.value >=1:
+		set_weapon("laser")
+
+	if event is InputEventJoypadMotion:
+		#var xAxisRL = Input.get_joy_axis(0,JOY_AXIS_2)
+		#var yAxisUD = Input.get_joy_axis(0,JOY_AXIS_3)
+		print(event)
+		print([Input.get_joy_axis(0,JOY_AXIS_RIGHT_X),Input.get_joy_axis(0,JOY_AXIS_RIGHT_Y)])
+		#print([xAxisRL,yAxisUD])
+		var axis = Vector2(Input.get_joy_axis(0,JOY_AXIS_RIGHT_X),Input.get_joy_axis(0,JOY_AXIS_RIGHT_Y)).normalized()*5
+		$pivot.look_at(to_global(Vector3(axis.x, 0, axis.y)))
+
 func _physics_process(delta):
 
 	if battery.value <= 0:
@@ -102,6 +121,8 @@ func _physics_process(delta):
 	# Handle jump.
 	if Input.is_action_just_pressed("player_jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+	
+	
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -119,7 +140,15 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+#Cast Shadow
+	var space_state = get_world_3d().direct_space_state
+	var query = PhysicsRayQueryParameters3D.create(global_position, global_position-Vector3(0,100,0))
+	query.collide_with_areas = false
 
+	var result = space_state.intersect_ray(query)
+	#print(global_position, result)
+	if result == {}:	$pivot/shadow.position = Vector3(0,-100,0)
+	else:	$pivot/shadow.global_position = result["position"]
 
 func draw_laser():
 
@@ -233,16 +262,7 @@ func set_weapon(weapon):
 			$pivot/laser/beam.monitoring = false
 			pass	
 
-func _input(event):
-	if event.is_action_pressed("1") and battery.value >=1:
-		set_weapon("flashlight")
-		pass
 
-	if event.is_action_pressed("2") and battery.value >=1:
-		set_weapon("lamp")
-
-	if event.is_action_pressed("3") and battery.value >=1:
-		set_weapon("laser")
 
 
 func _on_timer_timeout():

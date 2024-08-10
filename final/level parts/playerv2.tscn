@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bsjjo30b5fe14"]
+[gd_scene load_steps=32 format=3 uid="uid://bsjjo30b5fe14"]
 
 [ext_resource type="Script" path="res://final/level parts/playerv2.gd" id="1_ytndl"]
 [ext_resource type="PackedScene" path="res://final/assets/3D/Main Char/lightmanv2.tscn" id="2_agxyt"]
@@ -52,6 +52,13 @@ points = PackedVector3Array(4.76837e-07, 7.5, -7.5, 4.76837e-07, 4.49883, -6.100
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_f1tbw"]
 radius = 1.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j658u"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ea77m"]
+material = SubResource("StandardMaterial3D_j658u")
+height = 0.1
 
 [sub_resource type="LabelSettings" id="LabelSettings_g583g"]
 font_size = 37
@@ -322,6 +329,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9375, 0)
 light_color = Color(0.737255, 0.721569, 0, 1)
 omni_attenuation = 0.0436332
 
+[node name="shadow" type="MeshInstance3D" parent="pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("CylinderMesh_ea77m")
+skeleton = NodePath("../Passive light")
+
 [node name="ui" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -453,7 +465,7 @@ anchor_right = 1.0
 offset_right = 0.335968
 offset_bottom = 47.0
 grow_horizontal = 2
-text = "INVENTORY"
+text = "UPGRADES"
 label_settings = SubResource("LabelSettings_g583g")
 horizontal_alignment = 1
 vertical_alignment = 1
