@@ -88,8 +88,8 @@ func _physics_process(delta):
 	if $Camera3D.size < zoom_min: $Camera3D.size = zoom_min
 	if $Camera3D.size > zoom_max: $Camera3D.size = zoom_max
 
-	if Input.is_action_just_released("cam_rot_l"): rotation_degrees.y+=90
-	if Input.is_action_just_released("cam_rot_r"): rotation_degrees.y-=90
+	if Input.is_action_pressed("cam_rot_l"): rotation_degrees.y+=50*delta
+	if Input.is_action_pressed("cam_rot_r"): rotation_degrees.y-=50*delta
 	
 	#interact
 	if Input.is_action_just_pressed("player_interact") and is_on_floor():
