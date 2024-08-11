@@ -48,7 +48,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.7508, 1.43736, 40.1803)
 [node name="mob8" parent="." instance=ExtResource("3_8fxsa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.6971, 1.43736, 0.136865)
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." groups=["navigation"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 navigation_mesh = SubResource("NavigationMesh_03x8e")
 

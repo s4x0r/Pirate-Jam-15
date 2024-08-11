@@ -57,7 +57,7 @@ func toggle():
 
 
 func look_at_activator(target):
-	$piot.look_at(Vector3(target.x, global_position.y, target.z))
+	$pivot.look_at(Vector3(target.x, global_position.y, target.z))
 
 func laser():
 	for i in bounces:

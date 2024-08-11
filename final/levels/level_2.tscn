@@ -94,7 +94,7 @@ text = "Main Menu"
 [node name="player" parent="." instance=ExtResource("4_fg4ir")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.0216391, 3, -0.112126)
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." groups=["navigation"]]
 navigation_mesh = SubResource("NavigationMesh_uikyb")
 
 [node name="level 2" parent="NavigationRegion3D" instance=ExtResource("5_x2s5d")]

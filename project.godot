@@ -126,6 +126,16 @@ stick={
 "events": []
 }
 
+[layer_names]
+
+3d_physics/layer_1="world"
+3d_physics/layer_2="mobs"
+3d_physics/layer_3="player"
+3d_physics/layer_4="clickspace"
+3d_physics/layer_5="interactables"
+3d_physics/layer_6="drops"
+3d_physics/layer_7="reflective surface"
+
 [physics]
 
 3d/default_gravity=30.0

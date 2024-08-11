@@ -31,7 +31,7 @@ light_energy = 0.515
 sky_mode = 1
 
 [node name="sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 12, 0)
+transform = Transform3D(1, 0, 0, 0, -0.258819, 0.965926, 0, -0.965926, -0.258819, 0, 22, 0)
 light_energy = 0.515
 sky_mode = 1
 
@@ -98,13 +98,13 @@ text = "Main Menu"
 [node name="player" parent="." instance=ExtResource("4_4i48w")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.0216391, 3, -0.112126)
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." groups=["navigation"]]
 navigation_mesh = SubResource("NavigationMesh_uikyb")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D"]
+[node name="landing zone" type="MeshInstance3D" parent="NavigationRegion3D"]
 mesh = SubResource("BoxMesh_ergob")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/landing zone"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/landing zone/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_i822j")

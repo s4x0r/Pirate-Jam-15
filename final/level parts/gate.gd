@@ -4,11 +4,13 @@ extends Node3D
 
 func activate():
 	$AnimationPlayer.play("open")
-	get_node("/root/scene switcher").loaded.get_node("NavigationRegion3D").bake_navigation_mesh()
+	#get_node("/root/scene switcher").loaded.get_node("NavigationRegion3D").bake_navigation_mesh()
+	get_tree().call_group("navigation", "bake_navigation_mesh")
 	pass
 func deactivate():
 	$AnimationPlayer.play("closed")
-	get_node("/root/scene switcher").loaded.get_node("NavigationRegion3D").bake_navigation_mesh()
+	#get_node("/root/scene switcher").loaded.get_node("NavigationRegion3D").bake_navigation_mesh()
+	get_tree().call_group("navigation", "bake_navigation_mesh")
 	pass
 
 func toggle():

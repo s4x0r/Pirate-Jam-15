@@ -11,11 +11,11 @@ func check():
 	if get_tree() == null:
 		return
 	if get_tree().get_first_node_in_group("mobs")==null:
-		print("level clear")
+		#print("level clear")
 		goto_main_menu()
 
 func player_died():
-	print("game over")
+	#print("game over")
 	$player.queue_free()
 	$"ui/game over".visible = true
 
