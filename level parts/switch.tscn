@@ -1,0 +1,113 @@
+[gd_scene load_steps=10 format=3 uid="uid://cng1nhbe4pipi"]
+
+[ext_resource type="Script" path="res://level parts/switch.gd" id="1_t0eew"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4scpo"]
+size = Vector3(0.25, 2, 1.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_g3vt8"]
+size = Vector3(0.75, 0.25, 0.25)
+
+[sub_resource type="Animation" id="Animation_c2kqs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -0.610865)]
+}
+
+[sub_resource type="Animation" id="Animation_41cej"]
+resource_name = "off"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -0.610865)]
+}
+
+[sub_resource type="Animation" id="Animation_208gm"]
+resource_name = "on"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.610865)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bm5ht"]
+_data = {
+"RESET": SubResource("Animation_c2kqs"),
+"off": SubResource("Animation_41cej"),
+"on": SubResource("Animation_208gm")
+}
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_7w6rh"]
+height = 3.0
+radius = 1.5
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4ioej"]
+points = PackedVector3Array(0.125, 1, 0.75, -0.125, 1, 0.75, 0.125, -1, 0.75, 0.125, 1, -0.75, -0.125, 1, -0.75, -0.125, -1, 0.75, 0.125, -1, -0.75, -0.125, -1, -0.75)
+
+[node name="switch" type="Node3D"]
+script = ExtResource("1_t0eew")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_4scpo")
+
+[node name="pivot" type="Node3D" parent="."]
+transform = Transform3D(0.819152, 0.573576, 0, -0.573576, 0.819152, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.407025, 0, 0)
+mesh = SubResource("BoxMesh_g3vt8")
+skeleton = NodePath("../..")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.127389, 0.731528, 0)
+pixel_size = 0.01
+modulate = Color(0.454902, 0.454902, 0.454902, 1)
+text = "ON"
+
+[node name="Label3D2" type="Label3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.127389, -0.709722, 0)
+pixel_size = 0.01
+modulate = Color(0.454902, 0.454902, 0.454902, 1)
+text = "OFF"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bm5ht")
+}
+autoplay = "off"
+
+[node name="interactspace" type="Area3D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="interactspace"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.580643, 0)
+shape = SubResource("CylinderShape3D_7w6rh")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_4ioej")

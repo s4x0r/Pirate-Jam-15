@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1p707jpdemr0"]
+
+[ext_resource type="PackedScene" uid="uid://ry4r6rho7yo8" path="res://levels/protolevel.tscn" id="1_vr10k"]
+[ext_resource type="PackedScene" uid="uid://d1kcl2vgk76vd" path="res://levels/level_geometry.tscn" id="2_vid3n"]
+[ext_resource type="PackedScene" uid="uid://d24are02qhe4b" path="res://level parts/dirbeacon.tscn" id="3_ukgsp"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_i6xgk"]
+vertices = PackedVector3Array(-9.5, 1, -9.5, -9.5, 1, 9.5, 9.5, 1, 9.5, 9.5, 1, -9.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[node name="cubeworld" instance=ExtResource("1_vr10k")]
+
+[node name="NavigationRegion3D" parent="." index="6"]
+navigation_mesh = SubResource("NavigationMesh_i6xgk")
+
+[node name="level geometry" parent="NavigationRegion3D" index="1" instance=ExtResource("2_vid3n")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="totem" parent="." index="7" instance=ExtResource("3_ukgsp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.59481, 9, 96.5385)

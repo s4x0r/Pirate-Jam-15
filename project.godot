@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="Rayve"
-run/main_scene="res://final/levels/scene_switcher.tscn"
+run/main_scene="res://levels/scene_switcher.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-DamageTypes="*res://final/damage_types.gd"
+DamageTypes="*res://damage_types.gd"
 
 [display]
 
