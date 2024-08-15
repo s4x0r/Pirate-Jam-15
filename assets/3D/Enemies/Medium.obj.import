@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c37he5k0n24qj"
+path="res://.godot/imported/Medium.obj-202f3f04ffe320483f1fe6764a1d9bd5.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Medium.obj-202f3f04ffe320483f1fe6764a1d9bd5.mesh"]
+
+source_file="res://assets/3D/Enemies/Medium.obj"
+dest_files=["res://.godot/imported/Medium.obj-202f3f04ffe320483f1fe6764a1d9bd5.mesh", "res://.godot/imported/Medium.obj-202f3f04ffe320483f1fe6764a1d9bd5.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
