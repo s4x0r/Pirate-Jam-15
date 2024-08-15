@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://cacnm867vhr0j"]
-
-[ext_resource type="PackedScene" uid="uid://cuq5besv4xcnw" path="res://final/assets/3D/Attachables/Laser/laser.glb" id="1_llvpn"]
-[ext_resource type="Script" path="res://final/level parts/weapons/laser.gd" id="1_tpn8d"]
-
-[node name="laser" type="Node3D"]
-script = ExtResource("1_tpn8d")
-
-[node name="lasermodel" parent="." instance=ExtResource("1_llvpn")]

@@ -1,0 +1,110 @@
+[gd_scene load_steps=8 format=3 uid="uid://ry4r6rho7yo8"]
+
+[ext_resource type="Script" path="res://final/levels/level_1.gd" id="1_85khd"]
+[ext_resource type="Environment" uid="uid://cvoybkaw7n4e6" path="res://final/level parts/environment.tres" id="1_oqpga"]
+[ext_resource type="PackedScene" uid="uid://bsjjo30b5fe14" path="res://final/level parts/playerv2.tscn" id="4_4i48w"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_r0ylg"]
+font_size = 70
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_uikyb"]
+vertices = PackedVector3Array(-9.5, 1, -9.5, -9.5, 1, 9.5, 9.5, 1, 9.5, 9.5, 1, -9.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ergob"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_i822j"]
+data = PackedVector3Array(-10, 0.5, 10, 10, 0.5, 10, -10, -0.5, 10, 10, 0.5, 10, 10, -0.5, 10, -10, -0.5, 10, 10, 0.5, -10, -10, 0.5, -10, 10, -0.5, -10, -10, 0.5, -10, -10, -0.5, -10, 10, -0.5, -10, 10, 0.5, 10, 10, 0.5, -10, 10, -0.5, 10, 10, 0.5, -10, 10, -0.5, -10, 10, -0.5, 10, -10, 0.5, -10, -10, 0.5, 10, -10, -0.5, -10, -10, 0.5, 10, -10, -0.5, 10, -10, -0.5, -10, 10, 0.5, 10, -10, 0.5, 10, 10, 0.5, -10, -10, 0.5, 10, -10, 0.5, -10, 10, 0.5, -10, -10, -0.5, 10, 10, -0.5, 10, -10, -0.5, -10, 10, -0.5, 10, 10, -0.5, -10, -10, -0.5, -10)
+
+[node name="protolevel" type="Node3D"]
+script = ExtResource("1_85khd")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_oqpga")
+
+[node name="darklight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 12, 0)
+light_color = Color(0.152941, 0.152941, 0.239216, 1)
+light_energy = 0.515
+sky_mode = 1
+
+[node name="sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.258819, 0.965926, 0, -0.965926, -0.258819, 0, 22, 0)
+light_energy = 0.515
+sky_mode = 1
+
+[node name="ui" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="game over" type="ColorRect" parent="ui"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.768627)
+
+[node name="Label" type="Label" parent="ui/game over"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "YOU DIED"
+label_settings = SubResource("LabelSettings_r0ylg")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ui/game over"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -172.0
+offset_top = 74.0
+offset_right = 172.0
+offset_bottom = 237.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.52)
+alignment = 1
+
+[node name="retry" type="Button" parent="ui/game over/HBoxContainer"]
+layout_mode = 2
+text = "Retry"
+
+[node name="goto main" type="Button" parent="ui/game over/HBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="player" parent="." instance=ExtResource("4_4i48w")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.0216391, 3, -0.112126)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." groups=["navigation"]]
+navigation_mesh = SubResource("NavigationMesh_uikyb")
+
+[node name="landing zone" type="MeshInstance3D" parent="NavigationRegion3D"]
+mesh = SubResource("BoxMesh_ergob")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/landing zone"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/landing zone/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_i822j")
