@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwmkbjtph8plo"]
+
+[ext_resource type="PackedScene" uid="uid://cuq5besv4xcnw" path="res://assets/3D/Attachables/Laser/laser.glb" id="1_2dtaf"]
+
+[node name="laser" type="Node3D"]
+
+[node name="lasermodel" parent="." instance=ExtResource("1_2dtaf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0369507, 0.00795305, 0)

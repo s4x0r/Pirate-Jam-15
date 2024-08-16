@@ -38,12 +38,12 @@ radius = 0.1
 [sub_resource type="SphereShape3D" id="SphereShape3D_hi1s8"]
 radius = 5.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6abn7"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pp570"]
 transparency = 1
 albedo_color = Color(0.729412, 0.54902, 0, 0.592157)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_2ohgf"]
-material = SubResource("StandardMaterial3D_6abn7")
+material = SubResource("StandardMaterial3D_pp570")
 top_radius = 7.5
 height = 15.0
 
@@ -333,6 +333,12 @@ omni_attenuation = 0.0436332
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 mesh = SubResource("CylinderMesh_ea77m")
 skeleton = NodePath("../Passive light")
+
+[node name="hands" type="Node3D" parent="pivot"]
+
+[node name="r" type="Node3D" parent="pivot/hands"]
+
+[node name="l" type="Node3D" parent="pivot/hands"]
 
 [node name="ui" type="Control" parent="."]
 layout_mode = 3
