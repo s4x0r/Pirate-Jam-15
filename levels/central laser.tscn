@@ -247,11 +247,7 @@ points = PackedVector3Array(-6.19048, 2.38006, -12.1881, 5.85832, -2, 11.1747, -
 
 [node name="protolevel" instance=ExtResource("1_te3ih")]
 
-[node name="player" parent="." index="4"]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -29.0216, 3, -0.112126)
-JUMP_VELOCITY = 18
-
-[node name="NavigationRegion3D" parent="." index="5"]
+[node name="NavigationRegion3D" parent="." index="4"]
 navigation_mesh = SubResource("NavigationMesh_1nhsi")
 
 [node name="landing zone" parent="NavigationRegion3D" index="0"]

@@ -3,42 +3,28 @@ extends CharacterBody3D
 
 
 @onready var battery = $ui/HSplitContainer/VSeparator/ProgressBar
-var charging = false
-var elements = ["light"]
-@export var items:Array = ["flashlight", "laser", "lamp", "beacon"]
 
+@export var items:Array = ["flashlight", "laser", "lamp", "beacon"]
 @export var SPEED = 12.0
 @export var JUMP_VELOCITY = 15
-
+@export var max_battery = 150
 var zoom_max = 50
 var zoom_min = 20
 var zoom_step = 2
 
-
-
 signal died
-
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+
 func _ready():
+	battery.max_value = max_battery
+	battery.value = max_battery
+	$ui/Panel/inventory._ready()
 	pass
 
 func _input(event):
-
-	pass
-#
-#	if event.is_action_pressed("1") and battery.value >=1:
-#		set_weapon("flashlight")
-#		pass
-#
-#	if event.is_action_pressed("2") and battery.value >=1:
-#		set_weapon("lamp")
-#
-#	if event.is_action_pressed("3") and battery.value >=1:
-#		set_weapon("laser")
-
 
 	if event is InputEventJoypadMotion:
 		#var xAxisRL = Input.get_joy_axis(0,JOY_AXIS_2)
@@ -119,7 +105,7 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
-#Cast Shadow
+	#Cast Shadow
 	var space_state = get_world_3d().direct_space_state
 	var query = PhysicsRayQueryParameters3D.create(global_position, global_position-Vector3(0,100,0))
 	query.collide_with_areas = false
@@ -138,8 +124,15 @@ func put_in_hand(object:Node, hand:String):#only accepts "r" or "l" as a hand va
 	get_node(s).add_child(object)
 	object.global_position = get_node(s).global_position
 
+	get_node("ui/HSplitContainer/VSeparator/"+hand+"/TextureRect").texture = load(InventoryTable.items[object.name]["img"])
 
 
+func send_charge(ammount:int):
+	if battery.value > ammount*1.5:
+		battery.value -= ammount
+		return true
+	else: 
+		return false
 
 
 

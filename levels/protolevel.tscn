@@ -1,8 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://ry4r6rho7yo8"]
+[gd_scene load_steps=6 format=3 uid="uid://ry4r6rho7yo8"]
 
-[ext_resource type="Script" path="res://levels/level_1.gd" id="1_85khd"]
 [ext_resource type="Environment" uid="uid://cvoybkaw7n4e6" path="res://level parts/environment.tres" id="1_oqpga"]
-[ext_resource type="PackedScene" uid="uid://bsjjo30b5fe14" path="res://level parts/playerv2.tscn" id="4_4i48w"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_r0ylg"]
 font_size = 70
@@ -19,7 +17,6 @@ size = Vector3(20, 1, 20)
 data = PackedVector3Array(-10, 0.5, 10, 10, 0.5, 10, -10, -0.5, 10, 10, 0.5, 10, 10, -0.5, 10, -10, -0.5, 10, 10, 0.5, -10, -10, 0.5, -10, 10, -0.5, -10, -10, 0.5, -10, -10, -0.5, -10, 10, -0.5, -10, 10, 0.5, 10, 10, 0.5, -10, 10, -0.5, 10, 10, 0.5, -10, 10, -0.5, -10, 10, -0.5, 10, -10, 0.5, -10, -10, 0.5, 10, -10, -0.5, -10, -10, 0.5, 10, -10, -0.5, 10, -10, -0.5, -10, 10, 0.5, 10, -10, 0.5, 10, 10, 0.5, -10, -10, 0.5, 10, -10, 0.5, -10, 10, 0.5, -10, -10, -0.5, 10, 10, -0.5, 10, -10, -0.5, -10, 10, -0.5, 10, 10, -0.5, -10, -10, -0.5, -10)
 
 [node name="protolevel" type="Node3D"]
-script = ExtResource("1_85khd")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_oqpga")
@@ -94,9 +91,6 @@ text = "Retry"
 [node name="goto main" type="Button" parent="ui/game over/HBoxContainer"]
 layout_mode = 2
 text = "Main Menu"
-
-[node name="player" parent="." instance=ExtResource("4_4i48w")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.0216391, 3, -0.112126)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." groups=["navigation"]]
 navigation_mesh = SubResource("NavigationMesh_uikyb")

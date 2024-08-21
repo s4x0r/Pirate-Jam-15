@@ -80,6 +80,7 @@ grow_vertical = 2
 mouse_filter = 1
 
 [node name="scenes" type="Control" parent="menu/right"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -101,7 +102,6 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="save" type="Control" parent="menu/right"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

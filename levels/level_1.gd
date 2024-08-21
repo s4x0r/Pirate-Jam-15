@@ -24,5 +24,3 @@ func goto_main_menu():
 
 func reload():
 	get_parent().switch_to("res://levels/level_1.tscn")
-
-
