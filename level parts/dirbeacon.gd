@@ -19,9 +19,9 @@ func damage(dmg):
 	if elements == ["light"]: return
 	print("dmg")
 
-	var cDmg = DamageTypes.calculate_damage(elements, dmg)
+	#var cDmg = DamageTypes.calculate_damage(elements, dmg)
 
-	hp -= cDmg
+	hp -= dmg
 	if hp <= 0:
 		$AnimationPlayer.play("on")
 		active = true

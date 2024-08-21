@@ -1,36 +1,194 @@
-[gd_scene format=3 uid="uid://pjcftja1jyrb"]
+[gd_scene load_steps=2 format=3 uid="uid://dt70fgnsbt3nt"]
+
+[ext_resource type="Script" path="res://levels/devtool.gd" id="1_7jvo2"]
 
 [node name="devtool" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_7jvo2")
+metadata/_edit_vertical_guides_ = [-972.0]
 
-[node name="left" type="Panel" parent="."]
-custom_minimum_size = Vector2(200, 600)
+[node name="menu" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 50.0
-offset_top = -300.0
-offset_right = 200.0
-offset_bottom = 300.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
 grow_vertical = 2
 
-[node name="right" type="Panel" parent="."]
-custom_minimum_size = Vector2(800, 600)
+[node name="menu" type="Panel" parent="menu"]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 74.0
+offset_top = 2.0
+offset_right = 274.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="menu/menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -33.0
+offset_right = 48.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="load" type="Button" parent="menu/menu/VBoxContainer"]
+layout_mode = 2
+text = "Load Scene"
+
+[node name="save" type="Button" parent="menu/menu/VBoxContainer"]
+layout_mode = 2
+text = "Save Editor"
+
+[node name="cheats" type="Button" parent="menu/menu/VBoxContainer"]
+layout_mode = 2
+text = "cheats"
+
+[node name="settings" type="Button" parent="menu/menu/VBoxContainer"]
+layout_mode = 2
+text = "settings"
+
+[node name="exit" type="Button" parent="menu/menu/VBoxContainer"]
+layout_mode = 2
+text = "exit to desktop"
+
+[node name="right" type="Panel" parent="menu"]
+layout_mode = 1
+anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = -20.0
-offset_right = -50.0
-offset_bottom = 20.0
+offset_left = -913.0
+offset_top = -317.0
+offset_right = -62.0
+offset_bottom = 317.0
 grow_horizontal = 0
 grow_vertical = 2
+mouse_filter = 1
+
+[node name="scenes" type="Control" parent="menu/right"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="menu/right/scenes"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 235.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="menu/right/scenes/ScrollContainer"]
+layout_mode = 2
+
+[node name="save" type="Control" parent="menu/right"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="items" type="VBoxContainer" parent="menu/right/save"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -227.5
+offset_top = 221.0
+offset_right = -107.5
+offset_bottom = -168.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="menu/right/save/items"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "item flags"
+
+[node name="CheckButton" type="CheckButton" parent="menu/right/save/items"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 4
+text = "flashlight"
+
+[node name="CheckButton2" type="CheckButton" parent="menu/right/save/items"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 4
+text = "laser"
+
+[node name="CheckButton3" type="CheckButton" parent="menu/right/save/items"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 4
+text = "lamp"
+
+[node name="CheckButton4" type="CheckButton" parent="menu/right/save/items"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 4
+text = "beacon"
+
+[node name="stats" type="VBoxContainer" parent="menu/right/save"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.5
+offset_top = -20.0
+offset_right = 131.5
+offset_bottom = 235.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="menu/right/save/stats"]
+layout_mode = 2
+text = "stats"
+
+[node name="hp" type="HBoxContainer" parent="menu/right/save/stats"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="menu/right/save/stats/hp"]
+layout_mode = 2
+text = "hp"
+
+[node name="LineEdit" type="LineEdit" parent="menu/right/save/stats/hp"]
+layout_mode = 2
+text = "100"
+
+[node name="dmg" type="HBoxContainer" parent="menu/right/save/stats"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="menu/right/save/stats/dmg"]
+layout_mode = 2
+text = "dmg"
+
+[node name="LineEdit" type="LineEdit" parent="menu/right/save/stats/dmg"]
+layout_mode = 2
+text = "100"
