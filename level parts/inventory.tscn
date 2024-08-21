@@ -1,0 +1,209 @@
+[gd_scene load_steps=8 format=3 uid="uid://c8pvotxjxasi4"]
+
+[ext_resource type="Script" path="res://level parts/inventory.gd" id="1_x2agr"]
+[ext_resource type="Texture2D" uid="uid://bx4ej4ckisfcp" path="res://assets/3D/Attachables/Flashlight/flashlighticon.png" id="2_jgb1v"]
+[ext_resource type="Texture2D" uid="uid://7poexfbqec2v" path="res://assets/3D/Collectibles/lenses/lensicon.png" id="6_6l5cc"]
+[ext_resource type="Texture2D" uid="uid://bu0c71jmo8y5n" path="res://assets/3D/Collectibles/bulbs/bulbicon.png" id="7_cwbtv"]
+[ext_resource type="Texture2D" uid="uid://1sesci30dja1" path="res://assets/3D/Collectibles/metal/metalchunkicon.png" id="8_0bv28"]
+[ext_resource type="Texture2D" uid="uid://nq73bcfpk6o2" path="res://assets/3D/Collectibles/batteries/batteryicon.png" id="9_ww6u2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_y4k0s"]
+font_size = 69
+
+[node name="inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x2agr")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(800, 600)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 585.0
+grow_vertical = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 3
+
+[node name="item" type="Control" parent="Panel/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="Panel/GridContainer/item"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_jgb1v")
+expand_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -170.0
+grow_horizontal = 0
+grow_vertical = 2
+alignment = 1
+
+[node name="item5" type="Control" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/item5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_6l5cc")
+expand_mode = 3
+
+[node name="item6" type="Control" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/item6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_cwbtv")
+expand_mode = 3
+
+[node name="item7" type="Control" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/item7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_0bv28")
+expand_mode = 3
+
+[node name="item8" type="Control" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/item8"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_ww6u2")
+expand_mode = 3
+
+[node name="leftbox" type="Control" parent="Panel"]
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 0
+offset_left = -410.0
+offset_top = -36.0
+offset_right = -310.0
+offset_bottom = 64.0
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Panel/leftbox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.996078, 0, 0.360784)
+
+[node name="Label" type="Label" parent="Panel/leftbox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "L"
+label_settings = SubResource("LabelSettings_y4k0s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="rightbox" type="Control" parent="Panel"]
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 0
+offset_left = -410.0
+offset_top = -36.0
+offset_right = -310.0
+offset_bottom = 64.0
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Panel/rightbox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 0.360784)
+
+[node name="Label" type="Label" parent="Panel/rightbox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "R"
+label_settings = SubResource("LabelSettings_y4k0s")
+horizontal_alignment = 1
+vertical_alignment = 1

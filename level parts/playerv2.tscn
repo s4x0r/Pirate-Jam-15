@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bsjjo30b5fe14"]
+[gd_scene load_steps=33 format=3 uid="uid://bsjjo30b5fe14"]
 
 [ext_resource type="Script" path="res://level parts/playerv2.gd" id="1_ytndl"]
 [ext_resource type="PackedScene" uid="uid://db33xf3brnokr" path="res://assets/3D/Main Char/lightmanv2.tscn" id="2_agxyt"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bx4ej4ckisfcp" path="res://assets/3D/Attachables/Flashlight/flashlighticon.png" id="6_0s7r5"]
 [ext_resource type="Texture2D" uid="uid://dksbunrycu62y" path="res://assets/3D/Attachables/Lamp/lampicon.png" id="7_e5new"]
 [ext_resource type="Texture2D" uid="uid://cvr7iybm2rcka" path="res://assets/3D/Attachables/Laser/lasericon.png" id="8_rfrrb"]
+[ext_resource type="PackedScene" uid="uid://c8pvotxjxasi4" path="res://level parts/inventory.tscn" id="9_sdqmh"]
 [ext_resource type="AudioStream" uid="uid://c2opga8rm7j3q" path="res://assets/SFX/mp3/playerdamaged.mp3" id="10_fkfw0"]
 [ext_resource type="AudioStream" uid="uid://0o226mgu5s0s" path="res://assets/SFX/mp3/switchweapon.mp3" id="11_ymqbw"]
 
@@ -337,8 +338,10 @@ skeleton = NodePath("../Passive light")
 [node name="hands" type="Node3D" parent="pivot"]
 
 [node name="r" type="Node3D" parent="pivot/hands"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 0)
 
 [node name="l" type="Node3D" parent="pivot/hands"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, 0)
 
 [node name="ui" type="Control" parent="."]
 layout_mode = 3
@@ -476,7 +479,11 @@ label_settings = SubResource("LabelSettings_g583g")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="inventory" parent="ui/Panel" instance=ExtResource("9_sdqmh")]
+layout_mode = 1
+
 [node name="crafting" parent="ui/Panel" instance=ExtResource("2_u20nh")]
+visible = false
 layout_mode = 1
 offset_left = 137.0
 offset_top = 68.104
@@ -537,6 +544,7 @@ stream = ExtResource("11_ymqbw")
 [connection signal="body_entered" from="pivot/laser/bounce" to="." method="body_detected"]
 [connection signal="body_entered" from="pivot/Lamp/Area3D" to="." method="body_detected"]
 [connection signal="body_entered" from="pivot/FlashLight/Area3D" to="." method="body_detected"]
+[connection signal="change_weapon" from="ui/Panel/inventory" to="." method="put_in_hand"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="input_event" from="mousespace" to="." method="_on_mouse"]
 [connection signal="body_entered" from="pickupspace" to="." method="_on_pickupspace_body_entered"]

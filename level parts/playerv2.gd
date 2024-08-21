@@ -8,8 +8,8 @@ var laser
 var charging = false
 var elements = ["light"]
 
-const SPEED = 12.0
-const JUMP_VELOCITY = 15
+@export var SPEED = 12.0
+@export var JUMP_VELOCITY = 15
 
 var zoom_max = 50
 var zoom_min = 20
@@ -68,15 +68,18 @@ func _ready():
 			$ui/Panel/crafting.upgrades[j[0]][j[1]][$ui/Panel/crafting.recipes[i]["cur level"]])
 
 func _input(event):
-	if event.is_action_pressed("1") and battery.value >=1:
-		set_weapon("flashlight")
-		pass
 
-	if event.is_action_pressed("2") and battery.value >=1:
-		set_weapon("lamp")
-
-	if event.is_action_pressed("3") and battery.value >=1:
-		set_weapon("laser")
+	pass
+#
+#	if event.is_action_pressed("1") and battery.value >=1:
+#		set_weapon("flashlight")
+#		pass
+#
+#	if event.is_action_pressed("2") and battery.value >=1:
+#		set_weapon("lamp")
+#
+#	if event.is_action_pressed("3") and battery.value >=1:
+#		set_weapon("laser")
 
 	if event is InputEventJoypadMotion:
 		#var xAxisRL = Input.get_joy_axis(0,JOY_AXIS_2)
@@ -98,6 +101,19 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+
+	if not $ui/Panel.visible:
+		if Input.is_action_just_pressed("player_primary") && $pivot/hands/l.get_children() != []:
+			$pivot/hands/l.get_children()[0].activate()
+		if Input.is_action_just_released("player_primary") && $pivot/hands/l.get_children() != []:
+			$pivot/hands/l.get_children()[0].deactivate()
+
+		if Input.is_action_just_pressed("player_secondary") && $pivot/hands/r.get_children() != []:
+			$pivot/hands/r.get_children()[0].activate()
+		if Input.is_action_just_released("player_secondary")&& $pivot/hands/r.get_children() != []:
+			$pivot/hands/r.get_children()[0].deactivate()
+
+
 
 	if Input.is_action_just_pressed("player_inventory"):
 		$ui/Panel.visible = !$ui/Panel.visible
@@ -150,7 +166,7 @@ func _physics_process(delta):
 	if result == {}:	$pivot/shadow.position = Vector3(0,-100,0)
 	else:	$pivot/shadow.global_position = result["position"]
 
-func draw_laser():
+func draw_laser():#deprecated
 
 	var ray = $pivot/laser/ray
 
@@ -188,7 +204,7 @@ func draw_laser():
 
 	#print(global_position, pos, ray.get_collider())
 
-func upgrade(item, value):
+func upgrade(item, value):#deprecated
 	var j =item.split(" ")
 	upgrades[j[0]][j[1]]=value
 	if j[1] == "range":
@@ -215,7 +231,7 @@ func upgrade(item, value):
 				$pivot/laser/ray.target_position=Vector3(0,0,-value)	
 
 
-func set_weapon(weapon):
+func set_weapon(weapon):#deprecated
 	if battery.value<15:
 		weapon = "none"
 	else:
@@ -261,6 +277,15 @@ func set_weapon(weapon):
 			$pivot/laser.visible = false
 			$pivot/laser/beam.monitoring = false
 			pass	
+
+func put_in_hand(object:Node, hand:String):#only accepts "r" or "l" as a hand value
+
+	var s = "pivot/hands/" + hand
+	for i in get_node(s).get_children():
+		i.free()
+
+	get_node(s).add_child(object)
+	object.global_position = get_node(s).global_position
 
 
 
