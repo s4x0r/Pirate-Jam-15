@@ -247,6 +247,9 @@ points = PackedVector3Array(-6.19048, 2.38006, -12.1881, 5.85832, -2, 11.1747, -
 
 [node name="protolevel" instance=ExtResource("1_te3ih")]
 
+[node name="sun" parent="." index="2"]
+visible = false
+
 [node name="NavigationRegion3D" parent="." index="4"]
 navigation_mesh = SubResource("NavigationMesh_1nhsi")
 

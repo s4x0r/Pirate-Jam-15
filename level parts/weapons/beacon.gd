@@ -10,19 +10,13 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
 
-
-func damage_enemies():
-	var bodies = $Area3D.get_overlapping_bodies()
-	for i in bodies:
+func _on_area_3d_body_entered(body:Node3D) -> void:
 		#check line of sight
 		var space_state = get_world_3d().direct_space_state
 		var origin = global_position
-		var end = i.global_position
+		var end = body.global_position
 		var query = PhysicsRayQueryParameters3D.create(origin, end, 3)
 		query.collide_with_areas = false
 
@@ -30,8 +24,10 @@ func damage_enemies():
 
 		#print(result["collider"])
 		if result == {}: return
-		elif result["collider"]==i: i.damage(damage)
+		elif result["collider"]==body: body.damage(damage)
 		else: return
+
+
 
 
 
@@ -41,7 +37,6 @@ func _on_timer_timeout():
 		deactivate()
 		return
 
-	damage_enemies()
 	$Timer.start()
 	pass # Replace with function body.
 

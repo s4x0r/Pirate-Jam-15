@@ -17,7 +17,7 @@ var items = {
 	},
 	"lamp":{
 		"img":"res://assets/3D/Attachables/Lamp/lampicon.png",
-		"weapon": preload("res://level parts/weapons/flashlight.tscn")
+		"weapon": preload("res://level parts/weapons/lamp.tscn")
 	},
 	"laser":{
 		"img":"res://assets/3D/Attachables/Laser/lasericon.png",
@@ -25,7 +25,7 @@ var items = {
 		},
 	"beacon":{
 		"img":"res://assets/3D/Attachables/Beacon/BeaconIcon.png",
-		"weapon": preload("res://level parts/weapons/flashlight.tscn")
+		"weapon": preload("res://level parts/weapons/beacon.tscn")
 		}
 
 }

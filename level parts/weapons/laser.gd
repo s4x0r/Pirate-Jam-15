@@ -1,11 +1,16 @@
 extends Node3D
 @export var timeout:float = 0.8
-@export var dmg:int = 5
+@export var damage:int = 5
 @export var max_ray_dist = 100
+@export var charge = 10
 
 var bouncescn = preload ("res://level parts/bounce.tscn")
 var bounces = []
 var active = false
+
+const REFLECTIVE = 64
+const WORLD = 1
+const MOB = 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,7 +19,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if active:
 		laser()
 	else:
@@ -23,21 +28,26 @@ func _process(delta):
 			bounces = []
 	pass
 
-
-
-func _on_timer_timeout():
-	if !active: return
-
+func damage_enemies():
 	for i in bounces:
 		var bodies = i.get_node("Area3D").get_overlapping_bodies()
 		for j in bodies:
-			j.damage(dmg)
+			j.damage(damage)
+
+func _on_timer_timeout():
+	if !active: return
+	if !get_node("../../../..").send_charge(charge): 
+		deactivate()
+		return
+
+
+	damage_enemies()
 	$Timer.start()
 	pass # Replace with function body.
 
 func activate():
 	active = true
-	$Timer.start()
+	_on_timer_timeout()
 	pass
 
 func deactivate():
@@ -45,6 +55,7 @@ func deactivate():
 	pass
 
 func laser():
+	var mask = MOB+WORLD+REFLECTIVE
 	for i in bounces:
 		i.free()
 
@@ -60,7 +71,7 @@ func laser():
 	var space_state = get_world_3d().direct_space_state
 	var origin = global_position
 	var end = to_global(Vector3(0,0,-max_ray_dist))
-	var query = PhysicsRayQueryParameters3D.create(origin, end, 65)
+	var query = PhysicsRayQueryParameters3D.create(origin, end, mask)
 	query.collide_with_areas = false
 
 	var result = space_state.intersect_ray(query)
@@ -95,12 +106,12 @@ func laser():
 
 		
 		
-		if result != {} && result["collider"].collision_layer & 64:
+		if result != {} && result["collider"].collision_layer & REFLECTIVE:
 
 			end = ((pos - origin)).bounce(result["normal"]).normalized()*max_ray_dist
 			origin = result["position"]
 			#print(origin, end)
-			query = PhysicsRayQueryParameters3D.create(origin, end, 65)
+			query = PhysicsRayQueryParameters3D.create(origin, end, mask)
 			query.collide_with_areas = false
 
 			result = space_state.intersect_ray(query)

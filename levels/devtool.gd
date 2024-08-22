@@ -76,8 +76,8 @@ func show_menu(vis:bool):
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+#func _process(delta):
+#	pass
 
 
 func next_level():

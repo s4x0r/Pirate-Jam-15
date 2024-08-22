@@ -27,11 +27,6 @@ func _ready():
 func _input(event):
 
 	if event is InputEventJoypadMotion:
-		#var xAxisRL = Input.get_joy_axis(0,JOY_AXIS_2)
-		#var yAxisUD = Input.get_joy_axis(0,JOY_AXIS_3)
-		#print(event)
-		print([Input.get_joy_axis(0,JOY_AXIS_RIGHT_X),Input.get_joy_axis(0,JOY_AXIS_RIGHT_Y)])
-		#print([xAxisRL,yAxisUD])
 		var axis = Vector2(Input.get_joy_axis(0,JOY_AXIS_RIGHT_X),Input.get_joy_axis(0,JOY_AXIS_RIGHT_Y)).normalized()*5
 		$pivot.look_at(to_global(Vector3(axis.x, 0, axis.y)))
 

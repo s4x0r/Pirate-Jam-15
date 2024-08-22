@@ -1,9 +1,15 @@
 extends Control
 
+
+
 signal change_weapon(weapon:Node, hand:String)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	for i in $Panel/GridContainer.get_children():
+		if i != $Panel/GridContainer/item:
+			i.free()
+
 	#make weapon buttons
 	for i in get_node("../../..").items:
 		var b = $Panel/GridContainer/item.duplicate()
