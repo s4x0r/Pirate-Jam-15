@@ -1,0 +1,319 @@
+[gd_scene load_steps=7 format=3 uid="uid://dt70fgnsbt3nt"]
+
+[ext_resource type="Script" path="res://levels/devtool.gd" id="1_7jvo2"]
+[ext_resource type="Theme" uid="uid://db887ibii36e3" path="res://assets/RayveTheme.tres" id="2_s8xq8"]
+[ext_resource type="PackedScene" uid="uid://c8pvotxjxasi4" path="res://level parts/inventory.tscn" id="3_v7sqd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3vb7p"]
+bg_color = Color(0, 1, 0, 0.392157)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ntkse"]
+bg_color = Color(1, 0, 0, 0.392157)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cofq2"]
+font_size = 37
+
+[node name="devtool" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7jvo2")
+metadata/_edit_vertical_guides_ = [-972.0]
+
+[node name="menu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="menu" type="Panel" parent="menu"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 74.0
+offset_top = 2.0
+offset_right = 274.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="menu/menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -33.0
+offset_right = 48.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="load" type="Button" parent="menu/menu/VBoxContainer"]
+layout_mode = 2
+text = "Load Scene"
+
+[node name="save" type="Button" parent="menu/menu/VBoxContainer"]
+layout_mode = 2
+text = "Save Editor"
+
+[node name="cheats" type="Button" parent="menu/menu/VBoxContainer"]
+layout_mode = 2
+text = "cheats"
+
+[node name="settings" type="Button" parent="menu/menu/VBoxContainer"]
+layout_mode = 2
+text = "settings"
+
+[node name="exit" type="Button" parent="menu/menu/VBoxContainer"]
+layout_mode = 2
+text = "exit to desktop"
+
+[node name="right" type="Panel" parent="menu"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -913.0
+offset_top = -317.0
+offset_right = -62.0
+offset_bottom = 317.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="scenes" type="Control" parent="menu/right"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="menu/right/scenes"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 235.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="menu/right/scenes/ScrollContainer"]
+layout_mode = 2
+
+[node name="save" type="Control" parent="menu/right"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="items" type="VBoxContainer" parent="menu/right/save"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -227.5
+offset_top = 221.0
+offset_right = -107.5
+offset_bottom = -168.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="menu/right/save/items"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "item flags"
+
+[node name="CheckButton" type="CheckButton" parent="menu/right/save/items"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 4
+text = "flashlight"
+
+[node name="CheckButton2" type="CheckButton" parent="menu/right/save/items"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 4
+text = "laser"
+
+[node name="CheckButton3" type="CheckButton" parent="menu/right/save/items"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 4
+text = "lamp"
+
+[node name="CheckButton4" type="CheckButton" parent="menu/right/save/items"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 4
+text = "beacon"
+
+[node name="stats" type="VBoxContainer" parent="menu/right/save"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.5
+offset_top = -20.0
+offset_right = 131.5
+offset_bottom = 235.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="menu/right/save/stats"]
+layout_mode = 2
+text = "stats"
+
+[node name="hp" type="HBoxContainer" parent="menu/right/save/stats"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="menu/right/save/stats/hp"]
+layout_mode = 2
+text = "hp"
+
+[node name="LineEdit" type="LineEdit" parent="menu/right/save/stats/hp"]
+layout_mode = 2
+text = "100"
+
+[node name="dmg" type="HBoxContainer" parent="menu/right/save/stats"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="menu/right/save/stats/dmg"]
+layout_mode = 2
+text = "dmg"
+
+[node name="LineEdit" type="LineEdit" parent="menu/right/save/stats/dmg"]
+layout_mode = 2
+text = "100"
+
+[node name="ui" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="ui"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -106.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="VSeparator" type="VSeparator" parent="ui/HSplitContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="ui/HSplitContainer/VSeparator"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 126.0
+offset_bottom = 78.0
+mouse_filter = 2
+theme = ExtResource("2_s8xq8")
+max_value = 150.0
+value = 150.0
+
+[node name="l" type="Panel" parent="ui/HSplitContainer/VSeparator"]
+layout_mode = 2
+offset_left = 140.0
+offset_top = 8.0
+offset_right = 209.0
+offset_bottom = 77.0
+mouse_filter = 2
+theme = ExtResource("2_s8xq8")
+theme_override_styles/panel = SubResource("StyleBoxFlat_3vb7p")
+
+[node name="TextureRect" type="TextureRect" parent="ui/HSplitContainer/VSeparator/l"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_s8xq8")
+expand_mode = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ui/HSplitContainer/VSeparator/l"]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
+mouse_filter = 2
+text = "L"
+
+[node name="r" type="Panel" parent="ui/HSplitContainer/VSeparator"]
+layout_mode = 2
+offset_left = 225.0
+offset_top = 8.0
+offset_right = 295.0
+offset_bottom = 78.0
+mouse_filter = 2
+theme = ExtResource("2_s8xq8")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ntkse")
+
+[node name="TextureRect" type="TextureRect" parent="ui/HSplitContainer/VSeparator/r"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ui/HSplitContainer/VSeparator/r"]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
+mouse_filter = 2
+text = "R"
+
+[node name="Panel" type="Panel" parent="ui"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="ui/Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = 0.335968
+offset_bottom = 47.0
+grow_horizontal = 2
+text = "UPGRADES"
+label_settings = SubResource("LabelSettings_cofq2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="inventory" parent="ui/Panel" instance=ExtResource("3_v7sqd")]
+layout_mode = 1

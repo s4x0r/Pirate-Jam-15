@@ -1,0 +1,180 @@
+[gd_scene load_steps=10 format=3 uid="uid://6dafv7o3rclc"]
+
+[ext_resource type="PackedScene" uid="uid://0vwamd3544ot" path="res://assets/3D/Attachables/Flashlight/flashlight.glb" id="1_er0oq"]
+[ext_resource type="Script" path="res://level parts/weapons/flashlight.gd" id="1_wnpdl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r41lh"]
+transparency = 1
+albedo_color = Color(0.729412, 0.54902, 0, 0.592157)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ih2il"]
+material = SubResource("StandardMaterial3D_r41lh")
+top_radius = 7.5
+height = 15.0
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_eobff"]
+points = PackedVector3Array(4.76837e-07, 7.5, -7.5, 4.76837e-07, 4.49883, -6.10072, -0.73561, 7.5, -7.46476, 0.734143, 7.5, -7.46476, 4.76837e-07, 1.49912, -4.70145, -0.59906, 4.49883, -6.07136, -1.19078, 4.49883, -5.98326, -1.46388, 7.5, -7.35611, 1.46241, 7.5, -7.35611, 1.18931, 4.49883, -5.98326, 0.597592, 4.49883, -6.07136, 4.76837e-07, -4.50029, -1.90143, 4.76837e-07, -7.5, -0.500685, -0.0499215, -7.5, -0.497748, -0.371476, -4.50029, -1.86472, -1.3655, 1.49912, -4.49883, -2.17747, 7.5, -7.17845, 2.176, 7.5, -7.17845, 1.36404, 1.49912, -4.49883, 0.370008, -4.50029, -1.86472, 0.0484538, -7.5, -0.497748, -0.0983748, -7.5, -0.490407, -0.14536, -7.5, -0.478661, -0.552075, -4.50029, -1.8192, -1.26419, -1.50059, -3.04963, -2.33457, 4.49883, -5.63675, -2.8705, 7.5, -6.93031, 2.86903, 7.5, -6.93031, 2.33311, 4.49883, -5.63675, 1.26273, -1.50059, -3.04963, 0.550608, -4.50029, -1.8192, 0.143892, -7.5, -0.478661, 0.0969071, -7.5, -0.490407, -0.192345, -7.5, -0.46251, -0.236393, -7.5, -0.441954, -1.55638, -1.50059, -2.91161, -2.21564, 1.49912, -4.14644, -3.53563, 7.5, -6.61462, 2.21417, 1.49912, -4.14644, 3.53416, 7.5, -6.61462, 0.895655, -4.50029, -1.67678, 0.234926, -7.5, -0.441954, 0.190877, -7.5, -0.46251, -0.278974, -7.5, -0.416993, -3.39027, 4.49883, -5.07292, -2.87637, 4.49883, -5.3798, -4.16699, 7.5, -6.23727, 2.8749, 4.49883, -5.3798, 3.3888, 4.49883, -5.07292, 4.16553, 7.5, -6.23727, 0.277506, -7.5, -0.416993, -0.318617, -7.5, -0.387627, -3.8704, 4.49883, -4.71613, -4.75871, 7.5, -5.79826, 4.75724, 7.5, -5.79826, 3.86893, 4.49883, -4.71613, 0.31715, -7.5, -0.387627, -0.353857, -7.5, -0.353857, -1.34495, -4.50029, -1.34495, -4.31382, 4.49883, -4.31382, -5.30345, 7.5, -5.30345, 5.30198, 7.5, -5.30345, 4.31235, 4.49883, -4.31382, 1.34348, -4.50029, -1.34495, 0.352389, -7.5, -0.353857, -0.387627, -7.5, -0.318617, -4.71613, 4.49883, -3.8704, -5.79826, 7.5, -4.75871, 5.79679, 7.5, -4.75871, 4.71466, 4.49883, -3.8704, 0.386159, -7.5, -0.318617, -0.416993, -7.5, -0.278974, -5.07292, 4.49883, -3.39027, -6.23727, 7.5, -4.16699, 5.07146, 4.49883, -3.39027, 6.23581, 7.5, -4.16699, 0.415525, -7.5, -0.278974, -0.441954, -7.5, -0.236393, -2.91161, -1.50059, -1.55638, -4.14644, 1.49912, -2.21564, -5.3798, 4.49883, -2.87637, -6.61462, 7.5, -3.53563, 6.61316, 7.5, -3.53563, 5.37833, 4.49883, -2.87637, 4.14497, 1.49912, -2.21564, 2.91014, -1.50059, -1.55638, 0.440486, -7.5, -0.236393, -0.46251, -7.5, -0.192345, -3.04963, -1.50059, -1.26419, -5.63675, 4.49883, -2.33457, -6.93031, 7.5, -2.8705, 6.92884, 7.5, -2.8705, 5.63528, 4.49883, -2.33457, 3.04816, -1.50059, -1.26419, 0.461042, -7.5, -0.192345, -0.478661, -7.5, -0.14536, -1.8192, -4.50029, -0.552075, -4.49883, 1.49912, -1.3655, -7.17845, 7.5, -2.17747, 7.17698, 7.5, -2.17747, 4.49736, 1.49912, -1.3655, 1.81774, -4.50029, -0.552075, 0.477193, -7.5, -0.14536, -0.490407, -7.5, -0.0983748, -1.86472, -4.50029, -0.371476, -5.98326, 4.49883, -1.19078, -7.35611, 7.5, -1.46388, 7.35464, 7.5, -1.46388, 5.98179, 4.49883, -1.19078, 1.86325, -4.50029, -0.371476, 0.488939, -7.5, -0.0983748, -0.497748, -7.5, -0.0499215, -6.07136, 4.49883, -0.59906, -7.46476, 7.5, -0.73561, 7.46329, 7.5, -0.73561, 6.06989, 4.49883, -0.59906, 0.496281, -7.5, -0.0499215, -0.500685, -7.5, 4.76837e-07, -1.90143, -4.50029, 4.76837e-07, -4.70145, 1.49912, 4.76837e-07, -7.5, 7.5, 4.76837e-07, -6.10072, 4.49883, 4.76837e-07, 7.5, 7.5, 4.76837e-07, 4.69998, 1.49912, 4.76837e-07, 1.89996, -4.50029, 4.76837e-07, 0.499217, -7.5, 4.76837e-07, -0.497748, -7.5, 0.0484538, -6.07136, 4.49883, 0.597592, -7.46476, 7.5, 0.734143, 7.46329, 7.5, 0.734143, 6.06989, 4.49883, 0.597592, 0.496281, -7.5, 0.0484538, -0.490407, -7.5, 0.0969071, -1.86472, -4.50029, 0.370008, -5.98326, 4.49883, 1.18931, -7.35611, 7.5, 1.46241, 7.35464, 7.5, 1.46241, 5.98179, 4.49883, 1.18931, 1.86325, -4.50029, 0.370008, 0.488939, -7.5, 0.0969071, -0.478661, -7.5, 0.143892, -1.8192, -4.50029, 0.550608, -4.49883, 1.49912, 1.36404, -7.17845, 7.5, 2.176, 7.17698, 7.5, 2.176, 4.49736, 1.49912, 1.36404, 1.81774, -4.50029, 0.550608, 0.477193, -7.5, 0.143892, -0.46251, -7.5, 0.190877, -3.04963, -1.50059, 1.26273, -5.63675, 4.49883, 2.33311, -6.93031, 7.5, 2.86903, 6.92884, 7.5, 2.86903, 5.63528, 4.49883, 2.33311, 3.04816, -1.50059, 1.26273, 0.461042, -7.5, 0.190877, -0.441954, -7.5, 0.234926, -1.67678, -4.50029, 0.895655, -4.14644, 1.49912, 2.21417, -6.61462, 7.5, 3.53416, 6.61316, 7.5, 3.53416, 4.14497, 1.49912, 2.21417, 1.67531, -4.50029, 0.895655, 0.440486, -7.5, 0.234926, -0.416993, -7.5, 0.277506, -5.07292, 4.49883, 3.3888, -5.3798, 4.49883, 2.8749, -6.23727, 7.5, 4.16553, 6.23581, 7.5, 4.16553, 5.07146, 4.49883, 3.3888, 5.37833, 4.49883, 2.8749, 0.415525, -7.5, 0.277506, -0.387627, -7.5, 0.31715, -4.71613, 4.49883, 3.86893, -5.79826, 7.5, 4.75724, 5.79679, 7.5, 4.75724, 4.71466, 4.49883, 3.86893, 0.386159, -7.5, 0.31715, -0.353857, -7.5, 0.352389, -1.34495, -4.50029, 1.34348, -4.31382, 4.49883, 4.31235, -5.30345, 7.5, 5.30198, 5.30198, 7.5, 5.30198, 4.31235, 4.49883, 4.31235, 1.34348, -4.50029, 1.34348, 0.352389, -7.5, 0.352389, -0.318617, -7.5, 0.386159, -3.8704, 4.49883, 4.71466, -4.75871, 7.5, 5.79679, 4.75724, 7.5, 5.79679, 3.86893, 4.49883, 4.71466, 0.31715, -7.5, 0.386159, -0.278974, -7.5, 0.415525, -3.39027, 4.49883, 5.07146, -4.16699, 7.5, 6.23581, 4.16553, 7.5, 6.23581, 3.3888, 4.49883, 5.07146, 0.277506, -7.5, 0.415525, -0.236393, -7.5, 0.440486, -1.55638, -1.50059, 2.91014, -2.21564, 1.49912, 4.14497, -2.87637, 4.49883, 5.37833, -3.53563, 7.5, 6.61316, 3.53416, 7.5, 6.61316, 2.8749, 4.49883, 5.37833, 2.21417, 1.49912, 4.14497, 0.895655, -4.50029, 1.67531, 0.234926, -7.5, 0.440486, -0.192345, -7.5, 0.461042, -1.26419, -1.50059, 3.04816, -2.33457, 4.49883, 5.63528, -2.8705, 7.5, 6.92884, 2.86903, 7.5, 6.92884, 2.33311, 4.49883, 5.63528, 1.26273, -1.50059, 3.04816, 0.190877, -7.5, 0.461042, -0.14536, -7.5, 0.477193, -0.552075, -4.50029, 1.81774, -1.3655, 1.49912, 4.49736, -2.17747, 7.5, 7.17698, 2.176, 7.5, 7.17698, 1.36404, 1.49912, 4.49736, 0.550608, -4.50029, 1.81774, 0.143892, -7.5, 0.477193, -0.0983748, -7.5, 0.488939, -0.371476, -4.50029, 1.86325, -1.19078, 4.49883, 5.98179, -1.46388, 7.5, 7.35464, 1.46241, 7.5, 7.35464, 1.18931, 4.49883, 5.98179, 0.370008, -4.50029, 1.86325, 0.0969071, -7.5, 0.488939, -0.0499215, -7.5, 0.496281, -0.59906, 4.49883, 6.06989, -0.73561, 7.5, 7.46329, 0.734143, 7.5, 7.46329, 0.597592, 4.49883, 6.06989, 0.0484538, -7.5, 0.496281, 4.76837e-07, -7.5, 0.499217, 4.76837e-07, -4.50029, 1.89996, 4.76837e-07, 1.49912, 4.69998, 4.76837e-07, 7.5, 7.5)
+
+[sub_resource type="Animation" id="Animation_siyho"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area3D:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area3D:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("light:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_j2dfw"]
+resource_name = "activate"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("light:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area3D:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area3D:monitorable")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_yvnyg"]
+resource_name = "deactivate"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area3D:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area3D:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("light:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_of0rc"]
+_data = {
+"RESET": SubResource("Animation_siyho"),
+"activate": SubResource("Animation_j2dfw"),
+"deactivate": SubResource("Animation_yvnyg")
+}
+
+[node name="flashlight" type="Node3D"]
+script = ExtResource("1_wnpdl")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.988228, 0.152986, 0, -0.152986, 0.988228, 7.58808e-08, -0.512472, -0.567953)
+collision_layer = 2
+collision_mask = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 4.47035e-08, 0.999999, 0, -0.999999, 4.47035e-08, 0, 0.5, -7.5)
+visible = false
+mesh = SubResource("CylinderMesh_ih2il")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 4.47035e-08, 0.999999, 0, -0.999999, 4.47035e-08, 0, 0.5, -7.5)
+shape = SubResource("ConvexPolygonShape3D_eobff")
+
+[node name="light" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.58808e-08, -0.512472, -0.567953)
+visible = false
+light_color = Color(0.792157, 0.780392, 0, 1)
+light_energy = 20.0
+shadow_enabled = true
+spot_range = 17.0
+spot_angle = 25.0
+
+[node name="flashlightmodel" parent="." instance=ExtResource("1_er0oq")]
+transform = Transform3D(-1, 0, 8.74228e-08, 2.84217e-14, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_of0rc")
+}
+autoplay = "deactivate"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
