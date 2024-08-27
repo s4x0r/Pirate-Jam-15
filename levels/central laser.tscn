@@ -319,7 +319,7 @@ visible = false
 navigation_mesh = SubResource("NavigationMesh_1nhsi")
 
 [node name="landing zone" parent="NavigationRegion3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 1, -27)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.9817, 0.570277, -1.10838)
 visible = false
 
 [node name="CollisionShape3D" parent="NavigationRegion3D/landing zone/StaticBody3D" index="0"]
@@ -615,10 +615,10 @@ libraries = {
 }
 
 [node name="chest" parent="." index="5" instance=ExtResource("14_r3uun")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 19.9308, 0.499996, -9.52277)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 22.5303, 0.499996, -9.52277)
 
 [node name="pylon" parent="." index="6" instance=ExtResource("15_gsrot")]
 transform = Transform3D(1, 0, 0, 0, 1.3, 0, 0, 0, 1, 17.3, 2.29374, -3.6)
 
 [node name="npc" parent="." index="7" instance=ExtResource("16_vukb7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.1052, 0.5, -5.82851)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3838, 1.68503, -6.89043)
