@@ -1,0 +1,364 @@
+[gd_scene load_steps=18 format=3 uid="uid://bsjjo30b5fe14"]
+
+[ext_resource type="Script" path="res://level parts/playerv2.gd" id="1_ytndl"]
+[ext_resource type="PackedScene" uid="uid://db33xf3brnokr" path="res://assets/3D/Main Char/lightmanv2.tscn" id="2_agxyt"]
+[ext_resource type="Theme" uid="uid://db887ibii36e3" path="res://assets/RayveTheme.tres" id="5_o6tkj"]
+[ext_resource type="PackedScene" uid="uid://c8pvotxjxasi4" path="res://level parts/inventory.tscn" id="9_sdqmh"]
+[ext_resource type="AudioStream" uid="uid://c2opga8rm7j3q" path="res://assets/SFX/mp3/playerdamaged.mp3" id="10_fkfw0"]
+[ext_resource type="AudioStream" uid="uid://0o226mgu5s0s" path="res://assets/SFX/mp3/switchweapon.mp3" id="11_ymqbw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3jfj8"]
+radius = 1.0
+height = 3.4665
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_f1tbw"]
+radius = 2.00607
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j658u"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ea77m"]
+material = SubResource("StandardMaterial3D_j658u")
+height = 0.1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i1fjn"]
+bg_color = Color(0, 1, 0, 0.392157)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tup4b"]
+bg_color = Color(1, 0, 0, 0.392157)
+
+[sub_resource type="LabelSettings" id="LabelSettings_g583g"]
+font_size = 37
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_pw75d"]
+height = 1.0
+radius = 1.5
+
+[sub_resource type="Animation" id="Animation_ce6b8"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot/lightman:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pivot/lightman:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("pivot/lightman:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("pivot/lightman:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("pivot/lightman:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-3.14159, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("pivot/lightman:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_ct4pm"]
+resource_name = "damaged"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot/lightman:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.8)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pivot/lightman:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.8)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("pivot/lightman:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 2.10368, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.8)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("pivot/lightman:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -0.811578, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.8)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("pivot/lightman:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-3.14159, -0.25, 0, 0.25, 0, -3.14159, -0.25, 0, 0.25, 0, -3.14159, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.8)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("pivot/lightman:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -0.165806, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.8)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oak4q"]
+_data = {
+"RESET": SubResource("Animation_ce6b8"),
+"damaged": SubResource("Animation_ct4pm")
+}
+
+[node name="player" type="CharacterBody3D" groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+rotation_edit_mode = 2
+collision_layer = 5
+script = ExtResource("1_ytndl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.578985, 0)
+shape = SubResource("CapsuleShape3D_3jfj8")
+
+[node name="pivot" type="Node3D" parent="."]
+
+[node name="lightman" parent="pivot" instance=ExtResource("2_agxyt")]
+transform = Transform3D(-1, 0, -2.53518e-06, 0, 1, 0, 2.53518e-06, 0, -1, 0, 0, 0)
+
+[node name="interactSpace" type="Area3D" parent="pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+collision_layer = 16
+collision_mask = 16
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pivot/interactSpace"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+shape = SubResource("CylinderShape3D_f1tbw")
+
+[node name="Passive light" type="OmniLight3D" parent="pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9375, 0)
+light_color = Color(0.737255, 0.721569, 0, 1)
+omni_attenuation = 0.0436332
+
+[node name="shadow" type="MeshInstance3D" parent="pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("CylinderMesh_ea77m")
+skeleton = NodePath("../Passive light")
+
+[node name="hands" type="Node3D" parent="pivot"]
+
+[node name="r" type="Node3D" parent="pivot/hands"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 0)
+
+[node name="l" type="Node3D" parent="pivot/hands"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, 0)
+
+[node name="ui" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="ui"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -106.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="VSeparator" type="VSeparator" parent="ui/HSplitContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="ui/HSplitContainer/VSeparator"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 126.0
+offset_bottom = 78.0
+mouse_filter = 2
+theme = ExtResource("5_o6tkj")
+max_value = 150.0
+value = 150.0
+
+[node name="l" type="Panel" parent="ui/HSplitContainer/VSeparator"]
+layout_mode = 2
+offset_left = 140.0
+offset_top = 8.0
+offset_right = 209.0
+offset_bottom = 77.0
+mouse_filter = 2
+theme = ExtResource("5_o6tkj")
+theme_override_styles/panel = SubResource("StyleBoxFlat_i1fjn")
+
+[node name="TextureRect" type="TextureRect" parent="ui/HSplitContainer/VSeparator/l"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_o6tkj")
+expand_mode = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ui/HSplitContainer/VSeparator/l"]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
+mouse_filter = 2
+text = "L"
+
+[node name="r" type="Panel" parent="ui/HSplitContainer/VSeparator"]
+layout_mode = 2
+offset_left = 225.0
+offset_top = 8.0
+offset_right = 295.0
+offset_bottom = 78.0
+mouse_filter = 2
+theme = ExtResource("5_o6tkj")
+theme_override_styles/panel = SubResource("StyleBoxFlat_tup4b")
+
+[node name="TextureRect" type="TextureRect" parent="ui/HSplitContainer/VSeparator/r"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ui/HSplitContainer/VSeparator/r"]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
+mouse_filter = 2
+text = "R"
+
+[node name="Panel" type="Panel" parent="ui"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="ui/Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = 0.335968
+offset_bottom = 47.0
+grow_horizontal = 2
+text = "UPGRADES"
+label_settings = SubResource("LabelSettings_g583g")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="inventory" parent="ui/Panel" instance=ExtResource("9_sdqmh")]
+layout_mode = 1
+
+[node name="pickupspace" type="Area3D" parent="."]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pickupspace"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("CylinderShape3D_pw75d")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 30, 30)
+projection = 1
+size = 20.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_oak4q")
+}
+
+[node name="sounds" type="Node3D" parent="."]
+
+[node name="damaged" type="AudioStreamPlayer3D" parent="sounds"]
+stream = ExtResource("10_fkfw0")
+
+[node name="switchweapon" type="AudioStreamPlayer3D" parent="sounds"]
+stream = ExtResource("11_ymqbw")
+
+[connection signal="change_weapon" from="ui/Panel/inventory" to="." method="put_in_hand"]
+[connection signal="body_entered" from="pickupspace" to="." method="_on_pickupspace_body_entered"]
