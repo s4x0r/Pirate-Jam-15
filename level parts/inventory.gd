@@ -6,12 +6,19 @@ signal change_weapon(weapon:Node, hand:String)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+
+	pass # Replace with function body.
+
+
+func make_weapon_buttons():
 	for i in $Panel/GridContainer.get_children():
 		if i != $Panel/GridContainer/item:
 			i.free()
 
 	#make weapon buttons
-	for i in get_node("../../..").items:
+	
+	#for i in get_node("../../..").items:
+	for i in get_tree().get_nodes_in_group("player")[0].items:
 		var b = $Panel/GridContainer/item.duplicate()
 		b.name = i
 		$Panel/GridContainer.add_child(b)
@@ -19,7 +26,6 @@ func _ready() -> void:
 		b.visible = true
 		b.gui_input.connect(button_event.bind(b))
 
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

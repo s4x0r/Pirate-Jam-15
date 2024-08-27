@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://cra32do7tb8p0"]
+
+[ext_resource type="PackedScene" uid="uid://db33xf3brnokr" path="res://assets/3D/Main Char/lightmanv2.tscn" id="1_5vc4w"]
+[ext_resource type="Script" path="res://level parts/npc.gd" id="1_vmqix"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1yy25"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ltt8n"]
+height = 0.5
+radius = 2.0
+
+[node name="npc" type="Node3D"]
+script = ExtResource("1_vmqix")
+
+[node name="hat" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.760783, 0)
+radius = 1.1474
+height = 0.239082
+material = SubResource("StandardMaterial3D_1yy25")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="hat"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.726319, 0)
+radius = 0.685232
+height = 1.69802
+material = SubResource("StandardMaterial3D_1yy25")
+
+[node name="lightman" parent="." instance=ExtResource("1_5vc4w")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_size = 1.0
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+custom_minimum_size = Vector2(300, 100)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -23.0
+offset_top = -95.0
+offset_right = 17.0
+offset_bottom = -55.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "BBCode [color=green]test[/color][b]bold[i]bold italic[/i][/b][i]italic[/i]"
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CylinderShape3D_ltt8n")

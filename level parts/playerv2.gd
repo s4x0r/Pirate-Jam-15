@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 
 
-@onready var battery = $ui/HSplitContainer/VSeparator/ProgressBar
+@onready var battery = $"../ui/HSplitContainer/VSeparator/ProgressBar"
 
 @export var items:Array = ["flashlight", "laser", "lamp", "beacon"]
 @export var SPEED = 12.0
@@ -21,7 +21,6 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 func _ready():
 	battery.max_value = max_battery
 	battery.value = max_battery
-	$ui/Panel/inventory._ready()
 	pass
 
 func _input(event):
@@ -46,7 +45,7 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 
 
-	if not $ui/Panel.visible:
+	if not $"../ui/Panel".visible:
 		if Input.is_action_just_pressed("player_primary") && $pivot/hands/l.get_children() != []:
 			$pivot/hands/l.get_children()[0].activate()
 		if Input.is_action_just_released("player_primary") && $pivot/hands/l.get_children() != []:
@@ -59,8 +58,7 @@ func _physics_process(delta):
 
 
 
-	if Input.is_action_just_pressed("player_inventory"):
-		$ui/Panel.visible = !$ui/Panel.visible
+
 
 	if Input.is_action_just_released("zoom_in"):	$Camera3D.size -= zoom_step
 	if Input.is_action_just_released("zoom_out"): $Camera3D.size += zoom_step
@@ -74,7 +72,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("player_interact"):# and is_on_floor():
 		#print($Area3D.get_overlapping_bodies())
 		var bodies = $pivot/interactSpace.get_overlapping_areas()
-		print(bodies)
+		#print(bodies)
 		if bodies != []:
 			bodies[0].get_parent().interact()
 			pass
@@ -120,7 +118,7 @@ func put_in_hand(object:Node, hand:String):#only accepts "r" or "l" as a hand va
 	get_node(s).add_child(object)
 	object.global_position = get_node(s).global_position
 
-	get_node("ui/HSplitContainer/VSeparator/"+hand+"/TextureRect").texture = load(InventoryTable.items[object.name]["img"])
+	get_node("../ui/HSplitContainer/VSeparator/"+hand+"/TextureRect").texture = load(InventoryTable.items[object.name]["img"])
 
 
 func send_charge(ammount:int):
