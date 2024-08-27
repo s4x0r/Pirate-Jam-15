@@ -1,0 +1,158 @@
+[gd_scene load_steps=8 format=3 uid="uid://sn17xvyagtwn"]
+
+[ext_resource type="Script" path="res://level parts/chest.gd" id="1_6jk8l"]
+[ext_resource type="PackedScene" uid="uid://lc8a4tkehn8m" path="res://level parts/button.tscn" id="2_2egsg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u2dhy"]
+albedo_color = Color(0.486423, 0.261089, 0.0480745, 1)
+
+[sub_resource type="Animation" id="Animation_8hlff"]
+resource_name = "activate"
+length = 1.12
+step = 0.25
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(3.55271e-15, -0.25, 0, 0.25, 0, -1.0472, -0.25, 0, 0.25, 0, -0.785398, -0.25, 0, 0.25, 0, 3.14159, -0.25, 0, 0.25, 0, 2.61799, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.39304, 0.511649, 1.00237, 1.10702)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pivot:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.39304, 0.511649, 1.00237, 1.10702)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("pivot:rotation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.39304, 0.511649, 1.00237, 1.10702)
+}
+
+[sub_resource type="Animation" id="Animation_idx4j"]
+resource_name = "deactivate"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.000782423, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pivot:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("pivot:rotation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_nlbii"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.523599, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pivot:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("pivot:rotation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5wcud"]
+_data = {
+"RESET": SubResource("Animation_nlbii"),
+"activate": SubResource("Animation_8hlff"),
+"deactivate": SubResource("Animation_idx4j")
+}
+
+[node name="chest" type="Node3D"]
+script = ExtResource("1_6jk8l")
+
+[node name="pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0.3, -0.5)
+metadata/_edit_group_ = true
+
+[node name="top" type="CSGCylinder3D" parent="pivot"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, -0.1, 0.5)
+height = 0.8
+material = SubResource("StandardMaterial3D_u2dhy")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="pivot/top"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, 0)
+operation = 2
+size = Vector3(0.6, 1, 1)
+material = SubResource("StandardMaterial3D_u2dhy")
+
+[node name="bottom" type="CSGBox3D" parent="."]
+size = Vector3(0.95, 0.6, 1)
+material = SubResource("StandardMaterial3D_u2dhy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5wcud")
+}
+autoplay = "deactivate"
+
+[node name="Button" parent="." instance=ExtResource("2_2egsg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, 0.65)
+visible = false
+
+[connection signal="activate" from="Button" to="." method="activate"]

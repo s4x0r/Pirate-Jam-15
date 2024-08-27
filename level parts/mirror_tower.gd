@@ -1,7 +1,7 @@
 extends CharacterBody3D
-var hp = 20
+
 var active = false
-var elements = ["dark"]
+@export var rotation_step = 22.5
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -11,25 +11,13 @@ func _ready():
 func _process(_delta):
 	pass
 
-func damage(dmg):
-	if elements == ["light"]: return
-	print("dmg")
-
-	var cDmg = DamageTypes.calculate_damage(elements, dmg)
-
-	hp-=cDmg
-	if hp <= 0:
-		$AnimationPlayer.play("on")
-		active = true
-		elements = ["light"]
-	pass
 
 func rotate_l():
-	rotation_degrees.y+=5
+	rotation_degrees.y+=rotation_step
 	pass
 
 func rotate_r():
-	rotation_degrees.y-=5
+	rotation_degrees.y-=rotation_step
 	pass
 
 

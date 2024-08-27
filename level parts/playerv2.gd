@@ -71,9 +71,10 @@ func _physics_process(delta):
 	if Input.is_action_pressed("cam_rot_r"): rotation_degrees.y-=50*delta
 	
 	#interact
-	if Input.is_action_just_pressed("player_interact") and is_on_floor():
+	if Input.is_action_just_pressed("player_interact"):# and is_on_floor():
 		#print($Area3D.get_overlapping_bodies())
 		var bodies = $pivot/interactSpace.get_overlapping_areas()
+		print(bodies)
 		if bodies != []:
 			bodies[0].get_parent().interact()
 			pass
@@ -132,7 +133,9 @@ func send_charge(ammount:int):
 
 
 func pickup(item): #{"metal":6, "glass":3}
-	print(item)
+	#print(item)
+	if item not in items:
+		items+= [item]
 
 
 func damage(dmg):

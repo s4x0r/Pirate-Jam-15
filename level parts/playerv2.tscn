@@ -12,7 +12,7 @@ radius = 1.0
 height = 3.4665
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_f1tbw"]
-radius = 1.5
+radius = 2.00607
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j658u"]
 albedo_color = Color(0, 0, 0, 1)
@@ -178,7 +178,7 @@ _data = {
 "damaged": SubResource("Animation_ct4pm")
 }
 
-[node name="player" type="CharacterBody3D"]
+[node name="player" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 rotation_edit_mode = 2
 collision_layer = 5

@@ -18,6 +18,8 @@ func _ready():
 	#Sets random seed for this session, only call once at startup
 	randomize()
 	
+	#print(get_tree().current_scene)
+
 	draw_menu("load")
 
 	player_instance = player.instantiate()
@@ -48,6 +50,8 @@ func draw_menu(menu:String):
 					b.text = i.split(".")[0]
 					b.connect("pressed", switch_to.bind("res://levels/"+i))
 					$menu/right/scenes/ScrollContainer/VBoxContainer.add_child(b)
+		"save":
+			pass
 		_:
 			pass
 
@@ -164,4 +168,3 @@ func load_from_file():
 
 		# Get the data from the JSON object
 		save_data = json.data
-
