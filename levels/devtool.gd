@@ -27,6 +27,9 @@ func _ready():
 	player_instance.process_mode = PROCESS_MODE_DISABLED
 	add_child(player_instance)
 
+	var inv= $ui/Panel/inventory
+	inv.change_weapon.connect(player_instance.put_in_hand)
+	inv.make_weapon_buttons()
 
 
 	#var s = JSON.stringify({"foo":"oof","bar":"rab"})
@@ -59,13 +62,10 @@ func draw_menu(menu:String):
 
 func _input(event):
 	if event.is_action_pressed("escape"):
-		toggle_menu()
-
-func toggle_menu():
-	if $menu.visible:
-		show_menu(false)
-	else:
-		show_menu(true)
+		show_menu(!$menu.visible)
+	if event.is_action_pressed("player_inventory"):
+		if !$menu.visible:
+			$ui/Panel.visible = !$ui/Panel.visible
 
 
 func show_menu(vis:bool):
@@ -73,10 +73,12 @@ func show_menu(vis:bool):
 		$menu.visible = true
 		get_tree().paused = true
 		$menu.mouse_filter = MOUSE_FILTER_STOP
+		$ui.visible = false
 	else:
 		$menu.visible = false
 		get_tree().paused = false
 		$menu.mouse_filter = MOUSE_FILTER_IGNORE
+		$ui.visible = true
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
