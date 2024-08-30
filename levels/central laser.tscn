@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://ber7p8ccvtkdd"]
+[gd_scene load_steps=77 format=3 uid="uid://ber7p8ccvtkdd"]
 
 [ext_resource type="PackedScene" uid="uid://ry4r6rho7yo8" path="res://levels/protolevel.tscn" id="1_te3ih"]
 [ext_resource type="Texture2D" uid="uid://df5flfv8hl8rq" path="res://assets/road_muddy_02.jpg" id="2_4y1p1"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cxiaeuad747wx" path="res://level parts/mirror_tower.tscn" id="9_2he5t"]
 [ext_resource type="Texture2D" uid="uid://ho5pxaumx11y" path="res://assets/kenny grid/Light/texture_11.png" id="9_3khmp"]
 [ext_resource type="Script" path="res://level parts/gate.gd" id="13_dmemd"]
+[ext_resource type="PackedScene" uid="uid://dacdxmuivh771" path="res://level parts/loading_zone.tscn" id="13_mlg5o"]
 [ext_resource type="PackedScene" uid="uid://sn17xvyagtwn" path="res://level parts/chest.tscn" id="14_r3uun"]
 [ext_resource type="PackedScene" uid="uid://daapwesnim8mk" path="res://level parts/pylon.tscn" id="15_gsrot"]
 [ext_resource type="PackedScene" uid="uid://cra32do7tb8p0" path="res://level parts/npc.tscn" id="16_vukb7"]
@@ -686,6 +687,13 @@ libraries = {
 "": SubResource("AnimationLibrary_p0l3w")
 }
 autoplay = "closed"
+
+[node name="loading zones" type="Node3D" parent="NavigationRegion3D" index="4"]
+
+[node name="party" parent="NavigationRegion3D/loading zones" index="0" instance=ExtResource("13_mlg5o")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 44.7596, 0.661278, -1.45207)
+scene = "res://levels/nowhere.tscn"
+location = "the middle"
 
 [node name="chest" parent="." index="5" instance=ExtResource("14_r3uun")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 22.5303, 1.86687, -9.52277)

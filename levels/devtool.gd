@@ -95,6 +95,7 @@ func switch_to_level(lvl):
 	switch_to("res://levels/"+levels[cur_level]+".tscn")
 
 func switch_to(scene):
+	#print(scene)
 	show_menu(false)
 	var scn = load(scene).instantiate()
 	#print(loaded, scene, scn)
@@ -103,11 +104,21 @@ func switch_to(scene):
 	scn.process_mode=Node.PROCESS_MODE_PAUSABLE
 	add_child(scn)
 	loaded = scn
+	for i in scn.get_node("NavigationRegion3D/loading zones/").get_children():
+		i.entered.connect(loading_zone)
+
 
 	player_instance.visible = true
 	player_instance.process_mode = PROCESS_MODE_INHERIT
 	player_instance.global_position = scn.get_node("NavigationRegion3D/landing zone").global_position
 	#print(loaded, scene, scn)
+	pass
+
+func loading_zone(zone):
+	#print(zone.scene, type_string(typeof(zone.scene)))
+	switch_to(zone.scene)
+	player_instance.global_position = loaded.get_node("NavigationRegion3D/loading zones/"+zone.location+"/landing zone").global_position
+
 	pass
 
 func play_bgm():
@@ -142,8 +153,6 @@ func save_to_file():
 
 	# Store the save dictionary as a new line in the save file.
 	save_file.store_line(json_string)
-
-
 
 
 

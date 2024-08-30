@@ -31,6 +31,21 @@ emission_energy_multiplier = 2.0
 material = SubResource("StandardMaterial3D_fx8hx")
 size = Vector3(16, 9, 1)
 
+[sub_resource type="Animation" id="Animation_dcv1n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:mesh:material:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.276399, 0.426114, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_0aeev"]
 resource_name = "strobe"
 length = 5.0
@@ -59,21 +74,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [Color(1, 0.276399, 0.276399, 1), Color(0.276399, 0.426114, 1, 1), Color(0.276399, 1, 0.435485, 1), Color(1, 0.276399, 0.961968, 1), Color(0.980161, 1, 0.276399, 1), Color(0.276399, 0.793336, 1, 1), Color(0.360293, 1, 0.276399, 1), Color(0.276399, 0.549566, 1, 1), Color(0.920921, 0.276399, 1, 1), Color(0.33801, 1, 0.276399, 1), Color(1, 0.825161, 0.276399, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_dcv1n"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:mesh:material:albedo_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.276399, 0.426114, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hask7"]

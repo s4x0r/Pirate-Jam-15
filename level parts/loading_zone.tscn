@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://dacdxmuivh771"]
+
+[ext_resource type="Script" path="res://level parts/loading_zone.gd" id="1_6mpli"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ae3w5"]
+transparency = 1
+albedo_color = Color(0.145098, 0.278431, 0.317647, 0.588235)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ex3aq"]
+material = SubResource("StandardMaterial3D_ae3w5")
+size = Vector3(5, 0.2, 1.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_q8v6g"]
+points = PackedVector3Array(-2.5, -0.1, -0.75, -2.5, 0.1, -0.75, 2.5, -0.1, -0.75, -2.5, -0.1, 0.75, -2.5, 0.1, 0.75, 2.5, 0.1, -0.75, 2.5, -0.1, 0.75, 2.5, 0.1, 0.75)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1l342"]
+transparency = 1
+albedo_color = Color(0.317647, 0.179581, 0.145098, 0.588235)
+
+[sub_resource type="BoxMesh" id="BoxMesh_612ei"]
+material = SubResource("StandardMaterial3D_1l342")
+size = Vector3(1.5, 0.2, 1.5)
+
+[node name="loading zone" type="Node3D" groups=["loading zone"]]
+script = ExtResource("1_6mpli")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+mesh = SubResource("BoxMesh_ex3aq")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("ConvexPolygonShape3D_q8v6g")
+
+[node name="landing zone" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.9)
+mesh = SubResource("BoxMesh_612ei")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
