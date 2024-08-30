@@ -15,7 +15,7 @@ render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_s
 
 void vertex() {
 // FloatConstant:2
-	float n_out2p0 = 2.718282;
+	float n_out2p0 = 2.718280;
 
 
 // Output:0
@@ -24,7 +24,6 @@ void vertex() {
 
 }
 "
-graph_offset = Vector2(58.1702, 21.5693)
 nodes/vertex/0/position = Vector2(660, 160)
 nodes/vertex/2/node = SubResource("VisualShaderNodeFloatConstant_lawte")
 nodes/vertex/2/position = Vector2(280, 420)

@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://s66jv8s6ktw0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w25yt"]
+albedo_color = Color(0.216282, 0.329505, 0.391381, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_786a7"]
+material = SubResource("StandardMaterial3D_w25yt")
+top_radius = 0.2
+bottom_radius = 0.2
+height = 7.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tsve1"]
+material = SubResource("StandardMaterial3D_w25yt")
+top_radius = 0.1
+bottom_radius = 0.2
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jdfa3"]
+material = SubResource("StandardMaterial3D_w25yt")
+top_radius = 0.2
+bottom_radius = 0.2
+height = 0.2
+
+[node name="streetlight" type="Node3D"]
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+mesh = SubResource("CylinderMesh_786a7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.644417, 0.764674, 0, -0.764674, 0.644417, 0, 0, 0, 1, 0.727011, 7.22652, 0)
+mesh = SubResource("CylinderMesh_tsve1")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.64301, 7.86195, 0)
+mesh = SubResource("CylinderMesh_jdfa3")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.66231, 7.56982, 0)
+light_energy = 2.0
+light_size = 1.0
+omni_range = 30.0
