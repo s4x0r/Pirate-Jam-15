@@ -110,7 +110,7 @@ func switch_to(scene):
 
 	player_instance.visible = true
 	player_instance.process_mode = PROCESS_MODE_INHERIT
-	player_instance.global_position = scn.get_node("NavigationRegion3D/landing zone").global_position
+	player_instance.global_position = scn.get_node("NavigationRegion3D/landing zone").global_position+Vector3(0,3,0)
 	#print(loaded, scene, scn)
 	pass
 

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://uejdpsk3jqnn"]
+
+[ext_resource type="PackedScene" uid="uid://65l8mvlsofh1" path="res://assets/downloaded/KayKit Prototype Bits/Primitive_Slope.gltf" id="1_i3j6l"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_elc4m"]
+points = PackedVector3Array(-2, 1.49012e-07, -2, -2, 1.49012e-07, 2, -2, 3.99961, -2, 2, 1.49012e-07, -2, 2, 1.49012e-07, 2, -2, 3.99961, 2)
+
+[node name="Primitive_Slope2" instance=ExtResource("1_i3j6l")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Primitive_Slope" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Primitive_Slope/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_elc4m")

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq7ldqwgeojq0"]
+
+[ext_resource type="PackedScene" uid="uid://c325gr23hns1j" path="res://assets/downloaded/KayKit Prototype Bits/Primitive_Slope_OuterCorner.gltf" id="1_aahdj"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_us4p3"]
+points = PackedVector3Array(-2, 1.49012e-07, -2, -2, 1.49012e-07, 2, -2, 3.99961, -2, 2, 1.49012e-07, -2, 2, 1.49012e-07, 2)
+
+[node name="Primitive_Slope_OuterCorner2" instance=ExtResource("1_aahdj")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Primitive_Slope_OuterCorner" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Primitive_Slope_OuterCorner/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_us4p3")

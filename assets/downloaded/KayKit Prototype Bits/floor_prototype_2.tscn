@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://baewabutpd5yf"]
+
+[ext_resource type="PackedScene" uid="uid://pbnew2y3q8ie" path="res://assets/downloaded/KayKit Prototype Bits/Floor_Prototype.gltf" id="1_si8fn"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_r2lfn"]
+points = PackedVector3Array(-2, 0, -2, -2, 0, 2, -2, 0.399961, -2, 2, 0, -2, -2, 0.399961, 2, 2, 0, 2, -1.90016, 0.500001, -1.90016, 2, 0.399961, -2, -1.90016, 0.500001, 1.89977, 2, 0.399961, 2, 1.89977, 0.500001, -1.90016, 1.89977, 0.500001, 1.89977)
+
+[node name="Floor_Prototype2" instance=ExtResource("1_si8fn")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor_Prototype" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor_Prototype/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_r2lfn")

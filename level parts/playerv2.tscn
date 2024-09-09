@@ -172,6 +172,8 @@ process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 rotation_edit_mode = 2
 collision_layer = 5
+floor_constant_speed = true
+floor_max_angle = 1.22173
 script = ExtResource("1_ytndl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://w3aosj20gi07"]
+
+[ext_resource type="PackedScene" uid="uid://b2pjo8xjgftn3" path="res://assets/downloaded/KayKit Prototype Bits/Primitive_Cube.gltf" id="1_w7vg3"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_b8axh"]
+points = PackedVector3Array(-2, 1.49012e-07, -2, -2, 1.49012e-07, 2, -2, 3.99961, -2, 2, 1.49012e-07, -2, 2, 1.49012e-07, 2, -2, 3.99961, 2, 2, 3.99961, -2, 2, 3.99961, 2)
+
+[node name="Primitive_Cube2" instance=ExtResource("1_w7vg3")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Primitive_Cube" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Primitive_Cube/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_b8axh")

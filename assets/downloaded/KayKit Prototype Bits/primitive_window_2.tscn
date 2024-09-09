@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4ii714alm4yy"]
+
+[ext_resource type="PackedScene" uid="uid://cp1gu8ssae228" path="res://assets/downloaded/KayKit Prototype Bits/Primitive_Window.gltf" id="1_lyixa"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_s6oju"]
+data = PackedVector3Array(-1, 1, 0.5, 2, 0, 0.5, -2, 0, 0.5, -1, 1, 0.5, 1, 1, 0.5, 2, 0, 0.5, 2, 0, -0.5, -2, 0, 0.5, 2, 0, 0.5, 2, 0, -0.5, -2, 0, -0.5, -2, 0, 0.5, 1, 1, -0.5, -2, 0, -0.5, 2, 0, -0.5, 1, 1, -0.5, -1, 1, -0.5, -2, 0, -0.5, 2, 4, 0.5, -1, 3, 0.5, -2, 4, 0.5, 2, 4, 0.5, 1, 3, 0.5, -1, 3, 0.5, -1, 3, -0.5, -2, 0, -0.5, -1, 1, -0.5, -1, 3, -0.5, -2, 4, -0.5, -2, 0, -0.5, 1, 3, 0.5, 2, 0, 0.5, 1, 1, 0.5, 1, 3, 0.5, 2, 4, 0.5, 2, 0, 0.5, -2, 4, -0.5, 1, 3, -0.5, 2, 4, -0.5, -2, 4, -0.5, -1, 3, -0.5, 1, 3, -0.5, -2, 4, -0.5, -2, 0, 0.5, -2, 0, -0.5, -2, 4, -0.5, -2, 4, 0.5, -2, 0, 0.5, -2, 4, 0.5, -1, 1, 0.5, -2, 0, 0.5, -2, 4, 0.5, -1, 3, 0.5, -1, 1, 0.5, 2, 0, 0.5, 2, 4, -0.5, 2, 0, -0.5, 2, 0, 0.5, 2, 4, 0.5, 2, 4, -0.5, -1, 1, 0.5, -1, 3, -0.5, -1, 1, -0.5, -1, 1, 0.5, -1, 3, 0.5, -1, 3, -0.5, 2, 4, -0.5, 1, 1, -0.5, 2, 0, -0.5, 2, 4, -0.5, 1, 3, -0.5, 1, 1, -0.5, -1, 3, -0.5, 1, 3, 0.5, 1, 3, -0.5, -1, 3, -0.5, -1, 3, 0.5, 1, 3, 0.5, 1, 1, 0.5, -1, 1, -0.5, 1, 1, -0.5, 1, 1, 0.5, -1, 1, 0.5, -1, 1, -0.5, 1, 1, 0.5, 1, 3, -0.5, 1, 3, 0.5, 1, 1, 0.5, 1, 1, -0.5, 1, 3, -0.5, -2, 4, -0.5, 2, 4, 0.5, -2, 4, 0.5, -2, 4, -0.5, 2, 4, -0.5, 2, 4, 0.5)
+
+[node name="Primitive_Window2" instance=ExtResource("1_lyixa")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Primitive_Window" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Primitive_Window/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_s6oju")

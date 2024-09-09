@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cu5y5fkqtns4w"]
+
+[ext_resource type="PackedScene" uid="uid://cawjavaryb0dw" path="res://assets/downloaded/KayKit Prototype Bits/Pillar_A.gltf" id="1_g3kvb"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lc2g6"]
+points = PackedVector3Array(-0.3, 0, -0.3, 0.3, 0, -0.3, -0.3, 0, 0.3, -0.3, 3.99967, -0.3, 0.3, 0, 0.3, 0.3, 3.99967, -0.3, -0.3, 3.99967, 0.3, -0.200039, 4.1, -0.200039, 0.3, 3.99967, 0.3, 0.19998, 4.1, -0.200039, -0.200039, 4.1, 0.19998, 0.19998, 4.1, 0.19998)
+
+[node name="Pillar_A2" instance=ExtResource("1_g3kvb")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Pillar_A" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pillar_A/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_lc2g6")

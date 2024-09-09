@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7iek018oo5x8"]
+
+[ext_resource type="PackedScene" uid="uid://bj7ry14so1yfw" path="res://assets/downloaded/KayKit Prototype Bits/Primitive_Slope_Half_InnerCorner.gltf" id="1_10f5w"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_m368d"]
+points = PackedVector3Array(-2, 1.49012e-07, -2, -2, 1.49012e-07, 2, -2, 3.99961, -2, 2, 1.49012e-07, -2, 2, 1.49012e-07, 2, -2, 3.99961, 2, 2, 3.99961, -2, 2, 1.99961, 2, 0, 3.99961, 2, 2, 3.99961, 0)
+
+[node name="Primitive_Slope_Half_InnerCorner2" instance=ExtResource("1_10f5w")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Primitive_Slope_Half_InnerCorner" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Primitive_Slope_Half_InnerCorner/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_m368d")

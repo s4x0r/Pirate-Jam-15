@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlhvlws7bd6bv"]
+
+[ext_resource type="PackedScene" uid="uid://j8jeiiuwfgc" path="res://assets/downloaded/KayKit Prototype Bits/Primitive_Beam.gltf" id="1_kt61t"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_np87h"]
+points = PackedVector3Array(-2, 1.49012e-07, -0.5, -2, 1, -0.5, 2, 1.49012e-07, -0.5, -2, 1.49012e-07, 0.499902, -2, 1, 0.499902, 2, 1, -0.5, 2, 1.49012e-07, 0.499902, 2, 1, 0.499902)
+
+[node name="Primitive_Beam2" instance=ExtResource("1_kt61t")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Primitive_Beam" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Primitive_Beam/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_np87h")

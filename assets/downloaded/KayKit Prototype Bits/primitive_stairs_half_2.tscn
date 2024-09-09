@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdnb7uftiua16"]
+
+[ext_resource type="PackedScene" uid="uid://brfqol2r8x5xn" path="res://assets/downloaded/KayKit Prototype Bits/Primitive_Stairs_Half.gltf" id="1_stgep"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7skfh"]
+points = PackedVector3Array(2, 0.499804, 2, 2, 1.49012e-07, 2, 2, 0.499804, -2, 1.5, 1, 2, 0, 1.49012e-07, 2, 2, 1.49012e-07, -2, 1.5, 1, -2, 0.5, 2, 2, 0, 2, 2, 0, 1.49012e-07, -2, 0.5, 2, -2, 0, 2, -2)
+
+[node name="Primitive_Stairs_Half2" instance=ExtResource("1_stgep")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Primitive_Stairs_Half" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Primitive_Stairs_Half/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_7skfh")

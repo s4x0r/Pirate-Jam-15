@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0n81qvqrs8d4"]
+
+[ext_resource type="PackedScene" uid="uid://r275h4wqvyxk" path="res://assets/downloaded/KayKit Prototype Bits/Wall_Window_Closed.gltf" id="1_ti4k3"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yo1yj"]
+points = PackedVector3Array(1.89977, 4, 0.249962, 1.3888, 3.60298, 0.279948, 1.43618, 3.48356, 0.279948, 1.63508, 1.31911, 0.279948, 1.89977, 0, 0.249962, 1.99961, 3.89977, 0.136709, 1.89977, 4, -0.25, -1.90016, 4, 0.249962, -1.56617, 2.68951, 0.28, 0.380579, 0.277604, 0.279948, 1.89977, 0, -0.25, 1.99961, 0.0998434, 0.136709, 0.259984, 0.233359, 0.279948, -1.90016, 0, 0.249962, 1.99961, 3.89977, -0.136748, -1.90016, 4, -0.25, -2, 3.89977, 0.136709, -1.69421, 2.53563, 0.279948, -1.6018, 0.45184, 0.279948, -1.55403, 0.33242, 0.279948, 1.99961, 0.0998434, -0.136748, -1.90016, 0, -0.25, -2, 0.0998434, 0.136709, -2, 3.89977, -0.136748, -2, 0.0998434, -0.136748)
+
+[node name="Wall_Window_Closed2" instance=ExtResource("1_ti4k3")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Wall_Window_Closed" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall_Window_Closed/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_yo1yj")

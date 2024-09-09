@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dumtyng1meyoq"]
+
+[ext_resource type="PackedScene" uid="uid://dckh0acm1r3ki" path="res://assets/downloaded/KayKit Prototype Bits/Cube_Prototype_Large_B.gltf" id="1_j23pf"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_flqoy"]
+points = PackedVector3Array(-2, 0.0998435, -1.90016, -1.90016, 1.49012e-07, -1.90016, -2, 0.0998435, 1.89977, -2, 3.89977, -1.90016, -1.90016, 0.0998435, -2, -1.90016, 1.49012e-07, 1.89977, 1.89977, 1.49012e-07, -1.90016, -1.90016, 0.0998435, 2, -2, 3.89977, 1.89977, -1.90016, 3.99961, -1.90016, -1.90016, 3.89977, -2, 1.89977, 0.0998435, -2, 1.89977, 1.49012e-07, 1.89977, 2, 0.0998435, -1.90016, 1.89977, 0.0998435, 2, -1.90016, 3.89977, 2, -1.90016, 3.99961, 1.89977, 1.89977, 3.99961, -1.90016, 1.89977, 3.89977, -2, 2, 0.0998435, 1.89977, 2, 3.89977, -1.90016, 1.89977, 3.89977, 2, 1.89977, 3.99961, 1.89977, 2, 3.89977, 1.89977)
+
+[node name="Cube_Prototype_Large_B2" instance=ExtResource("1_j23pf")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Cube_Prototype_Large_B" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube_Prototype_Large_B/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_flqoy")
